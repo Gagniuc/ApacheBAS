@@ -533,7 +533,7 @@ A browser-based network connection monitor that obtains connection information f
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/netstat%20(I).png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/netstat%20(I).png" alt="ApacheBAS Netstat Monitor">
 	  </kbd>
 	</a>
 </div>
@@ -543,7 +543,7 @@ A browser-based network connection monitor that obtains connection information f
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/netstat%20(II).png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/netstat%20(II).png" alt="ApacheBAS Netstat Monitor">
 	  </kbd>
 	</a>
 </div>
@@ -569,11 +569,15 @@ The project demonstrates ApacheBAS integration with Windows command-line utiliti
 
 **File:** `programs.bas`
 
-A browser-based explorer for executable programs visible to the ApacheBAS application.
+A browser-based explorer for executable programs visible to the ApacheBAS application. The interface scans directories, lists executable files, provides filtering by name or path, and allows an executable to be started through the ApacheBAS `START` statement. It demonstrates filesystem traversal, server-generated interfaces, browser interaction, and native process launching.
 
-The interface scans directories, lists executable files, provides filtering by name or path, and allows an executable to be started through the ApacheBAS `START` statement.
-
-It demonstrates filesystem traversal, server-generated interfaces, browser interaction, and native process launching.
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/programs.png" alt="ApacheBAS Programs Explorer">
+	  </kbd>
+	</a>
+</div>
 
 ---
 
@@ -586,7 +590,7 @@ A read-only Windows process viewer based on `tasklist.exe`.
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/task%20manager.png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/task%20manager.png" alt="ApacheBAS Task Manager">
 	  </kbd>
 	</a>
 </div>
@@ -614,7 +618,7 @@ A browser-based file explorer for directories exposed through Apache.
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/explorer.png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/explorer.png" alt="ApacheBAS Server Explorer">
 	  </kbd>
 	</a>
 </div>
@@ -648,7 +652,7 @@ A Windows-inspired browser desktop backed by ApacheBAS.
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/desktop.png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/desktop.png" alt="ApacheBAS Desktop">
 	  </kbd>
 	</a>
 </div>
@@ -687,7 +691,7 @@ A lightweight read-only Windows remote desktop viewer. It captures the current s
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/remote.png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/remote.png" alt="ApacheBAS Remote Desktop">
 	  </kbd>
 	</a>
 </div>
@@ -703,7 +707,7 @@ A small social-network application built with ApacheBAS, HTML, CSS, and limited 
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/facebasic%20(II).png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/facebasic%20(II).png" alt="FaceBASIC">
 	  </kbd>
 	</a>
 </div>
@@ -732,7 +736,7 @@ A collection of image-gallery applications demonstrating binary uploads and file
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gallery.png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gallery.png" alt="ApacheBAS Picture Repositories">
 	  </kbd>
 	</a>
 </div>
@@ -773,7 +777,7 @@ A compact GitHub-inspired source repository service implemented with ApacheBAS.
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gitbasic%20(III).png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gitbasic%20(III).png" alt="GitBASIC">
 	  </kbd>
 	</a>
 </div>
@@ -806,7 +810,7 @@ A mathematical graphics laboratory in which ApacheBAS performs calculations on t
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(I).png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(I).png" alt="MathBASIC Studio">
 	  </kbd>
 	</a>
 </div>
@@ -815,7 +819,7 @@ A mathematical graphics laboratory in which ApacheBAS performs calculations on t
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(II).png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(II).png" alt="MathBASIC Studio">
 	  </kbd>
 	</a>
 </div>
@@ -824,7 +828,7 @@ A mathematical graphics laboratory in which ApacheBAS performs calculations on t
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(III).png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(III).png" alt="MathBASIC Studio">
 	  </kbd>
 	</a>
 </div>
@@ -832,7 +836,7 @@ A mathematical graphics laboratory in which ApacheBAS performs calculations on t
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(IV).png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(IV).png" alt="MathBASIC Studio">
 	  </kbd>
 	</a>
 </div>
@@ -863,7 +867,7 @@ A local VirusTotal-style static file-triage application implemented with ApacheB
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(I).png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(I).png" alt="VirusBASIC">
 	  </kbd>
 	</a>
 </div>
@@ -871,7 +875,7 @@ A local VirusTotal-style static file-triage application implemented with ApacheB
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(II).png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(II).png" alt="VirusBASIC">
 	  </kbd>
 	</a>
 </div>
@@ -879,7 +883,7 @@ A local VirusTotal-style static file-triage application implemented with ApacheB
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(III).png" alt="">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(III).png" alt="VirusBASIC">
 	  </kbd>
 	</a>
 </div>
