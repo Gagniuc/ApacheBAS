@@ -703,14 +703,6 @@ A small social-network application built with ApacheBAS, HTML, CSS, and limited 
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/facebasic%20(I).png" alt="">
-	  </kbd>
-	</a>
-</div>
-
-<div align="center">
-	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
-	  <kbd>
 	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/facebasic%20(II).png" alt="">
 	  </kbd>
 	</a>
@@ -781,24 +773,6 @@ A compact GitHub-inspired source repository service implemented with ApacheBAS.
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gitbasic%20(I).png" alt="">
-	  </kbd>
-	</a>
-</div>
-
-
-<div align="center">
-	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
-	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gitbasic%20(II).png" alt="">
-	  </kbd>
-	</a>
-</div>
-
-
-<div align="center">
-	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
-	  <kbd>
 	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gitbasic%20(III).png" alt="">
 	  </kbd>
 	</a>
@@ -841,19 +815,11 @@ A mathematical graphics laboratory in which ApacheBAS performs calculations on t
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(I).png" alt="">
-	  </kbd>
-	</a>
-</div>
-
-
-<div align="center">
-	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
-	  <kbd>
 	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(II).png" alt="">
 	  </kbd>
 	</a>
 </div>
+
 
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
