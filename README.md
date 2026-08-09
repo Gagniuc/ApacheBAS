@@ -529,6 +529,26 @@ All projects listed below are functional. Some are experimental demonstrations i
 
 A browser-based network connection monitor that obtains connection information from Windows `netstat.exe -ano`.
 
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/netstat%20(I).png" alt="">
+	  </kbd>
+	</a>
+</div>
+
+
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/netstat%20(II).png" alt="">
+	  </kbd>
+	</a>
+</div>
+
+
 It displays:
 
 - TCP connections;
@@ -563,6 +583,14 @@ It demonstrates filesystem traversal, server-generated interfaces, browser inter
 
 A read-only Windows process viewer based on `tasklist.exe`.
 
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/task%20manager.png" alt="">
+	  </kbd>
+	</a>
+</div>
+
 The application presents:
 
 - process name;
@@ -582,6 +610,14 @@ The project is intentionally a monitoring tool and does not terminate or modify 
 **Directory:** `explorer/`
 
 A browser-based file explorer for directories exposed through Apache.
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/explorer.png" alt="">
+	  </kbd>
+	</a>
+</div>
 
 Features include:
 
@@ -608,6 +644,14 @@ The project demonstrates how ApacheBAS can act as the server-side engine of a co
 **Directory:** `desktop/`
 
 A Windows-inspired browser desktop backed by ApacheBAS.
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/desktop.png" alt="">
+	  </kbd>
+	</a>
+</div>
 
 The application includes:
 
@@ -638,13 +682,15 @@ The project demonstrates a much larger browser interface built on top of ApacheB
 
 **Directory:** `remote-admin/`
 
-A lightweight read-only Windows remote desktop viewer.
+A lightweight read-only Windows remote desktop viewer. It captures the current server desktop and displays the image in a browser. The refresh interval is adjustable and can be remembered by the browser. The project intentionally provides no remote mouse or keyboard control. It is primarily intended for localhost or trusted network demonstrations.
 
-It captures the current server desktop and displays the image in a browser. The refresh interval is adjustable and can be remembered by the browser.
-
-The project intentionally provides no remote mouse or keyboard control.
-
-It is primarily intended for localhost or trusted network demonstrations.
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/remote.png" alt="">
+	  </kbd>
+	</a>
+</div>
 
 ---
 
@@ -653,6 +699,22 @@ It is primarily intended for localhost or trusted network demonstrations.
 **Directory:** `facebasic/`
 
 A small social-network application built with ApacheBAS, HTML, CSS, and limited browser-side JavaScript.
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/facebasic%20(I).png" alt="">
+	  </kbd>
+	</a>
+</div>
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/facebasic%20(II).png" alt="">
+	  </kbd>
+	</a>
+</div>
 
 Features include:
 
@@ -665,9 +727,7 @@ Features include:
 - image posts;
 - combined text and image posts.
 
-Account and post data are stored in ordinary files rather than a database.
-
-FaceBASIC demonstrates that ApacheBAS can support a complete multi-user web application using only the language runtime and local files.
+Account and post data are stored in ordinary files rather than a database. FaceBASIC demonstrates that ApacheBAS can support a complete multi-user web application using only the language runtime and local files.
 
 ---
 
@@ -676,6 +736,14 @@ FaceBASIC demonstrates that ApacheBAS can support a complete multi-user web appl
 **Directory:** `gallery/`
 
 A collection of image-gallery applications demonstrating binary uploads and file-based metadata.
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gallery.png" alt="">
+	  </kbd>
+	</a>
+</div>
 
 ### Simple Picture Repository
 
@@ -710,6 +778,32 @@ These projects use ApacheBAS file functions rather than an external database.
 
 A compact GitHub-inspired source repository service implemented with ApacheBAS.
 
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gitbasic%20(I).png" alt="">
+	  </kbd>
+	</a>
+</div>
+
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gitbasic%20(II).png" alt="">
+	  </kbd>
+	</a>
+</div>
+
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gitbasic%20(III).png" alt="">
+	  </kbd>
+	</a>
+</div>
+
 Features include:
 
 - account creation;
@@ -735,6 +829,48 @@ GitBASIC is not intended to reproduce Git itself. It demonstrates how repository
 
 A mathematical graphics laboratory in which ApacheBAS performs calculations on the server and generates SVG graphics for the browser.
 
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(I).png" alt="">
+	  </kbd>
+	</a>
+</div>
+
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(I).png" alt="">
+	  </kbd>
+	</a>
+</div>
+
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(II).png" alt="">
+	  </kbd>
+	</a>
+</div>
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(III).png" alt="">
+	  </kbd>
+	</a>
+</div>
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(IV).png" alt="">
+	  </kbd>
+	</a>
+</div>
+
 Included demonstrations include:
 
 - Mandelbrot set;
@@ -758,6 +894,30 @@ The mathematical coordinates are calculated by ApacheBAS. Browser-side JavaScrip
 
 A local VirusTotal-style static file-triage application implemented with ApacheBAS and a small native hashing helper.
 
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(I).png" alt="">
+	  </kbd>
+	</a>
+</div>
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(II).png" alt="">
+	  </kbd>
+	</a>
+</div>
+
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/src/BAS%20experiments">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(III).png" alt="">
+	  </kbd>
+	</a>
+</div>
+
 The application can:
 
 - calculate MD5;
@@ -779,9 +939,7 @@ The native helper exists because cryptographic hash functions are not implemente
 
 **Directory:** `html/`
 
-A browser-based language reference for ApacheBAS v0.1.34.3.
-
-English and Romanian versions document:
+A browser-based <a href="https://github.com/Gagniuc/ApacheBAS/tree/main/htm">language reference</a> for ApacheBAS v0.1.34.3. English and Romanian versions document:
 
 - BASIC syntax;
 - variables;
@@ -806,13 +964,7 @@ The reference includes examples and searchable documentation for the implemented
 
 # What the repository demonstrates
 
-The source code and projects together show ApacheBAS at two different levels.
-
-The **interpreter source** demonstrates how a server-side programming language can be implemented directly in x86 assembly with a very small dependency surface.
-
-The **application collection** demonstrates how that runtime can be used to construct real browser-facing software.
-
-Across the projects, ApacheBAS is used for:
+The source code and projects together show ApacheBAS at two different levels. The **interpreter source** demonstrates how a server-side programming language can be implemented directly in x86 assembly with a very small dependency surface. The **application collection** demonstrates how that runtime can be used to construct real browser-facing software. Across the projects, ApacheBAS is used for:
 
 - CGI execution;
 - GET and POST parsing;
@@ -850,17 +1002,13 @@ ApacheBAS follows a deliberately simple model:
 7. The response is returned through standard output.
 8. The process terminates.
 
-Each request therefore begins with a fresh interpreter state.
-
-The goal is not to reproduce the size or feature set of a mature general-purpose web runtime. ApacheBAS instead explores how much useful server-side functionality can be provided by a compact BASIC interpreter whose implementation remains small, visible, and directly connected to the Apache CGI execution model.
+Each request therefore begins with a fresh interpreter state. The goal is not to reproduce the size or feature set of a mature general-purpose web runtime. ApacheBAS instead explores how much useful server-side functionality can be provided by a compact BASIC interpreter whose implementation remains small, visible, and directly connected to the Apache CGI execution model.
 
 ---
 
 # Runtime limits
 
-The current implementation uses explicit resource bounds, including limits for script size, request-body size, response size, variables, arrays, DATA items, loop nesting, GOSUB depth, source inclusion, external-process output, and execution counts.
-
-Important current capacities include:
+The current implementation uses explicit resource bounds, including limits for script size, request-body size, response size, variables, arrays, DATA items, loop nesting, GOSUB depth, source inclusion, external-process output, and execution counts. Important current capacities include:
 
 - source buffer: 4 MiB;
 - request body: 1 MiB;
