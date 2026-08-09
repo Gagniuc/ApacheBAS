@@ -64,6 +64,14 @@ The current ApacheBAS source is a **single FASM source file**. It implements the
 
 Because CGI programs are launched as external processes, the 32-bit ApacheBAS executable can be used with a 64-bit Apache/XAMPP installation.
 
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/ban/gpt%20(XIV).png" alt="ApacheBAS">
+	  </kbd>
+	</a>
+</div>
+
 ---
 
 ## Building ApacheBAS
