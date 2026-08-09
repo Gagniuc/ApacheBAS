@@ -901,7 +901,5 @@ Several projects interact with the local operating system, filesystem, processes
 
 # Project status
 
-ApacheBAS and the applications included in this repository are functional.
-
-The repository represents both the interpreter itself and a practical collection of programs created to exercise and demonstrate its server-side language facilities.
+ApacheBAS and the applications included in this repository are functional. The repository represents both the interpreter itself and a practical collection of programs created to exercise and demonstrate its server-side language facilities.
 
