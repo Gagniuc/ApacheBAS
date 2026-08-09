@@ -1,6 +1,6 @@
 # ApacheBAS
 
-**ApacheBAS** is a compact server-side BASIC interpreter for **Apache HTTP Server** on Windows. The runtime is written entirely in **32-bit x86 assembly language**, assembled with **FASM**, and designed to execute `.bas` files directly through the Common Gateway Interface (CGI). The repository contains both the **ApacheBAS interpreter source code** and a collection of **fully functional ApacheBAS applications and experiments** that demonstrate how the language can be used for web applications, local administration tools, file management, mathematical visualization, image repositories, social-network prototypes, source-code repositories, and security utilities.
+**ApacheBAS** is a compact server-side BASIC interpreter for **Apache HTTP Server** on Windows. The runtime is written entirely in **32-bit x86 assembly language**, assembled with **FASM**, and designed to execute `.bas` files directly through the Common Gateway Interface (CGI). The repository contains both the **ApacheBAS interpreter source code** and a collection of **fully functional ApacheBAS applications and experiments** that demonstrate how the language can be used for web applications, local administration tools, file management, mathematical visualization, image repositories, social-network prototypes, source-code repositories, and security utilities. ApacheBAS is intentionally small and self-contained. The compiled runtime is a Win32 Portable Executable that requires no C runtime, no external language runtime, no linker at build time, and imports operating-system functions only from `KERNEL32.DLL`.
 
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/bin">
@@ -9,10 +9,6 @@
 	  </kbd>
 	</a>
 </div>
-
-<br>
-
-ApacheBAS is intentionally small and self-contained. The compiled runtime is a Win32 Portable Executable that requires no C runtime, no external language runtime, no linker at build time, and imports operating-system functions only from `KERNEL32.DLL`.
 
 ---
 
