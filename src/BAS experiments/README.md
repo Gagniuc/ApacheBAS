@@ -1,8 +1,6 @@
 # ApacheBAS Projects
 
-A collection of functional applications, utilities, demonstrations, and reference material built for **ApacheBAS**, a server-side BASIC interpreter for Apache on Windows/XAMPP.
-
-The projects in this repository demonstrate that ApacheBAS can be used for much more than simple CGI examples: it can build complete browser applications, system utilities, file explorers, social-network prototypes, repository managers, mathematical visualization tools, image galleries, and local security tools.
+A collection of functional applications, utilities, demonstrations, and reference material built for **ApacheBAS**, a server-side BASIC interpreter for Apache on Windows/XAMPP. The projects in this repository demonstrate that ApacheBAS can be used for much more than simple CGI examples: it can build complete browser applications, system utilities, file explorers, social-network prototypes, repository managers, mathematical visualization tools, image galleries, and local security tools.
 
 ## Projects
 
