@@ -35,7 +35,7 @@ Action apachebas-script "/cgi-bin/ApacheBAS.exe"
 
 ### 3. Restart Apache
 
-Open the XAMPP Control Panel and restart Apache.
+Open the XAMPP Control Panel and stop Apache, then start it again.
 
 ### 4. Create a BASIC web program
 
