@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+
+<html lang="ro">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<title>ApacheBAS Language Reference v0.1.34.3</title>
+<style>
+:root { --bg:#07100d; --panel:#0d1915; --panel2:#11211b; --text:#e9f5ef; --muted:#9db5aa; --line:#234237; --accent:#62e6a7; --accent2:#b6ffd9; --code:#07130f; --warn:#ffd37a; --shadow:0 16px 50px rgba(0,0,0,.28); }
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:radial-gradient(circle at 80% 0,#17372a 0,transparent 32rem),var(--bg);color:var(--text);font:15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif} a{color:inherit} code,pre{font-family:"Cascadia Code","Consolas",monospace} .layout{display:grid;grid-template-columns:285px minmax(0,1fr);min-height:100vh} aside{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 18px;background:rgba(5,13,10,.92);border-right:1px solid var(--line);backdrop-filter:blur(14px)} .brand{padding:4px 8px 20px;border-bottom:1px solid var(--line)} .brand strong{display:block;font-size:22px;letter-spacing:-.5px} .brand span{color:var(--accent)} .brand small{color:var(--muted)} .side-search{position:relative;margin:18px 0} .side-search input{width:100%;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:12px;padding:12px 38px 12px 12px;outline:none} .side-search input:focus{border-color:var(--accent)} .side-search kbd{position:absolute;right:10px;top:10px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:11px} nav{display:grid;gap:5px} nav a{display:flex;justify-content:space-between;gap:10px;text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:9px} nav a:hover,nav a.active{background:var(--panel2);color:var(--text)} nav b{font-size:11px;min-width:26px;text-align:center;border:1px solid var(--line);border-radius:999px;color:var(--accent);align-self:center} .side-footer{margin:20px 8px;color:var(--muted);font-size:12px} main{min-width:0;padding:42px clamp(20px,4vw,64px) 100px} .hero{max-width:1050px;padding:clamp(24px,5vw,52px);border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(18,39,31,.94),rgba(8,20,15,.92));box-shadow:var(--shadow);position:relative;overflow:hidden} .hero:after{content:"BAS";position:absolute;right:-20px;bottom:-80px;font-size:220px;font-weight:900;color:rgba(98,230,167,.035);line-height:1} .eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--accent);text-transform:uppercase;letter-spacing:.14em;font-weight:700;font-size:12px} .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent)} h1{font-size:clamp(38px,6vw,76px);line-height:.98;letter-spacing:-.055em;margin:18px 0 20px;max-width:850px} .hero p{max-width:780px;color:var(--muted);font-size:17px} .stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px} .stat{padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(0,0,0,.14)} .stat b{color:var(--accent)} .quickstart{margin:28px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:14px} .quickstart .box{background:var(--code);border:1px solid var(--line);border-radius:15px;padding:16px;min-width:0} .box h3{margin:0 0 8px;font-size:13px;color:var(--accent)} .box pre{margin:0;overflow:auto;white-space:pre} .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:34px 0 64px;max-width:1050px} .intro-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px} .intro-card h2{margin:0 0 8px;font-size:19px} .intro-card p{margin:0;color:var(--muted)} .reference-section{max-width:1120px;margin:0 0 72px;scroll-margin-top:20px} .section-heading{display:flex;justify-content:space-between;align-items:end;gap:20px;border-bottom:1px solid var(--line);padding-bottom:15px;margin-bottom:18px} .section-heading span{color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:700} .section-heading h2{margin:2px 0 0;font-size:30px;letter-spacing:-.03em} .section-heading strong{color:var(--muted);font-size:12px} .entry-grid{display:grid;gap:16px} .entry{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),rgba(10,23,18,.95));border-radius:18px;padding:22px;scroll-margin-top:18px;box-shadow:0 4px 18px rgba(0,0,0,.08)} .entry:target{border-color:var(--accent);box-shadow:0 0 0 3px rgba(98,230,167,.12)} .entry-title{display:flex;align-items:start;justify-content:space-between;gap:15px;margin-bottom:14px} .entry-title>div{display:flex;align-items:center;gap:10px;flex-wrap:wrap} .entry h3{margin:0;font-size:23px;letter-spacing:-.02em} .kind{font-size:11px;font-weight:750;text-transform:uppercase;letter-spacing:.08em;color:#06130d;background:var(--accent);border-radius:999px;padding:4px 8px} .aliases{color:var(--muted);font-size:12px} .anchor{text-decoration:none;color:var(--muted);font-weight:bold} .anchor:hover{color:var(--accent)} .syntax{display:grid;grid-template-columns:75px 1fr;gap:12px;align-items:start;background:rgba(0,0,0,.16);border:1px solid var(--line);border-radius:12px;padding:12px} .syntax>div{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.1em;padding-top:2px} .syntax pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--accent2)} .description{margin:16px 0;color:#d7e7df} .notes{border-left:3px solid var(--warn);padding:2px 0 2px 13px;margin:15px 0} .notes p{margin:5px 0;color:#e6d8b8} .example{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:10px;background:var(--code)} .example-head{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-bottom:1px solid var(--line);color:var(--muted);font-size:12px} .copy{border:0;background:transparent;color:var(--accent);cursor:pointer;font:inherit} .example pre{margin:0;padding:14px;overflow:auto;white-space:pre;tab-size:4} .example code{color:#dff8ea} .appendix{max-width:1120px;margin:0 0 60px} .appendix h2{font-size:30px} table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden} th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top} th{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.08em} tr:last-child td{border-bottom:0} .no-results{display:none;max-width:1050px;margin:28px 0;padding:28px;border:1px dashed var(--line);border-radius:16px;color:var(--muted)} .mobile-bar{display:none;position:sticky;top:0;z-index:20;padding:10px 15px;background:rgba(5,13,10,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)} .mobile-bar button{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:8px 12px} .hidden{display:none!important} footer{max-width:1120px;color:var(--muted);border-top:1px solid var(--line);padding-top:22px} @media(max-width:900px){.layout{display:block} aside{position:fixed;z-index:50;left:-310px;width:285px;transition:.2s} aside.open{left:0;box-shadow:20px 0 50px rgba(0,0,0,.45)} .mobile-bar{display:flex;justify-content:space-between;align-items:center} main{padding-top:22px} .quickstart,.intro-grid{grid-template-columns:1fr}} @media print{aside,.mobile-bar,.copy{display:none!important} .layout{display:block} body{background:white;color:#111} main{padding:0} .hero,.entry,.intro-card,table{box-shadow:none;background:white;color:#111;break-inside:avoid} .description,.hero p,.intro-card p,.section-heading strong{color:#444} .syntax,.example{background:#f6f6f6} .example code,.syntax code{color:#111}}
+</style>
+</head>
+<body>
+<div class="mobile-bar"><strong>ApacheBAS Reference</strong><button id="menuBtn" type="button">Cuprins</button></div>
+<div class="layout">
+<aside id="sidebar">
+<div class="brand"><strong>Apache<span>BAS</span></strong><small>Language Reference v0.1.34.3</small></div>
+<div class="side-search"><input autocomplete="off" id="search" placeholder="Caută PRINT, EXEC, GET_..." type="search"/><kbd>/</kbd></div>
+<nav><a data-nav-category="Bazele limbajului" href="#section-bazele-limbajului"><span>Bazele limbajului</span><b>7</b></a><a data-nav-category="Controlul execuției" href="#section-controlul-executiei"><span>Controlul execuției</span><b>14</b></a><a data-nav-category="Variabile, tablouri și DATA" href="#section-variabile-tablouri-si-data"><span>Variabile, tablouri și DATA</span><b>8</b></a><a data-nav-category="Funcții pentru șiruri" href="#section-functii-pentru-siruri"><span>Funcții pentru șiruri</span><b>18</b></a><a data-nav-category="Funcții numerice și matematice" href="#section-functii-numerice-si-matematice"><span>Funcții numerice și matematice</span><b>19</b></a><a data-nav-category="Timp și aleator" href="#section-timp-si-aleator"><span>Timp și aleator</span><b>4</b></a><a data-nav-category="Operatori" href="#section-operatori"><span>Operatori</span><b>19</b></a><a data-nav-category="Web și CGI" href="#section-web-si-cgi"><span>Web și CGI</span><b>28</b></a><a data-nav-category="Șabloane HTML" href="#section-sabloane-html"><span>Șabloane HTML</span><b>3</b></a><a data-nav-category="Fișiere, include și upload" href="#section-fisiere-include-si-upload"><span>Fișiere, include și upload</span><b>16</b></a><a data-nav-category="Procese native" href="#section-procese-native"><span>Procese native</span><b>8</b></a></nav>
+<div class="side-footer">Documentație pentru implementarea ApacheBAS-ASM v0.1.34.3, nu pentru întregul limbaj QBasic/VB.</div>
+</aside>
+<main>
+<header class="hero">
+<div class="eyebrow"><span class="dot"></span> Manual de referință</div>
+<h1>ApacheBAS Language Reference</h1>
+<p>Ghid într-un singur fișier HTML pentru instrucțiuni, funcții, operatori, variabile CGI, șabloane, fișiere și lansarea proceselor native.</p>
+<div class="stats"><span class="stat"><b>144</b> intrări documentate</span><span class="stat"><b>11</b> capitole</span><span class="stat">Motor <b>v0.1.34.3</b></span><span class="stat">Win32 CGI / XAMPP</span></div>
+<div class="quickstart">
+<div class="box"><h3>Program BASIC pur</h3><pre><code>PRINT "@@CONTENT-TYPE text/html; charset=utf-8"
+NAME$ = GET_NAME$
+IF NAME$ = "" THEN NAME$ = "Guest"
+PRINT "&lt;h1&gt;Salut "; HTML$(NAME$); "&lt;/h1&gt;"</code></pre></div>
+<div class="box"><h3>Șablon mixt</h3><pre><code>&lt;!doctype html&gt;
+&lt;h1&gt;Salut &lt;?= HTML$(GET_NAME$) ?&gt;&lt;/h1&gt;
+&lt;p&gt;Ora serverului: &lt;?= TIME$ ?&gt;&lt;/p&gt;</code></pre></div>
+</div>
+</header>
+<div class="intro-grid">
+<div class="intro-card"><h2>Cum se folosește</h2><p>Caută după numele unei funcții sau după o idee precum „upload”, „buclă”, „JSON” ori „proces”. Fiecare intrare are sintaxă și exemple copiable.</p></div>
+<div class="intro-card"><h2>Convenții importante</h2><p>Comparațiile adevărate produc -1. Valorile zecimale sunt păstrate cu maximum șase cifre fracționare. Căile de fișiere sunt relative la aplicația .bas.</p></div>
+</div>
+<div class="no-results" id="noResults">Nu există intrări care corespund căutării.</div>
+<section class="reference-section" data-section="Bazele limbajului" id="section-bazele-limbajului">
+<div class="section-heading"><div><span>Capitol</span><h2>Bazele limbajului</h2></div><strong>7 intrări</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Bazele limbajului" data-search="comentarii sintaxă bazele limbajului ' comentariu
+rem comentariu o linie care începe cu apostrof sau cu rem este ignorată de interpret." id="bazele-limbajului-comentarii">
+<div class="entry-title"><div><span class="kind">Sintaxă</span><h3>Comentarii</h3></div><a aria-label="Link direct" class="anchor" href="#bazele-limbajului-comentarii">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>' comentariu
+REM comentariu</code></pre></div>
+<p class="description">O linie care începe cu apostrof sau cu REM este ignorată de interpret.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>' Acesta este un comentariu
+PRINT "Salut"</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>REM Comentariu în stil BASIC
+A = 10</code></pre></div>
+</article><article class="entry" data-category="Bazele limbajului" data-search='literali șir sintaxă bazele limbajului "text" șirurile sunt delimitate prin ghilimele. pentru o ghilimea în interior se folosesc două ghilimele consecutive.' id="bazele-limbajului-literali-sir">
+<div class="entry-title"><div><span class="kind">Sintaxă</span><h3>Literali șir</h3></div><a aria-label="Link direct" class="anchor" href="#bazele-limbajului-literali-sir">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>"text"</code></pre></div>
+<p class="description">Șirurile sunt delimitate prin ghilimele. Pentru o ghilimea în interior se folosesc două ghilimele consecutive.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "ApacheBAS"</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "El a spus ""Salut""."</code></pre></div>
+</article><article class="entry" data-category="Bazele limbajului" data-search="literali numerici sintaxă bazele limbajului 123
+-45
+3.141593
+&amp;hff
+&amp;o377
+&amp;b1010 sunt acceptate numere întregi semnate, zecimale cu până la șase cifre fracționare și literali hexazecimali, octali sau binari." id="bazele-limbajului-literali-numerici">
+<div class="entry-title"><div><span class="kind">Sintaxă</span><h3>Literali numerici</h3></div><a aria-label="Link direct" class="anchor" href="#bazele-limbajului-literali-numerici">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>123
+-45
+3.141593
+&amp;HFF
+&amp;O377
+&amp;B1010</code></pre></div>
+<p class="description">Sunt acceptate numere întregi semnate, zecimale cu până la șase cifre fracționare și literali hexazecimali, octali sau binari.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT &amp;HFF        
+PRINT &amp;O10        
+PRINT &amp;B1010</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>A = 12.5
+PRINT A * 2</code></pre></div>
+</article><article class="entry" data-category="Bazele limbajului" data-search="variabile scalare sintaxă bazele limbajului nume = expresie
+nume$ = expresie numele sunt tratate fără diferență între litere mari și mici. sufixul $ indică în mod convențional o valoare de tip șir." id="bazele-limbajului-variabile-scalare">
+<div class="entry-title"><div><span class="kind">Sintaxă</span><h3>Variabile scalare</h3></div><a aria-label="Link direct" class="anchor" href="#bazele-limbajului-variabile-scalare">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>NUME = expresie
+NUME$ = expresie</code></pre></div>
+<p class="description">Numele sunt tratate fără diferență între litere mari și mici. Sufixul $ indică în mod convențional o valoare de tip șir.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>AGE = 42
+NAME$ = "Paul"
+PRINT NAME$; " are "; AGE; " ani"</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>TOTAL = 10 + 20
+MESSAGE$ = "Total=" &amp; STR$(TOTAL)</code></pre></div>
+</article><article class="entry" data-category="Bazele limbajului" data-search="etichete și numere de linie sintaxă bazele limbajului label:
+100 statement o linie poate începe cu o etichetă numită sau cu un număr de linie clasic. aceste ținte pot fi folosite de goto și gosub." id="bazele-limbajului-etichete-si-numere-de-linie">
+<div class="entry-title"><div><span class="kind">Sintaxă</span><h3>Etichete și numere de linie</h3></div><a aria-label="Link direct" class="anchor" href="#bazele-limbajului-etichete-si-numere-de-linie">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>label:
+100 statement</code></pre></div>
+<p class="description">O linie poate începe cu o etichetă numită sau cu un număr de linie clasic. Aceste ținte pot fi folosite de GOTO și GOSUB.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>start:
+PRINT "Pornire"
+GOTO finish
+finish:
+PRINT "Final"</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>10 PRINT "Prima linie"
+20 GOTO 40
+30 PRINT "Sărită"
+40 PRINT "Gata"</code></pre></div>
+</article><article class="entry" data-category="Bazele limbajului" data-search="atribuire instrucțiune bazele limbajului variabilă = expresie
+tablou(index) = expresie evaluează expresia din dreapta și stochează rezultatul într-o variabilă scalară sau într-un element de tablou." id="bazele-limbajului-atribuire">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>Atribuire</h3></div><a aria-label="Link direct" class="anchor" href="#bazele-limbajului-atribuire">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>variabilă = expresie
+tablou(index) = expresie</code></pre></div>
+<p class="description">Evaluează expresia din dreapta și stochează rezultatul într-o variabilă scalară sau într-un element de tablou.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>A = 2 + 3 * 4
+PRINT A</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>DIM NAMES$(1 TO 2)
+NAMES$(1) = "Ana"
+NAMES$(2) = "Paul"</code></pre></div>
+</article><article class="entry" data-category="Bazele limbajului" data-search="print instrucțiune bazele limbajului print [expresie [;|, expresie] ...] [;]
+? expresie trimite text în răspuns. punctul și virgula concatenează fără separator, virgula adaugă un spațiu, iar un print fără ; final adaugă cr/lf. ?" id="bazele-limbajului-print">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>PRINT</h3></div><span class="aliases">Alias: ?</span><a aria-label="Link direct" class="anchor" href="#bazele-limbajului-print">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>PRINT [expresie [;|, expresie] ...] [;]
+? expresie</code></pre></div>
+<p class="description">Trimite text în răspuns. Punctul și virgula concatenează fără separator, virgula adaugă un spațiu, iar un PRINT fără ; final adaugă CR/LF.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "Nume: "; NAME$
+PRINT "Vârstă:", AGE</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "Aceeași linie: ";
+PRINT "continuare"</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 3</span><button class="copy" type="button">Copiază</button></div><pre><code>? "PRINT prescurtat"</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Controlul execuției" id="section-controlul-executiei">
+<div class="section-heading"><div><span>Capitol</span><h2>Controlul execuției</h2></div><strong>14 intrări</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Controlul execuției" data-search="if ... then ... else instrucțiune controlul execuției if condiție then instrucțiune [else instrucțiune] formă if pe o singură linie. condiția zero este falsă; orice valoare diferită de zero este adevărată." id="controlul-executiei-if-then-else">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>IF ... THEN ... ELSE</h3></div><a aria-label="Link direct" class="anchor" href="#controlul-executiei-if-then-else">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>IF condiție THEN instrucțiune [ELSE instrucțiune]</code></pre></div>
+<p class="description">Formă IF pe o singură linie. Condiția zero este falsă; orice valoare diferită de zero este adevărată.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>AGE = 20
+IF AGE &gt;= 18 THEN PRINT "Adult" ELSE PRINT "Minor"</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>IF GET_NAME$ = "" THEN NAME$ = "Guest" ELSE NAME$ = GET_NAME$</code></pre></div>
+</article><article class="entry" data-category="Controlul execuției" data-search="for ... next instrucțiune controlul execuției for variabilă = început to sfârșit [step pas]
+    ...
+next [variabilă] repetă un bloc cu pas pozitiv sau negativ. pasul implicit este 1, iar step 0 produce eroare." id="controlul-executiei-for-next">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>FOR ... NEXT</h3></div><a aria-label="Link direct" class="anchor" href="#controlul-executiei-for-next">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>FOR variabilă = început TO sfârșit [STEP pas]
+    ...
+NEXT [variabilă]</code></pre></div>
+<p class="description">Repetă un bloc cu pas pozitiv sau negativ. Pasul implicit este 1, iar STEP 0 produce eroare.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>FOR I = 1 TO 5
+    PRINT I
+NEXT I</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>FOR I = 10 TO 2 STEP -2
+    PRINT I; " ";
+NEXT I</code></pre></div>
+</article><article class="entry" data-category="Controlul execuției" data-search="while ... wend instrucțiune controlul execuției while condiție
+    ...
+wend testează condiția înainte de fiecare iterație." id="controlul-executiei-while-wend">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>WHILE ... WEND</h3></div><a aria-label="Link direct" class="anchor" href="#controlul-executiei-while-wend">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>WHILE condiție
+    ...
+WEND</code></pre></div>
+<p class="description">Testează condiția înainte de fiecare iterație.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>I = 1
+WHILE I &lt;= 3
+    PRINT I
+    I = I + 1
+WEND</code></pre></div>
+</article><article class="entry" data-category="Controlul execuției" data-search="do while / do until instrucțiune controlul execuției do while condiție
+    ...
+loop
+
+do until condiție
+    ...
+loop forme cu test înaintea corpului. while repetă cât timp condiția este adevărată; until repetă până când devine adevărată." id="controlul-executiei-do-while-do-until">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>DO WHILE / DO UNTIL</h3></div><a aria-label="Link direct" class="anchor" href="#controlul-executiei-do-while-do-until">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>DO WHILE condiție
+    ...
+LOOP
+
+DO UNTIL condiție
+    ...
+LOOP</code></pre></div>
+<p class="description">Forme cu test înaintea corpului. WHILE repetă cât timp condiția este adevărată; UNTIL repetă până când devine adevărată.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>I = 0
+DO WHILE I &lt; 3
+    PRINT I
+    I = I + 1
+LOOP</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>I = 0
+DO UNTIL I = 3
+    I = I + 1
+LOOP
+PRINT I</code></pre></div>
+</article><article class="entry" data-category="Controlul execuției" data-search="loop while / loop until instrucțiune controlul execuției do
+    ...
+loop while condiție
+
+do
+    ...
+loop until condiție forme cu test după corp; corpul este executat cel puțin o dată." id="controlul-executiei-loop-while-loop-until">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>LOOP WHILE / LOOP UNTIL</h3></div><a aria-label="Link direct" class="anchor" href="#controlul-executiei-loop-while-loop-until">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>DO
+    ...
+LOOP WHILE condiție
+
+DO
+    ...
+LOOP UNTIL condiție</code></pre></div>
+<p class="description">Forme cu test după corp; corpul este executat cel puțin o dată.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>I = 0
+DO
+    I = I + 1
+    PRINT I
+LOOP WHILE I &lt; 3</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>DO
+    R = RND
+LOOP UNTIL R &gt; 0.8
+PRINT R</code></pre></div>
+</article><article class="entry" data-category="Controlul execuției" data-search="do ... loop instrucțiune controlul execuției do
+    ...
+loop buclă necondiționată. ieșirea se face prin goto, stop sau end." id="controlul-executiei-do-loop">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>DO ... LOOP</h3></div><a aria-label="Link direct" class="anchor" href="#controlul-executiei-do-loop">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>DO
+    ...
+LOOP</code></pre></div>
+<p class="description">Buclă necondiționată. Ieșirea se face prin GOTO, STOP sau END.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>I = 0
+DO
+    I = I + 1
+    IF I = 3 THEN GOTO done
+LOOP
+done:
+PRINT I</code></pre></div>
+</article><article class="entry" data-category="Controlul execuției" data-search="goto / go to instrucțiune controlul execuției goto etichetă
+go to număr_linie transferă execuția la o etichetă sau la un număr de linie din blocul basic activ. go to" id="controlul-executiei-goto-go-to">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>GOTO / GO TO</h3></div><span class="aliases">Alias: GO TO</span><a aria-label="Link direct" class="anchor" href="#controlul-executiei-goto-go-to">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>GOTO etichetă
+GO TO număr_linie</code></pre></div>
+<p class="description">Transferă execuția la o etichetă sau la un număr de linie din blocul BASIC activ.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>GOTO finished
+PRINT "Nu apare"
+finished:
+PRINT "Gata"</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>10 GO TO 30
+20 PRINT "Sărit"
+30 PRINT "Linia 30"</code></pre></div>
+</article><article class="entry" data-category="Controlul execuției" data-search="gosub / return instrucțiune controlul execuției gosub etichetă
+...
+etichetă:
+    ...
+return execută o subrutină și revine la instrucțiunea următoare. subrutinele pot fi imbricate." id="controlul-executiei-gosub-return">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>GOSUB / RETURN</h3></div><a aria-label="Link direct" class="anchor" href="#controlul-executiei-gosub-return">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>GOSUB etichetă
+...
+etichetă:
+    ...
+RETURN</code></pre></div>
+<p class="description">Execută o subrutină și revine la instrucțiunea următoare. Subrutinele pot fi imbricate.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "Înainte"
+GOSUB hello
+PRINT "După"
+END
+hello:
+PRINT "Salut din subrutină"
+RETURN</code></pre></div>
+</article><article class="entry" data-category="Controlul execuției" data-search="stop / end instrucțiune controlul execuției stop
+end oprește executarea programului curent. cele două cuvinte au același efect în această versiune. end" id="controlul-executiei-stop-end">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>STOP / END</h3></div><span class="aliases">Alias: END</span><a aria-label="Link direct" class="anchor" href="#controlul-executiei-stop-end">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>STOP
+END</code></pre></div>
+<p class="description">Oprește executarea programului curent. Cele două cuvinte au același efect în această versiune.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "Înainte"
+END
+PRINT "Nu se execută"</code></pre></div>
+</article><article class="entry" data-category="Controlul execuției" data-search="cls instrucțiune controlul execuției cls golește corpul de răspuns acumulat până în acel moment." id="controlul-executiei-cls">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>CLS</h3></div><a aria-label="Link direct" class="anchor" href="#controlul-executiei-cls">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>CLS</code></pre></div>
+<p class="description">Golește corpul de răspuns acumulat până în acel moment.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "Acest text este eliminat"
+CLS
+PRINT "Rămâne doar acesta"</code></pre></div>
+</article><article class="entry" data-category="Controlul execuției" data-search="clear / clr instrucțiune controlul execuției clear
+clr resetează valorile variabilelor, elimină tablourile și repoziționează read la primul element data. clr" id="controlul-executiei-clear-clr">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>CLEAR / CLR</h3></div><span class="aliases">Alias: CLR</span><a aria-label="Link direct" class="anchor" href="#controlul-executiei-clear-clr">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>CLEAR
+CLR</code></pre></div>
+<p class="description">Resetează valorile variabilelor, elimină tablourile și repoziționează READ la primul element DATA.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>A = 99
+DIM X(3)
+CLEAR
+PRINT A</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>DATA 10,20
+READ A
+CLR
+READ B
+PRINT B</code></pre></div>
+</article><article class="entry" data-category="Controlul execuției" data-search="sleep instrucțiune controlul execuției sleep secunde suspendă procesul pentru numărul indicat de secunde. sunt acceptate până la trei zecimale, de exemplu 0.25." id="controlul-executiei-sleep">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>SLEEP</h3></div><a aria-label="Link direct" class="anchor" href="#controlul-executiei-sleep">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SLEEP secunde</code></pre></div>
+<p class="description">Suspendă procesul pentru numărul indicat de secunde. Sunt acceptate până la trei zecimale, de exemplu 0.25.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "Aștept...";
+SLEEP 0.25
+PRINT "gata"</code></pre></div>
+</article><article class="entry" data-category="Controlul execuției" data-search="randomize instrucțiune controlul execuției randomize [seed] inițializează generatorul folosit de rnd. fără argument utilizează ora locală; cu argument oferă secvențe reproductibile." id="controlul-executiei-randomize">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>RANDOMIZE</h3></div><a aria-label="Link direct" class="anchor" href="#controlul-executiei-randomize">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>RANDOMIZE [seed]</code></pre></div>
+<p class="description">Inițializează generatorul folosit de RND. Fără argument utilizează ora locală; cu argument oferă secvențe reproductibile.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>RANDOMIZE 123
+PRINT RND
+PRINT RND</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>RANDOMIZE
+PRINT RND</code></pre></div>
+</article><article class="entry" data-category="Controlul execuției" data-search='input instrucțiune controlul execuției input variabilă
+input "prompt"; variabilă
+input "prompt", variabilă citește o linie din stdin numai în execuție directă. este blocat în modul cgi, deoarece stdin conține corpul http.' id="controlul-executiei-input">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>INPUT</h3></div><a aria-label="Link direct" class="anchor" href="#controlul-executiei-input">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>INPUT variabilă
+INPUT "prompt"; variabilă
+INPUT "prompt", variabilă</code></pre></div>
+<p class="description">Citește o linie din stdin numai în execuție directă. Este blocat în modul CGI, deoarece stdin conține corpul HTTP.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>INPUT "Nume: "; NAME$
+PRINT "Salut "; NAME$</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>DIM A$(1 TO 2)
+INPUT A$(1)</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Variabile, tablouri și DATA" id="section-variabile-tablouri-si-data">
+<div class="section-heading"><div><span>Capitol</span><h2>Variabile, tablouri și DATA</h2></div><strong>8 intrări</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Variabile, tablouri și DATA" data-search="dim instrucțiune variabile, tablouri și data dim declarație [, declarație ...] declară variabile scalare sau tablouri unidimensionale. sunt acceptate limite explicite și clauze as; as string creează stocare de tip șir." id="variabile-tablouri-si-data-dim">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>DIM</h3></div><a aria-label="Link direct" class="anchor" href="#variabile-tablouri-si-data-dim">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>DIM declarație [, declarație ...]</code></pre></div>
+<p class="description">Declară variabile scalare sau tablouri unidimensionale. Sunt acceptate limite explicite și clauze AS; AS STRING creează stocare de tip șir.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>DIM A(10), NAMES$(1 TO 5)</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>DIM SCORE AS INTEGER, TITLE AS STRING
+DIM B(-2 TO 2) AS INTEGER</code></pre></div>
+</article><article class="entry" data-category="Variabile, tablouri și DATA" data-search="option base instrucțiune variabile, tablouri și data option base 0
+option base 1 stabilește limita inferioară implicită pentru tablourile declarate cu o singură limită. trebuie folosit înaintea primului dim de tablou." id="variabile-tablouri-si-data-option-base">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>OPTION BASE</h3></div><a aria-label="Link direct" class="anchor" href="#variabile-tablouri-si-data-option-base">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>OPTION BASE 0
+OPTION BASE 1</code></pre></div>
+<p class="description">Stabilește limita inferioară implicită pentru tablourile declarate cu o singură limită. Trebuie folosit înaintea primului DIM de tablou.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>OPTION BASE 1
+DIM A(3)
+PRINT LBOUND(A); ".."; UBOUND(A)</code></pre></div>
+</article><article class="entry" data-category="Variabile, tablouri și DATA" data-search="lbound funcție variabile, tablouri și data lbound(nume_tablou) returnează limita inferioară declarată a unui tablou." id="variabile-tablouri-si-data-lbound">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>LBOUND</h3></div><a aria-label="Link direct" class="anchor" href="#variabile-tablouri-si-data-lbound">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>LBOUND(nume_tablou)</code></pre></div>
+<p class="description">Returnează limita inferioară declarată a unui tablou.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>DIM A(-2 TO 5)
+PRINT LBOUND(A)</code></pre></div>
+</article><article class="entry" data-category="Variabile, tablouri și DATA" data-search="ubound funcție variabile, tablouri și data ubound(nume_tablou) returnează limita superioară declarată a unui tablou." id="variabile-tablouri-si-data-ubound">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>UBOUND</h3></div><a aria-label="Link direct" class="anchor" href="#variabile-tablouri-si-data-ubound">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>UBOUND(nume_tablou)</code></pre></div>
+<p class="description">Returnează limita superioară declarată a unui tablou.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>DIM A(-2 TO 5)
+PRINT UBOUND(A)</code></pre></div>
+</article><article class="entry" data-category="Variabile, tablouri și DATA" data-search="data instrucțiune variabile, tablouri și data data valoare [, valoare ...] definește valori textuale preluate ulterior prin read. șirurile citate își pierd ghilimelele exterioare." id="variabile-tablouri-si-data-data">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>DATA</h3></div><a aria-label="Link direct" class="anchor" href="#variabile-tablouri-si-data-data">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>DATA valoare [, valoare ...]</code></pre></div>
+<p class="description">Definește valori textuale preluate ulterior prin READ. Șirurile citate își pierd ghilimelele exterioare.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>DATA 10,20,"Paul"
+READ A,B,NAME$
+PRINT A; ","; B; ","; NAME$</code></pre></div>
+</article><article class="entry" data-category="Variabile, tablouri și DATA" data-search="read instrucțiune variabile, tablouri și data read țintă [, țintă ...] transferă următoarele valori data în variabile scalare sau elemente de tablou." id="variabile-tablouri-si-data-read">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>READ</h3></div><a aria-label="Link direct" class="anchor" href="#variabile-tablouri-si-data-read">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>READ țintă [, țintă ...]</code></pre></div>
+<p class="description">Transferă următoarele valori DATA în variabile scalare sau elemente de tablou.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>DIM A(1 TO 3)
+DATA 5,10,15
+READ A(1),A(2),A(3)
+PRINT A(2)</code></pre></div>
+</article><article class="entry" data-category="Variabile, tablouri și DATA" data-search="restore instrucțiune variabile, tablouri și data restore repoziționează cursorul data la primul element. restore cu etichetă nu este implementat în această versiune." id="variabile-tablouri-si-data-restore">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>RESTORE</h3></div><a aria-label="Link direct" class="anchor" href="#variabile-tablouri-si-data-restore">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>RESTORE</code></pre></div>
+<p class="description">Repoziționează cursorul DATA la primul element. RESTORE cu etichetă nu este implementat în această versiune.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>DATA 7,8
+READ A
+RESTORE
+READ B
+PRINT A; " "; B</code></pre></div>
+</article><article class="entry" data-category="Variabile, tablouri și DATA" data-search="swap instrucțiune variabile, tablouri și data swap țintă1, țintă2 schimbă între ele valorile a două variabile sau elemente de tablou." id="variabile-tablouri-si-data-swap">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>SWAP</h3></div><a aria-label="Link direct" class="anchor" href="#variabile-tablouri-si-data-swap">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SWAP țintă1, țintă2</code></pre></div>
+<p class="description">Schimbă între ele valorile a două variabile sau elemente de tablou.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>A = 10
+B = 20
+SWAP A,B
+PRINT A; " "; B</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>DIM X$(1 TO 2)
+X$(1) = "A"
+X$(2) = "B"
+SWAP X$(1),X$(2)</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Funcții pentru șiruri" id="section-functii-pentru-siruri">
+<div class="section-heading"><div><span>Capitol</span><h2>Funcții pentru șiruri</h2></div><strong>18 intrări</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Funcții pentru șiruri" data-search="len funcție funcții pentru șiruri len(text) returnează numărul de octeți din șir." id="functii-pentru-siruri-len">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>LEN</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-len">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>LEN(text)</code></pre></div>
+<p class="description">Returnează numărul de octeți din șir.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT LEN("ApacheBAS")</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="left$ funcție funcții pentru șiruri left$(text, număr) returnează primele număr caractere. o valoare negativă este tratată ca zero." id="functii-pentru-siruri-left">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>LEFT$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-left">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>LEFT$(text, număr)</code></pre></div>
+<p class="description">Returnează primele număr caractere. O valoare negativă este tratată ca zero.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT LEFT$("ApacheBAS", 6)</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>N = 3
+PRINT LEFT$("abcdef", N)</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="right$ funcție funcții pentru șiruri right$(text, număr) returnează ultimele număr caractere. o valoare negativă este tratată ca zero." id="functii-pentru-siruri-right">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>RIGHT$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-right">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>RIGHT$(text, număr)</code></pre></div>
+<p class="description">Returnează ultimele număr caractere. O valoare negativă este tratată ca zero.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT RIGHT$("ApacheBAS", 3)</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="mid$ funcție funcții pentru șiruri mid$(text, start [, lungime]) extrage de la poziția start, numerotată de la 1. fără lungime, returnează până la sfârșit." id="functii-pentru-siruri-mid">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>MID$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-mid">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>MID$(text, start [, lungime])</code></pre></div>
+<p class="description">Extrage de la poziția start, numerotată de la 1. Fără lungime, returnează până la sfârșit.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT MID$("ApacheBAS", 7)</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT MID$("abcdefgh", 3, 4)</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="ucase$ funcție funcții pentru șiruri ucase$(text) transformă literele ascii a-z în majuscule." id="functii-pentru-siruri-ucase">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>UCASE$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-ucase">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>UCASE$(text)</code></pre></div>
+<p class="description">Transformă literele ASCII a-z în majuscule.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT UCASE$("ApacheBas")</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="lcase$ funcție funcții pentru șiruri lcase$(text) transformă literele ascii a-z în minuscule." id="functii-pentru-siruri-lcase">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>LCASE$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-lcase">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>LCASE$(text)</code></pre></div>
+<p class="description">Transformă literele ASCII A-Z în minuscule.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT LCASE$("ApacheBAS")</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="trim$ funcție funcții pentru șiruri trim$(text) elimină spațiile și taburile de la ambele capete." id="functii-pentru-siruri-trim">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>TRIM$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-trim">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>TRIM$(text)</code></pre></div>
+<p class="description">Elimină spațiile și taburile de la ambele capete.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "["; TRIM$("  text  "); "]"</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="ltrim$ funcție funcții pentru șiruri ltrim$(text) elimină spațiile și taburile din stânga." id="functii-pentru-siruri-ltrim">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>LTRIM$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-ltrim">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>LTRIM$(text)</code></pre></div>
+<p class="description">Elimină spațiile și taburile din stânga.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "["; LTRIM$("  text  "); "]"</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="rtrim$ funcție funcții pentru șiruri rtrim$(text) elimină spațiile și taburile din dreapta." id="functii-pentru-siruri-rtrim">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>RTRIM$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-rtrim">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>RTRIM$(text)</code></pre></div>
+<p class="description">Elimină spațiile și taburile din dreapta.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "["; RTRIM$("  text  "); "]"</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="instr funcție funcții pentru șiruri instr(text, căutat) caută sensibil la litere mari/mici și returnează poziția de la 1 sau 0 dacă nu găsește." id="functii-pentru-siruri-instr">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>INSTR</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-instr">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>INSTR(text, căutat)</code></pre></div>
+<p class="description">Caută sensibil la litere mari/mici și returnează poziția de la 1 sau 0 dacă nu găsește.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT INSTR("ApacheBAS", "BAS")</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>IF INSTR(QUERY_STRING$, "debug=1") &gt; 0 THEN PRINT "Debug"</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="space$ funcție funcții pentru șiruri space$(număr) construiește un șir cu număr spații ascii." id="functii-pentru-siruri-space">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>SPACE$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-space">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SPACE$(număr)</code></pre></div>
+<p class="description">Construiește un șir cu număr spații ASCII.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "A"; SPACE$(5); "B"</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="string$ funcție funcții pentru șiruri string$(număr, text) repetă primul caracter al textului de număr ori." id="functii-pentru-siruri-string">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>STRING$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-string">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>STRING$(număr, text)</code></pre></div>
+<p class="description">Repetă primul caracter al textului de număr ori.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT STRING$(20, "-")</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT STRING$(5, "ABC")</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="asc funcție funcții pentru șiruri asc(text) returnează valoarea octetului primului caracter. șirul gol produce eroare." id="functii-pentru-siruri-asc">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>ASC</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-asc">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>ASC(text)</code></pre></div>
+<p class="description">Returnează valoarea octetului primului caracter. Șirul gol produce eroare.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT ASC("A")</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="chr$ funcție funcții pentru șiruri chr$(cod) returnează caracterul corespunzător octetului inferior al valorii numerice." id="functii-pentru-siruri-chr">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>CHR$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-chr">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>CHR$(cod)</code></pre></div>
+<p class="description">Returnează caracterul corespunzător octetului inferior al valorii numerice.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT CHR$(65); CHR$(66); CHR$(67)</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="html$ funcție funcții pentru șiruri html$(text) escapează caracterele speciale html: &amp;, &lt;, &gt;, ghilimele și apostrof." id="functii-pentru-siruri-html">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>HTML$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-html">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>HTML$(text)</code></pre></div>
+<p class="description">Escapează caracterele speciale HTML: &amp;, &lt;, &gt;, ghilimele și apostrof.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>NAME$ = "&lt;Paul &amp; Ana&gt;"
+PRINT "&lt;p&gt;"; HTML$(NAME$); "&lt;/p&gt;"</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="json$ funcție funcții pentru șiruri json$(text) escapează un șir pentru includere sigură între ghilimelele unui document json." id="functii-pentru-siruri-json">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>JSON$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-json">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>JSON$(text)</code></pre></div>
+<p class="description">Escapează un șir pentru includere sigură între ghilimelele unui document JSON.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "@@CONTENT-TYPE application/json; charset=utf-8"
+PRINT "{""message"":"""; JSON$("Salut ""Paul"""); """}"</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="str$ funcție funcții pentru șiruri str$(expresie) returnează reprezentarea textuală canonică a expresiei, fără spațiul inițial folosit de unele dialecte basic." id="functii-pentru-siruri-str">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>STR$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-str">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>STR$(expresie)</code></pre></div>
+<p class="description">Returnează reprezentarea textuală canonică a expresiei, fără spațiul inițial folosit de unele dialecte BASIC.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>A = 12.5
+S$ = "Valoare=" &amp; STR$(A)
+PRINT S$</code></pre></div>
+</article><article class="entry" data-category="Funcții pentru șiruri" data-search="val funcție funcții pentru șiruri val(text) citește prefixul numeric semnat al șirului și păstrează până la șase zecimale. dacă nu există prefix numeric, returnează 0." id="functii-pentru-siruri-val">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>VAL</h3></div><a aria-label="Link direct" class="anchor" href="#functii-pentru-siruri-val">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>VAL(text)</code></pre></div>
+<p class="description">Citește prefixul numeric semnat al șirului și păstrează până la șase zecimale. Dacă nu există prefix numeric, returnează 0.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT VAL("123.45xyz")</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>AMOUNT = VAL(GET_AMOUNT$)
+PRINT AMOUNT + 10</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Funcții numerice și matematice" id="section-functii-numerice-si-matematice">
+<div class="section-heading"><div><span>Capitol</span><h2>Funcții numerice și matematice</h2></div><strong>19 intrări</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Funcții numerice și matematice" data-search="abs funcție funcții numerice și matematice abs(număr) returnează valoarea absolută pentru întregi sau zecimale." id="functii-numerice-si-matematice-abs">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>ABS</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-abs">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>ABS(număr)</code></pre></div>
+<p class="description">Returnează valoarea absolută pentru întregi sau zecimale.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT ABS(-12)
+PRINT ABS(-2.5)</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="sgn funcție funcții numerice și matematice sgn(număr) returnează -1 pentru valori negative, 0 pentru zero și 1 pentru valori pozitive." id="functii-numerice-si-matematice-sgn">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>SGN</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-sgn">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SGN(număr)</code></pre></div>
+<p class="description">Returnează -1 pentru valori negative, 0 pentru zero și 1 pentru valori pozitive.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT SGN(-8); " "; SGN(0); " "; SGN(8)</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="int funcție funcții numerice și matematice int(număr) rotunjește în jos către minus infinit." id="functii-numerice-si-matematice-int">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>INT</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-int">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>INT(număr)</code></pre></div>
+<p class="description">Rotunjește în jos către minus infinit.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT INT(2.9)
+PRINT INT(-2.9)</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="fix funcție funcții numerice și matematice fix(număr) trunchiază partea fracționară către zero." id="functii-numerice-si-matematice-fix">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>FIX</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-fix">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>FIX(număr)</code></pre></div>
+<p class="description">Trunchiază partea fracționară către zero.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT FIX(2.9)
+PRINT FIX(-2.9)</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="sqr funcție funcții numerice și matematice sqr(număr) returnează rădăcina pătrată. pentru rezultat real furnizează un argument zecimal, de exemplu 2.0; un argument întreg folosește rădăcina întreagă." id="functii-numerice-si-matematice-sqr">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>SQR</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-sqr">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SQR(număr)</code></pre></div>
+<p class="description">Returnează rădăcina pătrată. Pentru rezultat real furnizează un argument zecimal, de exemplu 2.0; un argument întreg folosește rădăcina întreagă.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT SQR(81)</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT SQR(2.0)</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="sin funcție funcții numerice și matematice sin(radiani) returnează sinusul, rotunjit la maximum șase zecimale." id="functii-numerice-si-matematice-sin">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>SIN</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-sin">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SIN(radiani)</code></pre></div>
+<p class="description">Returnează sinusul, rotunjit la maximum șase zecimale.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT SIN(PI / 2)</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="cos funcție funcții numerice și matematice cos(radiani) returnează cosinusul, rotunjit la maximum șase zecimale." id="functii-numerice-si-matematice-cos">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>COS</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-cos">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>COS(radiani)</code></pre></div>
+<p class="description">Returnează cosinusul, rotunjit la maximum șase zecimale.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT COS(0)</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="tan funcție funcții numerice și matematice tan(radiani) returnează tangenta, rotunjită la maximum șase zecimale." id="functii-numerice-si-matematice-tan">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>TAN</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-tan">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>TAN(radiani)</code></pre></div>
+<p class="description">Returnează tangenta, rotunjită la maximum șase zecimale.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT TAN(PI / 4)</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="atn funcție funcții numerice și matematice atn(număr) returnează arctangenta în radiani." id="functii-numerice-si-matematice-atn">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>ATN</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-atn">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>ATN(număr)</code></pre></div>
+<p class="description">Returnează arctangenta în radiani.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT ATN(1)</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="log funcție funcții numerice și matematice log(număr) returnează logaritmul natural. argumentul trebuie să fie strict pozitiv." id="functii-numerice-si-matematice-log">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>LOG</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-log">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>LOG(număr)</code></pre></div>
+<p class="description">Returnează logaritmul natural. Argumentul trebuie să fie strict pozitiv.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT LOG(EXP(1))</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="exp funcție funcții numerice și matematice exp(număr) returnează e la puterea argumentului. implementarea curentă acceptă aproximativ intervalul -20..7." id="functii-numerice-si-matematice-exp">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>EXP</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-exp">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>EXP(număr)</code></pre></div>
+<p class="description">Returnează e la puterea argumentului. Implementarea curentă acceptă aproximativ intervalul -20..7.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT EXP(1)</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT EXP(0)</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="cint funcție funcții numerice și matematice cint(număr) convertește prin rotunjire la cel mai apropiat întreg de 16 biți (-32768..32767). jumătățile folosesc rotunjirea x87 la par." id="functii-numerice-si-matematice-cint">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>CINT</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-cint">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>CINT(număr)</code></pre></div>
+<p class="description">Convertește prin rotunjire la cel mai apropiat întreg de 16 biți (-32768..32767). Jumătățile folosesc rotunjirea x87 la par.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT CINT(2.6)</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT CINT(2.5)</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="clng funcție funcții numerice și matematice clng(număr) convertește prin rotunjire la un întreg semnat de 32 de biți." id="functii-numerice-si-matematice-clng">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>CLNG</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-clng">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>CLNG(număr)</code></pre></div>
+<p class="description">Convertește prin rotunjire la un întreg semnat de 32 de biți.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT CLNG(12345.6)</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="cdbl funcție funcții numerice și matematice cdbl(expresie) validează/evaluează o valoare numerică și păstrează reprezentarea zecimală canonică a motorului." id="functii-numerice-si-matematice-cdbl">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>CDBL</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-cdbl">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>CDBL(expresie)</code></pre></div>
+<p class="description">Validează/evaluează o valoare numerică și păstrează reprezentarea zecimală canonică a motorului.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT CDBL("12.50")</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="csng funcție funcții numerice și matematice csng(expresie) validează/evaluează o valoare numerică și păstrează reprezentarea zecimală canonică a motorului." id="functii-numerice-si-matematice-csng">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>CSNG</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-csng">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>CSNG(expresie)</code></pre></div>
+<p class="description">Validează/evaluează o valoare numerică și păstrează reprezentarea zecimală canonică a motorului.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT CSNG("3.141593")</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="hex$ funcție funcții numerice și matematice hex$(întreg) convertește cei 32 de biți inferiori în hexazecimal cu majuscule. valorile negative folosesc complementul față de doi." id="functii-numerice-si-matematice-hex">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>HEX$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-hex">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>HEX$(întreg)</code></pre></div>
+<p class="description">Convertește cei 32 de biți inferiori în hexazecimal cu majuscule. Valorile negative folosesc complementul față de doi.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT HEX$(255)</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT HEX$(-1)</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="oct$ funcție funcții numerice și matematice oct$(întreg) convertește cei 32 de biți inferiori în octal. valorile negative folosesc reprezentarea pe 32 de biți." id="functii-numerice-si-matematice-oct">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>OCT$</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-oct">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>OCT$(întreg)</code></pre></div>
+<p class="description">Convertește cei 32 de biți inferiori în octal. Valorile negative folosesc reprezentarea pe 32 de biți.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT OCT$(8)</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT OCT$(-1)</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="pi constantă funcții numerice și matematice pi constanta 3.141593." id="functii-numerice-si-matematice-pi">
+<div class="entry-title"><div><span class="kind">Constantă</span><h3>PI</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-pi">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>PI</code></pre></div>
+<p class="description">Constanta 3.141593.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT PI
+PRINT 2 * PI</code></pre></div>
+</article><article class="entry" data-category="Funcții numerice și matematice" data-search="true / false constante funcții numerice și matematice true
+false true este -1, iar false este 0, conform convenției basic." id="functii-numerice-si-matematice-true-false">
+<div class="entry-title"><div><span class="kind">Constante</span><h3>TRUE / FALSE</h3></div><a aria-label="Link direct" class="anchor" href="#functii-numerice-si-matematice-true-false">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>TRUE
+FALSE</code></pre></div>
+<p class="description">TRUE este -1, iar FALSE este 0, conform convenției BASIC.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT TRUE; " "; FALSE</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>IF TRUE THEN PRINT "Executat"</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Timp și aleator" id="section-timp-si-aleator">
+<div class="section-heading"><div><span>Capitol</span><h2>Timp și aleator</h2></div><strong>4 intrări</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Timp și aleator" data-search="date$ valoare specială timp și aleator date$ returnează data locală în format dd-mm-yyyy." id="timp-si-aleator-date">
+<div class="entry-title"><div><span class="kind">Valoare specială</span><h3>DATE$</h3></div><a aria-label="Link direct" class="anchor" href="#timp-si-aleator-date">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>DATE$</code></pre></div>
+<p class="description">Returnează data locală în format DD-MM-YYYY.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT DATE$</code></pre></div>
+</article><article class="entry" data-category="Timp și aleator" data-search="time$ valoare specială timp și aleator time$ returnează ora locală în format hh:mm:ss." id="timp-si-aleator-time">
+<div class="entry-title"><div><span class="kind">Valoare specială</span><h3>TIME$</h3></div><a aria-label="Link direct" class="anchor" href="#timp-si-aleator-time">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>TIME$</code></pre></div>
+<p class="description">Returnează ora locală în format HH:MM:SS.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT TIME$</code></pre></div>
+</article><article class="entry" data-category="Timp și aleator" data-search="timer valoare specială timp și aleator timer returnează numărul întreg de secunde trecute de la miezul nopții." id="timp-si-aleator-timer">
+<div class="entry-title"><div><span class="kind">Valoare specială</span><h3>TIMER</h3></div><a aria-label="Link direct" class="anchor" href="#timp-si-aleator-timer">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>TIMER</code></pre></div>
+<p class="description">Returnează numărul întreg de secunde trecute de la miezul nopții.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT TIMER</code></pre></div>
+</article><article class="entry" data-category="Timp și aleator" data-search="rnd valoare specială timp și aleator rnd generează o fracție pseudoaleatoare între 0.000000 și 0.999999." id="timp-si-aleator-rnd">
+<div class="entry-title"><div><span class="kind">Valoare specială</span><h3>RND</h3></div><a aria-label="Link direct" class="anchor" href="#timp-si-aleator-rnd">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>RND</code></pre></div>
+<p class="description">Generează o fracție pseudoaleatoare între 0.000000 și 0.999999.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>RANDOMIZE
+PRINT RND</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>RANDOMIZE 1
+A = RND
+RANDOMIZE 1
+B = RND
+PRINT A = B</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Operatori" id="section-operatori">
+<div class="section-heading"><div><span>Capitol</span><h2>Operatori</h2></div><strong>19 intrări</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Operatori" data-search="^ operator — ridicare la putere operatori ^ asociativitate la dreapta; exponentul negativ produce 0 în implementarea curentă." id="operatori">
+<div class="entry-title"><div><span class="kind">Operator — Ridicare la putere</span><h3>^</h3></div><a aria-label="Link direct" class="anchor" href="#operatori">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>^</code></pre></div>
+<p class="description">Asociativitate la dreapta; exponentul negativ produce 0 în implementarea curentă.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT 2 ^ 8</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="* operator — înmulțire operatori * întreg sau zecimal." id="operatori-2">
+<div class="entry-title"><div><span class="kind">Operator — Înmulțire</span><h3>*</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-2">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>*</code></pre></div>
+<p class="description">Întreg sau zecimal.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT 6 * 7</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="/ operator — împărțire reală operatori / produce rezultat zecimal; împărțirea la zero produce eroare." id="operatori-3">
+<div class="entry-title"><div><span class="kind">Operator — Împărțire reală</span><h3>/</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-3">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>/</code></pre></div>
+<p class="description">Produce rezultat zecimal; împărțirea la zero produce eroare.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT 7 / 2</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="\ operator — împărțire întreagă operatori \ trunchiază către zero." id="operatori-4">
+<div class="entry-title"><div><span class="kind">Operator — Împărțire întreagă</span><h3>\</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-4">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>\</code></pre></div>
+<p class="description">Trunchiază către zero.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT 7 \ 2</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="mod operator — restul împărțirii operatori mod operator întreg." id="operatori-mod">
+<div class="entry-title"><div><span class="kind">Operator — Restul împărțirii</span><h3>MOD</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-mod">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>MOD</code></pre></div>
+<p class="description">Operator întreg.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT 7 MOD 3</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="+ operator — adunare sau concatenare operatori + adună dacă ambii operanzi sunt numerici; altfel concatenează." id="operatori-5">
+<div class="entry-title"><div><span class="kind">Operator — Adunare sau concatenare</span><h3>+</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-5">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>+</code></pre></div>
+<p class="description">Adună dacă ambii operanzi sunt numerici; altfel concatenează.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT 2 + 3
+PRINT "A" + "B"</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="- operator — scădere operatori - este disponibil și ca operator unar." id="operatori-6">
+<div class="entry-title"><div><span class="kind">Operator — Scădere</span><h3>-</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-6">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>-</code></pre></div>
+<p class="description">Este disponibil și ca operator unar.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT 10 - 4</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="&amp; operator — concatenare explicită operatori &amp; concatenează reprezentările textuale." id="operatori-7">
+<div class="entry-title"><div><span class="kind">Operator — Concatenare explicită</span><h3>&amp;</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-7">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>&amp;</code></pre></div>
+<p class="description">Concatenează reprezentările textuale.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "A" &amp; STR$(10)</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="= operator — egal operatori = în expresii produce true (-1) sau false (0); în stânga unei instrucțiuni este atribuire." id="operatori-8">
+<div class="entry-title"><div><span class="kind">Operator — Egal</span><h3>=</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-8">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>=</code></pre></div>
+<p class="description">În expresii produce TRUE (-1) sau FALSE (0); în stânga unei instrucțiuni este atribuire.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT A = B</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="&lt;&gt; operator — diferit operatori &lt;&gt; egalitatea și inegalitatea pot compara și șiruri." id="operatori-9">
+<div class="entry-title"><div><span class="kind">Operator — Diferit</span><h3>&lt;&gt;</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-9">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>&lt;&gt;</code></pre></div>
+<p class="description">Egalitatea și inegalitatea pot compara și șiruri.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT A &lt;&gt; B</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="&lt; operator — mai mic operatori &lt; comparație numerică." id="operatori-10">
+<div class="entry-title"><div><span class="kind">Operator — Mai mic</span><h3>&lt;</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-10">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>&lt;</code></pre></div>
+<p class="description">Comparație numerică.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT A &lt; B</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="&lt;= operator — mai mic sau egal operatori &lt;= comparație numerică." id="operatori-11">
+<div class="entry-title"><div><span class="kind">Operator — Mai mic sau egal</span><h3>&lt;=</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-11">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>&lt;=</code></pre></div>
+<p class="description">Comparație numerică.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT A &lt;= B</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="&gt; operator — mai mare operatori &gt; comparație numerică." id="operatori-12">
+<div class="entry-title"><div><span class="kind">Operator — Mai mare</span><h3>&gt;</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-12">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>&gt;</code></pre></div>
+<p class="description">Comparație numerică.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT A &gt; B</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="&gt;= operator — mai mare sau egal operatori &gt;= comparație numerică." id="operatori-13">
+<div class="entry-title"><div><span class="kind">Operator — Mai mare sau egal</span><h3>&gt;=</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-13">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>&gt;=</code></pre></div>
+<p class="description">Comparație numerică.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT A &gt;= B</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="and operator — și pe biți operatori and operație pe întregi de 32 de biți; utilă și cu true/false." id="operatori-and">
+<div class="entry-title"><div><span class="kind">Operator — ȘI pe biți</span><h3>AND</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-and">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>AND</code></pre></div>
+<p class="description">Operație pe întregi de 32 de biți; utilă și cu TRUE/FALSE.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT A AND B</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="xor operator — sau exclusiv pe biți operatori xor operație pe întregi de 32 de biți." id="operatori-xor">
+<div class="entry-title"><div><span class="kind">Operator — SAU exclusiv pe biți</span><h3>XOR</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-xor">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>XOR</code></pre></div>
+<p class="description">Operație pe întregi de 32 de biți.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT A XOR B</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="or operator — sau pe biți operatori or operație pe întregi de 32 de biți." id="operatori-or">
+<div class="entry-title"><div><span class="kind">Operator — SAU pe biți</span><h3>OR</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-or">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>OR</code></pre></div>
+<p class="description">Operație pe întregi de 32 de biți.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT A OR B</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="not operator — negare pe biți operatori not operator unar pe întregi de 32 de biți." id="operatori-not">
+<div class="entry-title"><div><span class="kind">Operator — Negare pe biți</span><h3>NOT</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-not">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>NOT</code></pre></div>
+<p class="description">Operator unar pe întregi de 32 de biți.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT NOT A</code></pre></div>
+</article><article class="entry" data-category="Operatori" data-search="() operator — paranteze operatori () forțează ordinea de evaluare." id="operatori-14">
+<div class="entry-title"><div><span class="kind">Operator — Paranteze</span><h3>()</h3></div><a aria-label="Link direct" class="anchor" href="#operatori-14">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>()</code></pre></div>
+<p class="description">Forțează ordinea de evaluare.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT (2 + 3) * 4</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Web și CGI" id="section-web-si-cgi">
+<div class="section-heading"><div><span>Capitol</span><h2>Web și CGI</h2></div><strong>28 intrări</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Web și CGI" data-search="get_* familie de variabile web și cgi get_nume$ fiecare parametru din query string devine o variabilă get_...$. numele este normalizat cu majuscule." id="web-si-cgi-get">
+<div class="entry-title"><div><span class="kind">Familie de variabile</span><h3>GET_*</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-get">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>GET_NUME$</code></pre></div>
+<p class="description">Fiecare parametru din query string devine o variabilă GET_...$. Numele este normalizat cu majuscule.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>' URL: /hello.bas?name=Paul
+PRINT "Salut "; HTML$(GET_NAME$)</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>' URL: /sum.bas?a=10&amp;b=20
+PRINT VAL(GET_A$) + VAL(GET_B$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="post_* familie de variabile web și cgi post_nume$ câmpurile unui corp application/x-www-form-urlencoded devin variabile post_...$." id="web-si-cgi-post">
+<div class="entry-title"><div><span class="kind">Familie de variabile</span><h3>POST_*</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-post">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>POST_NUME$</code></pre></div>
+<p class="description">Câmpurile unui corp application/x-www-form-urlencoded devin variabile POST_...$.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "Utilizator: "; HTML$(POST_USER$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="cookie_* familie de variabile web și cgi cookie_nume$ cookie-urile din antetul http cookie devin variabile cookie_...$." id="web-si-cgi-cookie">
+<div class="entry-title"><div><span class="kind">Familie de variabile</span><h3>COOKIE_*</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-cookie">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>COOKIE_NUME$</code></pre></div>
+<p class="description">Cookie-urile din antetul HTTP Cookie devin variabile COOKIE_...$.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>IF COOKIE_SESSION$ = "" THEN PRINT "Fără sesiune" ELSE PRINT COOKIE_SESSION$</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="request_method$ variabilă cgi web și cgi request_method$ metoda http, de exemplu get sau post." id="web-si-cgi-request-method">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>REQUEST_METHOD$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-request-method">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>REQUEST_METHOD$</code></pre></div>
+<p class="description">Metoda HTTP, de exemplu GET sau POST.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "REQUEST_METHOD$="; HTML$(REQUEST_METHOD$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="query_string$ variabilă cgi web și cgi query_string$ query string brut, fără semnul ?." id="web-si-cgi-query-string">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>QUERY_STRING$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-query-string">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>QUERY_STRING$</code></pre></div>
+<p class="description">Query string brut, fără semnul ?.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "QUERY_STRING$="; HTML$(QUERY_STRING$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="content_type$ variabilă cgi web și cgi content_type$ tipul corpului cererii." id="web-si-cgi-content-type">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>CONTENT_TYPE$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-content-type">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>CONTENT_TYPE$</code></pre></div>
+<p class="description">Tipul corpului cererii.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "CONTENT_TYPE$="; HTML$(CONTENT_TYPE$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="content_length$ variabilă cgi web și cgi content_length$ lungimea declarată a corpului." id="web-si-cgi-content-length">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>CONTENT_LENGTH$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-content-length">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>CONTENT_LENGTH$</code></pre></div>
+<p class="description">Lungimea declarată a corpului.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "CONTENT_LENGTH$="; HTML$(CONTENT_LENGTH$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_request_method$ variabilă cgi web și cgi server_request_method$ alias server pentru metoda http." id="web-si-cgi-server-request-method">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_REQUEST_METHOD$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-request-method">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_REQUEST_METHOD$</code></pre></div>
+<p class="description">Alias server pentru metoda HTTP.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_REQUEST_METHOD$="; HTML$(SERVER_REQUEST_METHOD$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_query_string$ variabilă cgi web și cgi server_query_string$ alias server pentru query string." id="web-si-cgi-server-query-string">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_QUERY_STRING$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-query-string">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_QUERY_STRING$</code></pre></div>
+<p class="description">Alias server pentru query string.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_QUERY_STRING$="; HTML$(SERVER_QUERY_STRING$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_body$ variabilă cgi web și cgi server_body$ corpul http citit de motor, limitat la dimensiunea maximă a cererii." id="web-si-cgi-server-body">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_BODY$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-body">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_BODY$</code></pre></div>
+<p class="description">Corpul HTTP citit de motor, limitat la dimensiunea maximă a cererii.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_BODY$="; HTML$(SERVER_BODY$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_content_type$ variabilă cgi web și cgi server_content_type$ tipul de conținut cgi." id="web-si-cgi-server-content-type">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_CONTENT_TYPE$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-content-type">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_CONTENT_TYPE$</code></pre></div>
+<p class="description">Tipul de conținut CGI.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_CONTENT_TYPE$="; HTML$(SERVER_CONTENT_TYPE$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_content_length$ variabilă cgi web și cgi server_content_length$ lungimea cgi declarată." id="web-si-cgi-server-content-length">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_CONTENT_LENGTH$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-content-length">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_CONTENT_LENGTH$</code></pre></div>
+<p class="description">Lungimea CGI declarată.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_CONTENT_LENGTH$="; HTML$(SERVER_CONTENT_LENGTH$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_cookie$ variabilă cgi web și cgi server_cookie$ antetul cookie brut." id="web-si-cgi-server-cookie">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_COOKIE$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-cookie">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_COOKIE$</code></pre></div>
+<p class="description">Antetul Cookie brut.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_COOKIE$="; HTML$(SERVER_COOKIE$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_remote_addr$ variabilă cgi web și cgi server_remote_addr$ adresa ip furnizată de apache." id="web-si-cgi-server-remote-addr">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_REMOTE_ADDR$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-remote-addr">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_REMOTE_ADDR$</code></pre></div>
+<p class="description">Adresa IP furnizată de Apache.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_REMOTE_ADDR$="; HTML$(SERVER_REMOTE_ADDR$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_script_name$ variabilă cgi web și cgi server_script_name$ calea url a scriptului." id="web-si-cgi-server-script-name">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_SCRIPT_NAME$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-script-name">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_SCRIPT_NAME$</code></pre></div>
+<p class="description">Calea URL a scriptului.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_SCRIPT_NAME$="; HTML$(SERVER_SCRIPT_NAME$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_script_filename$ variabilă cgi web și cgi server_script_filename$ calea locală a scriptului, când este disponibilă." id="web-si-cgi-server-script-filename">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_SCRIPT_FILENAME$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-script-filename">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_SCRIPT_FILENAME$</code></pre></div>
+<p class="description">Calea locală a scriptului, când este disponibilă.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_SCRIPT_FILENAME$="; HTML$(SERVER_SCRIPT_FILENAME$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_request_uri$ variabilă cgi web și cgi server_request_uri$ uri-ul cererii." id="web-si-cgi-server-request-uri">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_REQUEST_URI$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-request-uri">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_REQUEST_URI$</code></pre></div>
+<p class="description">URI-ul cererii.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_REQUEST_URI$="; HTML$(SERVER_REQUEST_URI$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_protocol$ variabilă cgi web și cgi server_protocol$ protocolul, de exemplu http/1.1." id="web-si-cgi-server-protocol">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_PROTOCOL$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-protocol">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_PROTOCOL$</code></pre></div>
+<p class="description">Protocolul, de exemplu HTTP/1.1.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_PROTOCOL$="; HTML$(SERVER_PROTOCOL$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_name$ variabilă cgi web și cgi server_name$ numele serverului." id="web-si-cgi-server-name">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_NAME$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-name">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_NAME$</code></pre></div>
+<p class="description">Numele serverului.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_NAME$="; HTML$(SERVER_NAME$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_port$ variabilă cgi web și cgi server_port$ portul serverului." id="web-si-cgi-server-port">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_PORT$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-port">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_PORT$</code></pre></div>
+<p class="description">Portul serverului.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_PORT$="; HTML$(SERVER_PORT$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_http_host$ variabilă cgi web și cgi server_http_host$ antetul host." id="web-si-cgi-server-http-host">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_HTTP_HOST$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-http-host">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_HTTP_HOST$</code></pre></div>
+<p class="description">Antetul Host.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_HTTP_HOST$="; HTML$(SERVER_HTTP_HOST$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_user_agent$ variabilă cgi web și cgi server_user_agent$ antetul user-agent." id="web-si-cgi-server-user-agent">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_USER_AGENT$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-user-agent">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_USER_AGENT$</code></pre></div>
+<p class="description">Antetul User-Agent.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_USER_AGENT$="; HTML$(SERVER_USER_AGENT$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_referer$ variabilă cgi web și cgi server_referer$ antetul referer." id="web-si-cgi-server-referer">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_REFERER$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-referer">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_REFERER$</code></pre></div>
+<p class="description">Antetul Referer.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_REFERER$="; HTML$(SERVER_REFERER$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_accept$ variabilă cgi web și cgi server_accept$ antetul accept." id="web-si-cgi-server-accept">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_ACCEPT$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-accept">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_ACCEPT$</code></pre></div>
+<p class="description">Antetul Accept.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_ACCEPT$="; HTML$(SERVER_ACCEPT$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search="server_accept_language$ variabilă cgi web și cgi server_accept_language$ antetul accept-language." id="web-si-cgi-server-accept-language">
+<div class="entry-title"><div><span class="kind">Variabilă CGI</span><h3>SERVER_ACCEPT_LANGUAGE$</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-server-accept-language">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SERVER_ACCEPT_LANGUAGE$</code></pre></div>
+<p class="description">Antetul Accept-Language.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "SERVER_ACCEPT_LANGUAGE$="; HTML$(SERVER_ACCEPT_LANGUAGE$)</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search='@@status directivă de răspuns web și cgi print "@@status cod" schimbă codul http. directiva trebuie să fie întregul literal al instrucțiunii print.' id="web-si-cgi-status">
+<div class="entry-title"><div><span class="kind">Directivă de răspuns</span><h3>@@STATUS</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-status">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>PRINT "@@STATUS cod"</code></pre></div>
+<p class="description">Schimbă codul HTTP. Directiva trebuie să fie întregul literal al instrucțiunii PRINT.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "@@STATUS 404"
+PRINT "Not found"</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search='@@content-type directivă de răspuns web și cgi print "@@content-type tip" schimbă antetul content-type al răspunsului.' id="web-si-cgi-content-type-2">
+<div class="entry-title"><div><span class="kind">Directivă de răspuns</span><h3>@@CONTENT-TYPE</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-content-type-2">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>PRINT "@@CONTENT-TYPE tip"</code></pre></div>
+<p class="description">Schimbă antetul Content-Type al răspunsului.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "@@CONTENT-TYPE application/json; charset=utf-8"
+PRINT "{""ok"":true}"</code></pre></div>
+</article><article class="entry" data-category="Web și CGI" data-search='@@header directivă de răspuns web și cgi print "@@header nume: valoare" adaugă un antet http personalizat.' id="web-si-cgi-header">
+<div class="entry-title"><div><span class="kind">Directivă de răspuns</span><h3>@@HEADER</h3></div><a aria-label="Link direct" class="anchor" href="#web-si-cgi-header">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>PRINT "@@HEADER Nume: valoare"</code></pre></div>
+<p class="description">Adaugă un antet HTTP personalizat.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "@@HEADER Cache-Control: no-store"
+PRINT "Răspuns fără cache"</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Șabloane HTML" id="section-sabloane-html">
+<div class="section-heading"><div><span>Capitol</span><h2>Șabloane HTML</h2></div><strong>3 intrări</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Șabloane HTML" data-search="&lt;?bas ... ?&gt; șablon șabloane html &lt;?bas
+    cod basic
+?&gt; într-un fișier mixt, execută blocul basic și păstrează restul html literal." id="sabloane-html-bas">
+<div class="entry-title"><div><span class="kind">Șablon</span><h3>&lt;?bas ... ?&gt;</h3></div><a aria-label="Link direct" class="anchor" href="#sabloane-html-bas">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>&lt;?bas
+    cod BASIC
+?&gt;</code></pre></div>
+<p class="description">Într-un fișier mixt, execută blocul BASIC și păstrează restul HTML literal.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;?bas
+NAME$ = GET_NAME$
+?&gt;
+&lt;h1&gt;Salut &lt;?= HTML$(NAME$) ?&gt;&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+</article><article class="entry" data-category="Șabloane HTML" data-search="&lt;?= ... ?&gt; șablon șabloane html &lt;?= expresie ?&gt; evaluează și inserează expresia direct în răspuns. pentru text primit de la utilizator folosește html$ explicit." id="sabloane-html">
+<div class="entry-title"><div><span class="kind">Șablon</span><h3>&lt;?= ... ?&gt;</h3></div><a aria-label="Link direct" class="anchor" href="#sabloane-html">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>&lt;?= expresie ?&gt;</code></pre></div>
+<p class="description">Evaluează și inserează expresia direct în răspuns. Pentru text primit de la utilizator folosește HTML$ explicit.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>&lt;p&gt;Ora serverului: &lt;?= TIME$ ?&gt;&lt;/p&gt;</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>&lt;p&gt;Nume: &lt;?= HTML$(GET_NAME$) ?&gt;&lt;/p&gt;</code></pre></div>
+</article><article class="entry" data-category="Șabloane HTML" data-search='fișier basic pur mod de fișier șabloane html print "..." un fișier fără taguri de șablon este interpretat ca program basic, cu excepția unui include html pur care începe cu &lt;.' id="sabloane-html-fisier-basic-pur">
+<div class="entry-title"><div><span class="kind">Mod de fișier</span><h3>Fișier BASIC pur</h3></div><a aria-label="Link direct" class="anchor" href="#sabloane-html-fisier-basic-pur">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>PRINT "..."</code></pre></div>
+<p class="description">Un fișier fără taguri de șablon este interpretat ca program BASIC, cu excepția unui include HTML pur care începe cu &lt;.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "@@CONTENT-TYPE text/html; charset=utf-8"
+PRINT "&lt;h1&gt;ApacheBAS&lt;/h1&gt;"</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Fișiere, include și upload" id="section-fisiere-include-si-upload">
+<div class="section-heading"><div><span>Capitol</span><h2>Fișiere, include și upload</h2></div><strong>16 intrări</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Fișiere, include și upload" data-search="include instrucțiune fișiere, include și upload include expresie_cale include un fișier .bas sau .inc relativ la directorul aplicației. codul inclus folosește același spațiu de variabile; sunt acceptate și șabloane mixte." id="fisiere-include-si-upload-include">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>INCLUDE</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-include">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>INCLUDE expresie_cale</code></pre></div>
+<p class="description">Include un fișier .bas sau .inc relativ la directorul aplicației. Codul inclus folosește același spațiu de variabile; sunt acceptate și șabloane mixte.</p>
+<div class="notes"><p>Căile absolute și .. sunt respinse.</p><p>Dimensiunea maximă a unui include este 512 KiB; adâncimea maximă este 8.</p></div>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>INCLUDE "includes/header.inc"
+PRINT "&lt;main&gt;Conținut&lt;/main&gt;"
+INCLUDE "includes/footer.inc"</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>PART$ = "parts/menu.bas"
+INCLUDE PART$</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="writefile instrucțiune fișiere, include și upload writefile cale, conținut creează sau înlocuiește un fișier sub directorul data/. rezultatul este raportat prin file_*." id="fisiere-include-si-upload-writefile">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>WRITEFILE</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-writefile">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>WRITEFILE cale, conținut</code></pre></div>
+<p class="description">Creează sau înlocuiește un fișier sub directorul data/. Rezultatul este raportat prin FILE_*.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>WRITEFILE "data/message.txt", "Salut"
+IF FILE_OK THEN PRINT FILE_PATH$ ELSE PRINT FILE_ERROR$</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>WRITEFILE "data/user.json", "{""name"":""Paul""}"</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="appendfile instrucțiune fișiere, include și upload appendfile cale, conținut adaugă text la sfârșitul unui fișier sub data/." id="fisiere-include-si-upload-appendfile">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>APPENDFILE</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-appendfile">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>APPENDFILE cale, conținut</code></pre></div>
+<p class="description">Adaugă text la sfârșitul unui fișier sub data/.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>APPENDFILE "data/log.txt", DATE$ &amp; " " &amp; TIME$ &amp; CHR$(13) &amp; CHR$(10)</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="readfile$ funcție fișiere, include și upload readfile$(cale) citește un fișier text relativ. fișierele cu octet nul trebuie citite prin readhex$." id="fisiere-include-si-upload-readfile">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>READFILE$</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-readfile">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>READFILE$(cale)</code></pre></div>
+<p class="description">Citește un fișier text relativ. Fișierele cu octet NUL trebuie citite prin READHEX$.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>TEXT$ = READFILE$("data/message.txt")
+PRINT HTML$(TEXT$)</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="readhex$ funcție fișiere, include și upload readhex$(cale) citește un fișier binar relativ și returnează text hexazecimal cu majuscule." id="fisiere-include-si-upload-readhex">
+<div class="entry-title"><div><span class="kind">Funcție</span><h3>READHEX$</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-readhex">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>READHEX$(cale)</code></pre></div>
+<p class="description">Citește un fișier binar relativ și returnează text hexazecimal cu majuscule.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>SIGNATURE$ = LEFT$(READHEX$("uploads/photo.png"), 16)
+PRINT SIGNATURE$</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="file_ok variabilă rezultat fișiere, include și upload file_ok 1 după writefile/appendfile reușit, altfel 0." id="fisiere-include-si-upload-file-ok">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>FILE_OK</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-file-ok">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>FILE_OK</code></pre></div>
+<p class="description">1 după WRITEFILE/APPENDFILE reușit, altfel 0.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "FILE_OK="; FILE_OK</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="file_size variabilă rezultat fișiere, include și upload file_size numărul de octeți scriși de ultima operație." id="fisiere-include-si-upload-file-size">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>FILE_SIZE</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-file-size">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>FILE_SIZE</code></pre></div>
+<p class="description">Numărul de octeți scriși de ultima operație.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "FILE_SIZE="; FILE_SIZE</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="file_path$ variabilă rezultat fișiere, include și upload file_path$ calea locală completă a fișierului scris." id="fisiere-include-si-upload-file-path">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>FILE_PATH$</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-file-path">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>FILE_PATH$</code></pre></div>
+<p class="description">Calea locală completă a fișierului scris.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "FILE_PATH$="; FILE_PATH$</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="file_error$ variabilă rezultat fișiere, include și upload file_error$ mesajul ultimei erori de scriere." id="fisiere-include-si-upload-file-error">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>FILE_ERROR$</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-file-error">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>FILE_ERROR$</code></pre></div>
+<p class="description">Mesajul ultimei erori de scriere.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "FILE_ERROR$="; FILE_ERROR$</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="saveupload instrucțiune fișiere, include și upload saveupload nume_fișier salvează corpul binar brut al cererii în uploads/. acceptă png, jpg/jpeg, gif și webp și verifică extensia plus semnătura." id="fisiere-include-si-upload-saveupload">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>SAVEUPLOAD</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-saveupload">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>SAVEUPLOAD nume_fișier</code></pre></div>
+<p class="description">Salvează corpul binar brut al cererii în uploads/. Acceptă PNG, JPG/JPEG, GIF și WEBP și verifică extensia plus semnătura.</p>
+<div class="notes"><p>Corpul trebuie trimis ca application/octet-stream sau image/*.</p><p>Limita curentă a corpului este 1 MiB.</p></div>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>SAVEUPLOAD "photo.png"
+IF UPLOAD_OK THEN PRINT UPLOAD_URL$ ELSE PRINT UPLOAD_ERROR$</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="upload_ok variabilă rezultat fișiere, include și upload upload_ok 1 dacă uploadul a fost salvat, altfel 0." id="fisiere-include-si-upload-upload-ok">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>UPLOAD_OK</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-upload-ok">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>UPLOAD_OK</code></pre></div>
+<p class="description">1 dacă uploadul a fost salvat, altfel 0.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "UPLOAD_OK="; UPLOAD_OK</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="upload_size variabilă rezultat fișiere, include și upload upload_size dimensiunea în octeți." id="fisiere-include-si-upload-upload-size">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>UPLOAD_SIZE</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-upload-size">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>UPLOAD_SIZE</code></pre></div>
+<p class="description">Dimensiunea în octeți.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "UPLOAD_SIZE="; UPLOAD_SIZE</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="upload_name$ variabilă rezultat fișiere, include și upload upload_name$ numele validat al fișierului." id="fisiere-include-si-upload-upload-name">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>UPLOAD_NAME$</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-upload-name">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>UPLOAD_NAME$</code></pre></div>
+<p class="description">Numele validat al fișierului.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "UPLOAD_NAME$="; HTML$(UPLOAD_NAME$)</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="upload_file$ variabilă rezultat fișiere, include și upload upload_file$ calea locală completă." id="fisiere-include-si-upload-upload-file">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>UPLOAD_FILE$</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-upload-file">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>UPLOAD_FILE$</code></pre></div>
+<p class="description">Calea locală completă.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "UPLOAD_FILE$="; HTML$(UPLOAD_FILE$)</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="upload_url$ variabilă rezultat fișiere, include și upload upload_url$ calea url relativă uploads/..." id="fisiere-include-si-upload-upload-url">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>UPLOAD_URL$</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-upload-url">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>UPLOAD_URL$</code></pre></div>
+<p class="description">Calea URL relativă uploads/...</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "UPLOAD_URL$="; HTML$(UPLOAD_URL$)</code></pre></div>
+</article><article class="entry" data-category="Fișiere, include și upload" data-search="upload_error$ variabilă rezultat fișiere, include și upload upload_error$ mesajul ultimei erori de upload." id="fisiere-include-si-upload-upload-error">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>UPLOAD_ERROR$</h3></div><a aria-label="Link direct" class="anchor" href="#fisiere-include-si-upload-upload-error">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>UPLOAD_ERROR$</code></pre></div>
+<p class="description">Mesajul ultimei erori de upload.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "UPLOAD_ERROR$="; HTML$(UPLOAD_ERROR$)</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Procese native" id="section-procese-native">
+<div class="section-heading"><div><span>Capitol</span><h2>Procese native</h2></div><strong>8 intrări</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Procese native" data-search="exec instrucțiune procese native exec executabil [, argument] lansează un .exe fără shell, capturează stdout și stderr, așteaptă maximum 5 secunde și publică rezultatul în exec_*." id="procese-native-exec">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>EXEC</h3></div><a aria-label="Link direct" class="anchor" href="#procese-native-exec">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>EXEC executabil [, argument]</code></pre></div>
+<p class="description">Lansează un .exe fără shell, capturează stdout și stderr, așteaptă maximum 5 secunde și publică rezultatul în EXEC_*.</p>
+<div class="notes"><p>Un nume simplu este căutat întâi lângă fișierul .bas și apoi prin căutarea Windows, inclusiv System32/PATH.</p><p>Este acceptat un singur argument textual opțional.</p><p>EXEC_OUTPUT$ poate conține până la 1.048.575 octeți în v0.1.34.3.</p></div>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>EXEC "netstat.exe", "-ano"
+IF EXEC_OK THEN PRINT "&lt;pre&gt;"; HTML$(EXEC_OUTPUT$); "&lt;/pre&gt;" ELSE PRINT EXEC_ERROR$</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>EXEC "tool.exe"
+PRINT EXEC_CODE</code></pre></div>
+</article><article class="entry" data-category="Procese native" data-search="exec_ok variabilă rezultat procese native exec_ok 1 dacă procesul a fost lansat și capturat fără eroare de infrastructură." id="procese-native-exec-ok">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>EXEC_OK</h3></div><a aria-label="Link direct" class="anchor" href="#procese-native-exec-ok">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>EXEC_OK</code></pre></div>
+<p class="description">1 dacă procesul a fost lansat și capturat fără eroare de infrastructură.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "EXEC_OK="; EXEC_OK</code></pre></div>
+</article><article class="entry" data-category="Procese native" data-search="exec_code variabilă rezultat procese native exec_code codul de ieșire; timeoutul folosește 124." id="procese-native-exec-code">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>EXEC_CODE</h3></div><a aria-label="Link direct" class="anchor" href="#procese-native-exec-code">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>EXEC_CODE</code></pre></div>
+<p class="description">Codul de ieșire; timeoutul folosește 124.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "EXEC_CODE="; EXEC_CODE</code></pre></div>
+</article><article class="entry" data-category="Procese native" data-search="exec_output$ variabilă rezultat procese native exec_output$ stdout și stderr capturate, până la limita de 1 mib minus terminator." id="procese-native-exec-output">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>EXEC_OUTPUT$</h3></div><a aria-label="Link direct" class="anchor" href="#procese-native-exec-output">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>EXEC_OUTPUT$</code></pre></div>
+<p class="description">stdout și stderr capturate, până la limita de 1 MiB minus terminator.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "EXEC_OUTPUT$="; HTML$(EXEC_OUTPUT$)</code></pre></div>
+</article><article class="entry" data-category="Procese native" data-search="exec_error$ variabilă rezultat procese native exec_error$ mesajul erorii sau al timeoutului." id="procese-native-exec-error">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>EXEC_ERROR$</h3></div><a aria-label="Link direct" class="anchor" href="#procese-native-exec-error">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>EXEC_ERROR$</code></pre></div>
+<p class="description">Mesajul erorii sau al timeoutului.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "EXEC_ERROR$="; HTML$(EXEC_ERROR$)</code></pre></div>
+</article><article class="entry" data-category="Procese native" data-search="start instrucțiune procese native start executabil [, argument] pornește normal o aplicație windows și revine imediat. nu capturează ieșirea, nu așteaptă și nu oprește procesul." id="procese-native-start">
+<div class="entry-title"><div><span class="kind">Instrucțiune</span><h3>START</h3></div><a aria-label="Link direct" class="anchor" href="#procese-native-start">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>START executabil [, argument]</code></pre></div>
+<p class="description">Pornește normal o aplicație Windows și revine imediat. Nu capturează ieșirea, nu așteaptă și nu oprește procesul.</p>
+<div class="notes"><p>Este acceptat un singur argument textual opțional.</p><p>Pentru o fereastră vizibilă, Apache trebuie să ruleze într-o sesiune Windows interactivă.</p></div>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>START "viewer.exe"</code></pre></div><div class="example"><div class="example-head"><span>Exemplu 2</span><button class="copy" type="button">Copiază</button></div><pre><code>START "apps\g2.exe", "document.txt"
+IF START_OK = 0 THEN PRINT START_ERROR$</code></pre></div>
+</article><article class="entry" data-category="Procese native" data-search="start_ok variabilă rezultat procese native start_ok 1 dacă createprocess a reușit." id="procese-native-start-ok">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>START_OK</h3></div><a aria-label="Link direct" class="anchor" href="#procese-native-start-ok">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>START_OK</code></pre></div>
+<p class="description">1 dacă CreateProcess a reușit.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "START_OK="; START_OK</code></pre></div>
+</article><article class="entry" data-category="Procese native" data-search="start_error$ variabilă rezultat procese native start_error$ mesajul ultimei erori start." id="procese-native-start-error">
+<div class="entry-title"><div><span class="kind">Variabilă rezultat</span><h3>START_ERROR$</h3></div><a aria-label="Link direct" class="anchor" href="#procese-native-start-error">#</a></div>
+<div class="syntax"><div>Sintaxă</div><pre><code>START_ERROR$</code></pre></div>
+<p class="description">Mesajul ultimei erori START.</p>
+<div class="example"><div class="example-head"><span>Exemplu 1</span><button class="copy" type="button">Copiază</button></div><pre><code>PRINT "START_ERROR$="; HTML$(START_ERROR$)</code></pre></div>
+</article></div>
+</section>
+<section class="appendix" id="precedenta-operatorilor"><h2>Precedența operatorilor</h2><p>De la nivelul cel mai slab la cel mai puternic:</p><table><thead><tr><th>Nivel</th><th>Operatori</th><th>Asociativitate</th></tr></thead><tbody><tr><td>1 — cea mai joasă</td><td><code>OR</code></td><td>stânga</td></tr><tr><td>2</td><td><code>XOR</code></td><td>stânga</td></tr><tr><td>3</td><td><code>AND</code></td><td>stânga</td></tr><tr><td>4</td><td><code>=, &lt;&gt;, &lt;, &lt;=, &gt;, &gt;=</code></td><td>stânga</td></tr><tr><td>5</td><td><code>&amp;</code></td><td>stânga</td></tr><tr><td>6</td><td><code>+, -</code></td><td>stânga</td></tr><tr><td>7</td><td><code>*, /, \, MOD</code></td><td>stânga</td></tr><tr><td>8</td><td><code>^</code></td><td>dreapta</td></tr><tr><td>9 — cea mai înaltă</td><td><code>NOT, + unar, - unar, paranteze și funcții</code></td><td>unar</td></tr></tbody></table></section>
+<section class="appendix" id="limite-implementare"><h2>Limite ale implementării v0.1.34.3</h2><table><thead><tr><th>Resursă</th><th>Limită</th></tr></thead><tbody><tr><td>Script principal</td><td>4 MiB</td></tr><tr><td>Corp HTTP</td><td>1 MiB</td></tr><tr><td>Corp de răspuns</td><td>4 MiB</td></tr><tr><td>Variabile scalare</td><td>maximum 1024</td></tr><tr><td>Valoare scalară obișnuită</td><td>2047 octeți + NUL</td></tr><tr><td>EXEC_OUTPUT$</td><td>1.048.575 octeți + NUL</td></tr><tr><td>Tablouri</td><td>maximum 32</td></tr><tr><td>Elemente per tablou</td><td>maximum 4096; limite în -4095..4095</td></tr><tr><td>Elemente DATA</td><td>maximum 512</td></tr><tr><td>Include</td><td>512 KiB, adâncime 8</td></tr><tr><td>FOR/WHILE/DO</td><td>adâncime 16, maximum 1.000.000 iterații</td></tr><tr><td>GOSUB</td><td>adâncime 32</td></tr><tr><td>Comandă EXEC/START</td><td>2048 octeți</td></tr><tr><td>Timeout EXEC</td><td>5 secunde</td></tr><tr><td>Antete HTTP personalizate</td><td>8 KiB</td></tr></tbody></table></section>
+<footer>ApacheBAS Language Reference v0.1.34.3. Pagină statică, fără biblioteci externe.</footer>
+</main>
+</div>
+<script>
+const search = document.getElementById('search');
+const cards = [...document.querySelectorAll('.entry')];
+const sections = [...document.querySelectorAll('.reference-section')];
+const noResults = document.getElementById('noResults');
+function applySearch() {
+  const q = search.value.trim().toLocaleLowerCase('ro');
+  let visible = 0;
+  cards.forEach(card => { const ok = !q || card.dataset.search.includes(q); card.classList.toggle('hidden', !ok); if(ok) visible++; });
+  sections.forEach(section => { const any = [...section.querySelectorAll('.entry')].some(x => !x.classList.contains('hidden')); section.classList.toggle('hidden', !any); });
+  noResults.style.display = visible ? 'none' : 'block';
+}
+search.addEventListener('input', applySearch);
+document.addEventListener('keydown', e => { if(e.key === '/' && document.activeElement !== search) { e.preventDefault(); search.focus(); } if(e.key === 'Escape') { search.value=''; applySearch(); search.blur(); } });
+document.querySelectorAll('.copy').forEach(btn => btn.addEventListener('click', async () => { const text = btn.closest('.example').querySelector('code').innerText; try { await navigator.clipboard.writeText(text); btn.textContent='Copiat'; setTimeout(()=>btn.textContent='Copiază',1000); } catch { btn.textContent='Selectează manual'; } }));
+const sidebar = document.getElementById('sidebar');
+document.getElementById('menuBtn').addEventListener('click', () => sidebar.classList.toggle('open'));
+sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', () => sidebar.classList.remove('open')));
+const navLinks = [...document.querySelectorAll('nav a')];
+const observer = new IntersectionObserver(items => { items.forEach(item => { if(item.isIntersecting) { navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#' + item.target.id)); } }); }, {rootMargin:'-15% 0px -75% 0px'});
+sections.forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>
