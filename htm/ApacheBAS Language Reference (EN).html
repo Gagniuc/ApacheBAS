@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="dark light" name="color-scheme"/>
+<title>ApacheBAS Language Reference v0.1.34.3 — English</title>
+<style>
+:root { --bg:#07100d; --panel:#0d1915; --panel2:#11211b; --text:#e9f5ef; --muted:#9db5aa; --line:#234237; --accent:#62e6a7; --accent2:#b6ffd9; --code:#07130f; --warn:#ffd37a; --shadow:0 16px 50px rgba(0,0,0,.28); }
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:radial-gradient(circle at 80% 0,#17372a 0,transparent 32rem),var(--bg);color:var(--text);font:15px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif} a{color:inherit} code,pre{font-family:"Cascadia Code","Consolas",monospace} .layout{display:grid;grid-template-columns:285px minmax(0,1fr);min-height:100vh} aside{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 18px;background:rgba(5,13,10,.92);border-right:1px solid var(--line);backdrop-filter:blur(14px)} .brand{padding:4px 8px 20px;border-bottom:1px solid var(--line)} .brand strong{display:block;font-size:22px;letter-spacing:-.5px} .brand span{color:var(--accent)} .brand small{color:var(--muted)} .side-search{position:relative;margin:18px 0} .side-search input{width:100%;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:12px;padding:12px 38px 12px 12px;outline:none} .side-search input:focus{border-color:var(--accent)} .side-search kbd{position:absolute;right:10px;top:10px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:11px} nav{display:grid;gap:5px} nav a{display:flex;justify-content:space-between;gap:10px;text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:9px} nav a:hover,nav a.active{background:var(--panel2);color:var(--text)} nav b{font-size:11px;min-width:26px;text-align:center;border:1px solid var(--line);border-radius:999px;color:var(--accent);align-self:center} .side-footer{margin:20px 8px;color:var(--muted);font-size:12px} main{min-width:0;padding:42px clamp(20px,4vw,64px) 100px} .hero{max-width:1050px;padding:clamp(24px,5vw,52px);border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(18,39,31,.94),rgba(8,20,15,.92));box-shadow:var(--shadow);position:relative;overflow:hidden} .hero:after{content:"BAS";position:absolute;right:-20px;bottom:-80px;font-size:220px;font-weight:900;color:rgba(98,230,167,.035);line-height:1} .eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--accent);text-transform:uppercase;letter-spacing:.14em;font-weight:700;font-size:12px} .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent)} h1{font-size:clamp(38px,6vw,76px);line-height:.98;letter-spacing:-.055em;margin:18px 0 20px;max-width:850px} .hero p{max-width:780px;color:var(--muted);font-size:17px} .stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px} .stat{padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(0,0,0,.14)} .stat b{color:var(--accent)} .quickstart{margin:28px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:14px} .quickstart .box{background:var(--code);border:1px solid var(--line);border-radius:15px;padding:16px;min-width:0} .box h3{margin:0 0 8px;font-size:13px;color:var(--accent)} .box pre{margin:0;overflow:auto;white-space:pre} .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:34px 0 64px;max-width:1050px} .intro-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px} .intro-card h2{margin:0 0 8px;font-size:19px} .intro-card p{margin:0;color:var(--muted)} .reference-section{max-width:1120px;margin:0 0 72px;scroll-margin-top:20px} .section-heading{display:flex;justify-content:space-between;align-items:end;gap:20px;border-bottom:1px solid var(--line);padding-bottom:15px;margin-bottom:18px} .section-heading span{color:var(--accent);font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:700} .section-heading h2{margin:2px 0 0;font-size:30px;letter-spacing:-.03em} .section-heading strong{color:var(--muted);font-size:12px} .entry-grid{display:grid;gap:16px} .entry{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),rgba(10,23,18,.95));border-radius:18px;padding:22px;scroll-margin-top:18px;box-shadow:0 4px 18px rgba(0,0,0,.08)} .entry:target{border-color:var(--accent);box-shadow:0 0 0 3px rgba(98,230,167,.12)} .entry-title{display:flex;align-items:start;justify-content:space-between;gap:15px;margin-bottom:14px} .entry-title>div{display:flex;align-items:center;gap:10px;flex-wrap:wrap} .entry h3{margin:0;font-size:23px;letter-spacing:-.02em} .kind{font-size:11px;font-weight:750;text-transform:uppercase;letter-spacing:.08em;color:#06130d;background:var(--accent);border-radius:999px;padding:4px 8px} .aliases{color:var(--muted);font-size:12px} .anchor{text-decoration:none;color:var(--muted);font-weight:bold} .anchor:hover{color:var(--accent)} .syntax{display:grid;grid-template-columns:75px 1fr;gap:12px;align-items:start;background:rgba(0,0,0,.16);border:1px solid var(--line);border-radius:12px;padding:12px} .syntax>div{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.1em;padding-top:2px} .syntax pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;color:var(--accent2)} .description{margin:16px 0;color:#d7e7df} .notes{border-left:3px solid var(--warn);padding:2px 0 2px 13px;margin:15px 0} .notes p{margin:5px 0;color:#e6d8b8} .example{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:10px;background:var(--code)} .example-head{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-bottom:1px solid var(--line);color:var(--muted);font-size:12px} .copy{border:0;background:transparent;color:var(--accent);cursor:pointer;font:inherit} .example pre{margin:0;padding:14px;overflow:auto;white-space:pre;tab-size:4} .example code{color:#dff8ea} .appendix{max-width:1120px;margin:0 0 60px} .appendix h2{font-size:30px} table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden} th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top} th{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:.08em} tr:last-child td{border-bottom:0} .no-results{display:none;max-width:1050px;margin:28px 0;padding:28px;border:1px dashed var(--line);border-radius:16px;color:var(--muted)} .mobile-bar{display:none;position:sticky;top:0;z-index:20;padding:10px 15px;background:rgba(5,13,10,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)} .mobile-bar button{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:9px;padding:8px 12px} .hidden{display:none!important} footer{max-width:1120px;color:var(--muted);border-top:1px solid var(--line);padding-top:22px} @media(max-width:900px){.layout{display:block} aside{position:fixed;z-index:50;left:-310px;width:285px;transition:.2s} aside.open{left:0;box-shadow:20px 0 50px rgba(0,0,0,.45)} .mobile-bar{display:flex;justify-content:space-between;align-items:center} main{padding-top:22px} .quickstart,.intro-grid{grid-template-columns:1fr}} @media print{aside,.mobile-bar,.copy{display:none!important} .layout{display:block} body{background:white;color:#111} main{padding:0} .hero,.entry,.intro-card,table{box-shadow:none;background:white;color:#111;break-inside:avoid} .description,.hero p,.intro-card p,.section-heading strong{color:#444} .syntax,.example{background:#f6f6f6} .example code,.syntax code{color:#111}}
+</style>
+</head>
+<body>
+<div class="mobile-bar"><strong>ApacheBAS Reference</strong><button id="menuBtn" type="button">Contents</button></div>
+<div class="layout">
+<aside id="sidebar">
+<div class="brand"><strong>Apache<span>BAS</span></strong><small>Language Reference v0.1.34.3 — English</small></div>
+<div class="side-search"><input autocomplete="off" id="search" placeholder="Search PRINT, EXEC, GET_..." type="search"/><kbd>/</kbd></div>
+<nav><a data-nav-category="Language basics" href="#section-bazele-limbajului"><span>Language basics</span><b>7</b></a><a data-nav-category="Flow control" href="#section-controlul-executiei"><span>Flow control</span><b>14</b></a><a data-nav-category="Variables, arrays, and DATA" href="#section-variabile-tablouri-si-data"><span>Variables, arrays, and DATA</span><b>8</b></a><a data-nav-category="String functions" href="#section-functii-pentru-siruri"><span>String functions</span><b>18</b></a><a data-nav-category="Numeric and mathematical functions" href="#section-functii-numerice-si-matematice"><span>Numeric and mathematical functions</span><b>19</b></a><a data-nav-category="Time and random numbers" href="#section-timp-si-aleator"><span>Time and random numbers</span><b>4</b></a><a data-nav-category="Operators" href="#section-operatori"><span>Operators</span><b>19</b></a><a data-nav-category="Web and CGI" href="#section-web-si-cgi"><span>Web and CGI</span><b>28</b></a><a data-nav-category="HTML templates" href="#section-sabloane-html"><span>HTML templates</span><b>3</b></a><a data-nav-category="Files, include, and upload" href="#section-fisiere-include-si-upload"><span>Files, include, and upload</span><b>16</b></a><a data-nav-category="Native processes" href="#section-procese-native"><span>Native processes</span><b>8</b></a></nav>
+<div class="side-footer">Documentation for the ApacheBAS-ASM v0.1.34.3 implementation, not for the entire QBasic/VB language.</div>
+</aside>
+<main>
+<header class="hero">
+<div class="eyebrow"><span class="dot"></span> Reference manual</div>
+<h1>ApacheBAS Language Reference</h1>
+<p>A single-file HTML guide to statements, functions, operators, CGI variables, templates, files, and native process launching.</p>
+<div class="stats"><span class="stat"><b>144</b> documented entries</span><span class="stat"><b>11</b> chapters</span><span class="stat">Engine <b>v0.1.34.3</b></span><span class="stat">Win32 CGI / XAMPP</span></div>
+<div class="quickstart">
+<div class="box"><h3>Pure BASIC program</h3><pre><code>PRINT "@@CONTENT-TYPE text/html; charset=utf-8"
+NAME$ = GET_NAME$
+IF NAME$ = "" THEN NAME$ = "Guest"
+PRINT "&lt;h1&gt;Hello "; HTML$(NAME$); "&lt;/h1&gt;"</code></pre></div>
+<div class="box"><h3>Mixed template</h3><pre><code>&lt;!doctype html&gt;
+&lt;h1&gt;Hello &lt;?= HTML$(GET_NAME$) ?&gt;&lt;/h1&gt;
+&lt;p&gt;Server time: &lt;?= TIME$ ?&gt;&lt;/p&gt;</code></pre></div>
+</div>
+</header>
+<div class="intro-grid">
+<div class="intro-card"><h2>How to use it</h2><p>Search by a function name or by a concept such as “upload”, “loop”, “JSON”, or “process”. Every entry includes syntax and copyable examples.</p></div>
+<div class="intro-card"><h2>Important conventions</h2><p>True comparisons produce -1. Decimal values are stored with up to six fractional digits. File paths are relative to the .bas application.</p></div>
+</div>
+<div class="no-results" id="noResults">No entries match your search.</div>
+<section class="reference-section" data-section="Language basics" id="section-bazele-limbajului">
+<div class="section-heading"><div><span>Chapter</span><h2>Language basics</h2></div><strong>7 entries</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Language basics" data-search="syntax comments # syntax ' comentariu rem comentariu a line beginning with an apostrophe or rem is ignored by the interpreter. example 1 copy ' this is a comment print &quot;hello&quot; example 2 copy rem basic-style comment a = 10" id="bazele-limbajului-comentarii">
+<div class="entry-title"><div><span class="kind">Syntax</span><h3>Comments</h3></div><a aria-label="Direct link" class="anchor" href="#bazele-limbajului-comentarii">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>' comentariu
+REM comentariu</code></pre></div>
+<p class="description">A line beginning with an apostrophe or REM is ignored by the interpreter.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>' This is a comment
+PRINT "Hello"</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>REM BASIC-style comment
+A = 10</code></pre></div>
+</article><article class="entry" data-category="Language basics" data-search='syntax string literals # syntax "text" strings are enclosed in quotation marks. use two consecutive quotation marks to include one quotation mark inside a string. example 1 copy print "apachebas" example 2 copy print "he said ""hello""."' id="bazele-limbajului-literali-sir">
+<div class="entry-title"><div><span class="kind">Syntax</span><h3>String literals</h3></div><a aria-label="Direct link" class="anchor" href="#bazele-limbajului-literali-sir">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>"text"</code></pre></div>
+<p class="description">Strings are enclosed in quotation marks. Use two consecutive quotation marks to include one quotation mark inside a string.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "ApacheBAS"</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "He said ""Hello""."</code></pre></div>
+</article><article class="entry" data-category="Language basics" data-search="syntax numeric literals # syntax 123 -45 3.141593 &amp;hff &amp;o377 &amp;b1010 signed integers, decimals with up to six fractional digits, and hexadecimal, octal, or binary literals are supported. example 1 copy print &amp;hff print &amp;o10 print &amp;b1010 example 2 copy a = 12.5 print a * 2" id="bazele-limbajului-literali-numerici">
+<div class="entry-title"><div><span class="kind">Syntax</span><h3>Numeric literals</h3></div><a aria-label="Direct link" class="anchor" href="#bazele-limbajului-literali-numerici">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>123
+-45
+3.141593
+&amp;HFF
+&amp;O377
+&amp;B1010</code></pre></div>
+<p class="description">Signed integers, decimals with up to six fractional digits, and hexadecimal, octal, or binary literals are supported.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT &amp;HFF        
+PRINT &amp;O10        
+PRINT &amp;B1010</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>A = 12.5
+PRINT A * 2</code></pre></div>
+</article><article class="entry" data-category="Language basics" data-search='syntax scalar variables # syntax nume = expression nume$ = expression names are case-insensitive. by convention, the $ suffix indicates a string value. example 1 copy age = 42 name$ = "paul" print name$; " are "; age; " ani" example 2 copy total = 10 + 20 message$ = "total=" &amp; str$(total)' id="bazele-limbajului-variabile-scalare">
+<div class="entry-title"><div><span class="kind">Syntax</span><h3>Scalar variables</h3></div><a aria-label="Direct link" class="anchor" href="#bazele-limbajului-variabile-scalare">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>NAME = expression
+NAME$ = expression</code></pre></div>
+<p class="description">Names are case-insensitive. By convention, the $ suffix indicates a string value.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>AGE = 42
+NAME$ = "Paul"
+PRINT NAME$; " are "; AGE; " ani"</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>TOTAL = 10 + 20
+MESSAGE$ = "Total=" &amp; STR$(TOTAL)</code></pre></div>
+</article><article class="entry" data-category="Language basics" data-search='syntax labels and line numbers # syntax label: 100 statement a line may begin with a named label or a classic line number. these targets can be used by goto and gosub. example 1 copy start: print "pornire" goto finish finish: print "final" example 2 copy 10 print "first line" 20 goto 40 30 print "skipped" 40 print "done"' id="bazele-limbajului-etichete-si-numere-de-linie">
+<div class="entry-title"><div><span class="kind">Syntax</span><h3>Labels and line numbers</h3></div><a aria-label="Direct link" class="anchor" href="#bazele-limbajului-etichete-si-numere-de-linie">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>label:
+100 statement</code></pre></div>
+<p class="description">A line may begin with a named label or a classic line number. These targets can be used by GOTO and GOSUB.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>start:
+PRINT "Pornire"
+GOTO finish
+finish:
+PRINT "Final"</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>10 PRINT "First line"
+20 GOTO 40
+30 PRINT "Skipped"
+40 PRINT "Done"</code></pre></div>
+</article><article class="entry" data-category="Language basics" data-search='statement assignment # syntax variable = expression array(index) = expression evaluates the expression on the right and stores the result in a scalar variable or an array element. example 1 copy a = 2 + 3 * 4 print a example 2 copy dim names$(1 to 2) names$(1) = "ana" names$(2) = "paul"' id="bazele-limbajului-atribuire">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>Assignment</h3></div><a aria-label="Direct link" class="anchor" href="#bazele-limbajului-atribuire">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>variable = expression
+array(index) = expression</code></pre></div>
+<p class="description">Evaluates the expression on the right and stores the result in a scalar variable or an array element.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>A = 2 + 3 * 4
+PRINT A</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>DIM NAMES$(1 TO 2)
+NAMES$(1) = "Ana"
+NAMES$(2) = "Paul"</code></pre></div>
+</article><article class="entry" data-category="Language basics" data-search='statement print alias: ? # syntax print [expression [;|, expression] ...] [;] ? expression sends text to the response. a semicolon joins output without a separator, a comma adds a space, and print without a trailing semicolon adds cr/lf. example 1 copy print "name: "; name$ print "age:", age example 2 copy print "same line: "; print "continued" example 3 copy ? "print prescurtat"' id="bazele-limbajului-print">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>PRINT</h3></div><span class="aliases">Alias: ?</span><a aria-label="Direct link" class="anchor" href="#bazele-limbajului-print">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>PRINT [expression [;|, expression] ...] [;]
+? expression</code></pre></div>
+<p class="description">Sends text to the response. A semicolon joins output without a separator, a comma adds a space, and PRINT without a trailing semicolon adds CR/LF.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "Name: "; NAME$
+PRINT "Age:", AGE</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "Same line: ";
+PRINT "continued"</code></pre></div><div class="example"><div class="example-head"><span>Example 3</span><button class="copy" type="button">Copy</button></div><pre><code>? "PRINT prescurtat"</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Flow control" id="section-controlul-executiei">
+<div class="section-heading"><div><span>Chapter</span><h2>Flow control</h2></div><strong>14 entries</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Flow control" data-search='statement if ... then ... else # syntax if condition then statement [else statement] single-line if form. zero is false; any nonzero value is true. example 1 copy age = 20 if age &gt;= 18 then print "adult" else print "minor" example 2 copy if get_name$ = "" then name$ = "guest" else name$ = get_name$' id="controlul-executiei-if-then-else">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>IF ... THEN ... ELSE</h3></div><a aria-label="Direct link" class="anchor" href="#controlul-executiei-if-then-else">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>IF condition THEN statement [ELSE statement]</code></pre></div>
+<p class="description">Single-line IF form. Zero is false; any nonzero value is true.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>AGE = 20
+IF AGE &gt;= 18 THEN PRINT "Adult" ELSE PRINT "Minor"</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>IF GET_NAME$ = "" THEN NAME$ = "Guest" ELSE NAME$ = GET_NAME$</code></pre></div>
+</article><article class="entry" data-category="Flow control" data-search='statement for ... next # syntax for variable = start to end [step step] ... next [variable] repeats a block with a positive or negative step. the default step is 1, and step 0 causes an error. example 1 copy for i = 1 to 5 print i next i example 2 copy for i = 10 to 2 step -2 print i; " "; next i' id="controlul-executiei-for-next">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>FOR ... NEXT</h3></div><a aria-label="Direct link" class="anchor" href="#controlul-executiei-for-next">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>FOR variable = start TO end [STEP step]
+    ...
+NEXT [variable]</code></pre></div>
+<p class="description">Repeats a block with a positive or negative step. The default step is 1, and STEP 0 causes an error.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>FOR I = 1 TO 5
+    PRINT I
+NEXT I</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>FOR I = 10 TO 2 STEP -2
+    PRINT I; " ";
+NEXT I</code></pre></div>
+</article><article class="entry" data-category="Flow control" data-search="statement while ... wend # syntax while condition ... wend tests the condition before each iteration. example 1 copy i = 1 while i &lt;= 3 print i i = i + 1 wend" id="controlul-executiei-while-wend">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>WHILE ... WEND</h3></div><a aria-label="Direct link" class="anchor" href="#controlul-executiei-while-wend">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>WHILE condition
+    ...
+WEND</code></pre></div>
+<p class="description">Tests the condition before each iteration.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>I = 1
+WHILE I &lt;= 3
+    PRINT I
+    I = I + 1
+WEND</code></pre></div>
+</article><article class="entry" data-category="Flow control" data-search="statement do while / do until # syntax do while condition ... loop do until condition ... loop pre-test forms. while repeats while the condition is true; until repeats until it becomes true. example 1 copy i = 0 do while i &lt; 3 print i i = i + 1 loop example 2 copy i = 0 do until i = 3 i = i + 1 loop print i" id="controlul-executiei-do-while-do-until">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>DO WHILE / DO UNTIL</h3></div><a aria-label="Direct link" class="anchor" href="#controlul-executiei-do-while-do-until">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>DO WHILE condition
+    ...
+LOOP
+
+DO UNTIL condition
+    ...
+LOOP</code></pre></div>
+<p class="description">Pre-test forms. WHILE repeats while the condition is true; UNTIL repeats until it becomes true.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>I = 0
+DO WHILE I &lt; 3
+    PRINT I
+    I = I + 1
+LOOP</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>I = 0
+DO UNTIL I = 3
+    I = I + 1
+LOOP
+PRINT I</code></pre></div>
+</article><article class="entry" data-category="Flow control" data-search="statement loop while / loop until # syntax do ... loop while condition do ... loop until condition post-test forms; the body executes at least once. example 1 copy i = 0 do i = i + 1 print i loop while i &lt; 3 example 2 copy do r = rnd loop until r &gt; 0.8 print r" id="controlul-executiei-loop-while-loop-until">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>LOOP WHILE / LOOP UNTIL</h3></div><a aria-label="Direct link" class="anchor" href="#controlul-executiei-loop-while-loop-until">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>DO
+    ...
+LOOP WHILE condition
+
+DO
+    ...
+LOOP UNTIL condition</code></pre></div>
+<p class="description">Post-test forms; the body executes at least once.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>I = 0
+DO
+    I = I + 1
+    PRINT I
+LOOP WHILE I &lt; 3</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>DO
+    R = RND
+LOOP UNTIL R &gt; 0.8
+PRINT R</code></pre></div>
+</article><article class="entry" data-category="Flow control" data-search="statement do ... loop # syntax do ... loop unconditional loop. exit it with goto, stop, or end. example 1 copy i = 0 do i = i + 1 if i = 3 then goto done loop done: print i" id="controlul-executiei-do-loop">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>DO ... LOOP</h3></div><a aria-label="Direct link" class="anchor" href="#controlul-executiei-do-loop">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>DO
+    ...
+LOOP</code></pre></div>
+<p class="description">Unconditional loop. Exit it with GOTO, STOP, or END.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>I = 0
+DO
+    I = I + 1
+    IF I = 3 THEN GOTO done
+LOOP
+done:
+PRINT I</code></pre></div>
+</article><article class="entry" data-category="Flow control" data-search='statement goto / go to alias: go to # syntax goto label go to line_number transfers execution to a label or line number in the active basic block. example 1 copy goto finished print "nu apare" finished: print "done" example 2 copy 10 go to 30 20 print "skipped" 30 print "linia 30"' id="controlul-executiei-goto-go-to">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>GOTO / GO TO</h3></div><span class="aliases">Alias: GO TO</span><a aria-label="Direct link" class="anchor" href="#controlul-executiei-goto-go-to">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>GOTO label
+GO TO line_number</code></pre></div>
+<p class="description">Transfers execution to a label or line number in the active BASIC block.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>GOTO finished
+PRINT "Nu apare"
+finished:
+PRINT "Done"</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>10 GO TO 30
+20 PRINT "Skipped"
+30 PRINT "Linia 30"</code></pre></div>
+</article><article class="entry" data-category="Flow control" data-search='statement gosub / return # syntax gosub label ... label: ... return runs a subroutine and returns to the following statement. subroutines may be nested. example 1 copy print "before" gosub hello print "after" end hello: print "hello din subrutină" return' id="controlul-executiei-gosub-return">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>GOSUB / RETURN</h3></div><a aria-label="Direct link" class="anchor" href="#controlul-executiei-gosub-return">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>GOSUB label
+...
+label:
+    ...
+RETURN</code></pre></div>
+<p class="description">Runs a subroutine and returns to the following statement. Subroutines may be nested.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "Before"
+GOSUB hello
+PRINT "After"
+END
+hello:
+PRINT "Hello from the subroutine"
+RETURN</code></pre></div>
+</article><article class="entry" data-category="Flow control" data-search='statement stop / end alias: end # syntax stop end stops the current program. both keywords have the same effect in this version. example 1 copy print "before" end print "this does not execute"' id="controlul-executiei-stop-end">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>STOP / END</h3></div><span class="aliases">Alias: END</span><a aria-label="Direct link" class="anchor" href="#controlul-executiei-stop-end">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>STOP
+END</code></pre></div>
+<p class="description">Stops the current program. Both keywords have the same effect in this version.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "Before"
+END
+PRINT "This does not execute"</code></pre></div>
+</article><article class="entry" data-category="Flow control" data-search='statement cls # syntax cls clears the response body accumulated up to that point. example 1 copy print "this text is removed" cls print "only this remains"' id="controlul-executiei-cls">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>CLS</h3></div><a aria-label="Direct link" class="anchor" href="#controlul-executiei-cls">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>CLS</code></pre></div>
+<p class="description">Clears the response body accumulated up to that point.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "This text is removed"
+CLS
+PRINT "Only this remains"</code></pre></div>
+</article><article class="entry" data-category="Flow control" data-search="statement clear / clr alias: clr # syntax clear clr resets variable values, removes arrays, and moves read back to the first data item. example 1 copy a = 99 dim x(3) clear print a example 2 copy data 10,20 read a clr read b print b" id="controlul-executiei-clear-clr">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>CLEAR / CLR</h3></div><span class="aliases">Alias: CLR</span><a aria-label="Direct link" class="anchor" href="#controlul-executiei-clear-clr">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>CLEAR
+CLR</code></pre></div>
+<p class="description">Resets variable values, removes arrays, and moves READ back to the first DATA item.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>A = 99
+DIM X(3)
+CLEAR
+PRINT A</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>DATA 10,20
+READ A
+CLR
+READ B
+PRINT B</code></pre></div>
+</article><article class="entry" data-category="Flow control" data-search='statement sleep # syntax sleep seconds suspends the process for the specified number of seconds. up to three decimal places are accepted, for example 0.25. example 1 copy print "waiting..."; sleep 0.25 print "gata"' id="controlul-executiei-sleep">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>SLEEP</h3></div><a aria-label="Direct link" class="anchor" href="#controlul-executiei-sleep">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SLEEP seconds</code></pre></div>
+<p class="description">Suspends the process for the specified number of seconds. Up to three decimal places are accepted, for example 0.25.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "Waiting...";
+SLEEP 0.25
+PRINT "gata"</code></pre></div>
+</article><article class="entry" data-category="Flow control" data-search="statement randomize # syntax randomize [seed] initializes the generator used by rnd. without an argument it uses local time; with an argument it produces reproducible sequences. example 1 copy randomize 123 print rnd print rnd example 2 copy randomize print rnd" id="controlul-executiei-randomize">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>RANDOMIZE</h3></div><a aria-label="Direct link" class="anchor" href="#controlul-executiei-randomize">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>RANDOMIZE [seed]</code></pre></div>
+<p class="description">Initializes the generator used by RND. Without an argument it uses local time; with an argument it produces reproducible sequences.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>RANDOMIZE 123
+PRINT RND
+PRINT RND</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>RANDOMIZE
+PRINT RND</code></pre></div>
+</article><article class="entry" data-category="Flow control" data-search='statement input # syntax input variable input "prompt"; variable input "prompt", variable reads one line from stdin only during direct execution. it is blocked in cgi mode because stdin contains the http request body. example 1 copy input "name: "; name$ print "hello "; name$ example 2 copy dim a$(1 to 2) input a$(1)' id="controlul-executiei-input">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>INPUT</h3></div><a aria-label="Direct link" class="anchor" href="#controlul-executiei-input">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>INPUT variable
+INPUT "prompt"; variable
+INPUT "prompt", variable</code></pre></div>
+<p class="description">Reads one line from stdin only during direct execution. It is blocked in CGI mode because stdin contains the HTTP request body.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>INPUT "Name: "; NAME$
+PRINT "Hello "; NAME$</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>DIM A$(1 TO 2)
+INPUT A$(1)</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Variables, arrays, and DATA" id="section-variabile-tablouri-si-data">
+<div class="section-heading"><div><span>Chapter</span><h2>Variables, arrays, and DATA</h2></div><strong>8 entries</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Variables, arrays, and DATA" data-search="statement dim # syntax dim declaration [, declaration ...] declares scalar variables or one-dimensional arrays. explicit bounds and as clauses are supported; as string creates string storage. example 1 copy dim a(10), names$(1 to 5) example 2 copy dim score as integer, title as string dim b(-2 to 2) as integer" id="variabile-tablouri-si-data-dim">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>DIM</h3></div><a aria-label="Direct link" class="anchor" href="#variabile-tablouri-si-data-dim">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>DIM declaration [, declaration ...]</code></pre></div>
+<p class="description">Declares scalar variables or one-dimensional arrays. Explicit bounds and AS clauses are supported; AS STRING creates string storage.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>DIM A(10), NAMES$(1 TO 5)</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>DIM SCORE AS INTEGER, TITLE AS STRING
+DIM B(-2 TO 2) AS INTEGER</code></pre></div>
+</article><article class="entry" data-category="Variables, arrays, and DATA" data-search='statement option base # syntax option base 0 option base 1 sets the default lower bound for arrays declared with a single bound. it must appear before the first array dim. example 1 copy option base 1 dim a(3) print lbound(a); ".."; ubound(a)' id="variabile-tablouri-si-data-option-base">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>OPTION BASE</h3></div><a aria-label="Direct link" class="anchor" href="#variabile-tablouri-si-data-option-base">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>OPTION BASE 0
+OPTION BASE 1</code></pre></div>
+<p class="description">Sets the default lower bound for arrays declared with a single bound. It must appear before the first array DIM.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>OPTION BASE 1
+DIM A(3)
+PRINT LBOUND(A); ".."; UBOUND(A)</code></pre></div>
+</article><article class="entry" data-category="Variables, arrays, and DATA" data-search="function lbound # syntax lbound(nume_array) returns the declared lower bound of an array. example 1 copy dim a(-2 to 5) print lbound(a)" id="variabile-tablouri-si-data-lbound">
+<div class="entry-title"><div><span class="kind">Function</span><h3>LBOUND</h3></div><a aria-label="Direct link" class="anchor" href="#variabile-tablouri-si-data-lbound">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>LBOUND(nume_array)</code></pre></div>
+<p class="description">Returns the declared lower bound of an array.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>DIM A(-2 TO 5)
+PRINT LBOUND(A)</code></pre></div>
+</article><article class="entry" data-category="Variables, arrays, and DATA" data-search="function ubound # syntax ubound(nume_array) returns the declared upper bound of an array. example 1 copy dim a(-2 to 5) print ubound(a)" id="variabile-tablouri-si-data-ubound">
+<div class="entry-title"><div><span class="kind">Function</span><h3>UBOUND</h3></div><a aria-label="Direct link" class="anchor" href="#variabile-tablouri-si-data-ubound">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>UBOUND(nume_array)</code></pre></div>
+<p class="description">Returns the declared upper bound of an array.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>DIM A(-2 TO 5)
+PRINT UBOUND(A)</code></pre></div>
+</article><article class="entry" data-category="Variables, arrays, and DATA" data-search='statement data # syntax data value [, value ...] defines textual values later retrieved by read. quoted strings lose their outer quotation marks. example 1 copy data 10,20,"paul" read a,b,name$ print a; ","; b; ","; name$' id="variabile-tablouri-si-data-data">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>DATA</h3></div><a aria-label="Direct link" class="anchor" href="#variabile-tablouri-si-data-data">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>DATA value [, value ...]</code></pre></div>
+<p class="description">Defines textual values later retrieved by READ. Quoted strings lose their outer quotation marks.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>DATA 10,20,"Paul"
+READ A,B,NAME$
+PRINT A; ","; B; ","; NAME$</code></pre></div>
+</article><article class="entry" data-category="Variables, arrays, and DATA" data-search="statement read # syntax read target [, target ...] transfers the next data values into scalar variables or array elements. example 1 copy dim a(1 to 3) data 5,10,15 read a(1),a(2),a(3) print a(2)" id="variabile-tablouri-si-data-read">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>READ</h3></div><a aria-label="Direct link" class="anchor" href="#variabile-tablouri-si-data-read">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>READ target [, target ...]</code></pre></div>
+<p class="description">Transfers the next DATA values into scalar variables or array elements.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>DIM A(1 TO 3)
+DATA 5,10,15
+READ A(1),A(2),A(3)
+PRINT A(2)</code></pre></div>
+</article><article class="entry" data-category="Variables, arrays, and DATA" data-search='statement restore # syntax restore moves the data cursor back to the first item. restore with a label is not implemented in this version. example 1 copy data 7,8 read a restore read b print a; " "; b' id="variabile-tablouri-si-data-restore">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>RESTORE</h3></div><a aria-label="Direct link" class="anchor" href="#variabile-tablouri-si-data-restore">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>RESTORE</code></pre></div>
+<p class="description">Moves the DATA cursor back to the first item. RESTORE with a label is not implemented in this version.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>DATA 7,8
+READ A
+RESTORE
+READ B
+PRINT A; " "; B</code></pre></div>
+</article><article class="entry" data-category="Variables, arrays, and DATA" data-search='statement swap # syntax swap target1, target2 exchanges the values of two variables or array elements. example 1 copy a = 10 b = 20 swap a,b print a; " "; b example 2 copy dim x$(1 to 2) x$(1) = "a" x$(2) = "b" swap x$(1),x$(2)' id="variabile-tablouri-si-data-swap">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>SWAP</h3></div><a aria-label="Direct link" class="anchor" href="#variabile-tablouri-si-data-swap">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SWAP target1, target2</code></pre></div>
+<p class="description">Exchanges the values of two variables or array elements.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>A = 10
+B = 20
+SWAP A,B
+PRINT A; " "; B</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>DIM X$(1 TO 2)
+X$(1) = "A"
+X$(2) = "B"
+SWAP X$(1),X$(2)</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="String functions" id="section-functii-pentru-siruri">
+<div class="section-heading"><div><span>Chapter</span><h2>String functions</h2></div><strong>18 entries</strong></div>
+<div class="entry-grid"><article class="entry" data-category="String functions" data-search='function len # syntax len(text) returns the number of bytes in the string. example 1 copy print len("apachebas")' id="functii-pentru-siruri-len">
+<div class="entry-title"><div><span class="kind">Function</span><h3>LEN</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-len">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>LEN(text)</code></pre></div>
+<p class="description">Returns the number of bytes in the string.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT LEN("ApacheBAS")</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function left$ # syntax left$(text, count) returns the first count characters. a negative value is treated as zero. example 1 copy print left$("apachebas", 6) example 2 copy n = 3 print left$("abcdef", n)' id="functii-pentru-siruri-left">
+<div class="entry-title"><div><span class="kind">Function</span><h3>LEFT$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-left">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>LEFT$(text, count)</code></pre></div>
+<p class="description">Returns the first count characters. A negative value is treated as zero.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT LEFT$("ApacheBAS", 6)</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>N = 3
+PRINT LEFT$("abcdef", N)</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function right$ # syntax right$(text, count) returns the last count characters. a negative value is treated as zero. example 1 copy print right$("apachebas", 3)' id="functii-pentru-siruri-right">
+<div class="entry-title"><div><span class="kind">Function</span><h3>RIGHT$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-right">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>RIGHT$(text, count)</code></pre></div>
+<p class="description">Returns the last count characters. A negative value is treated as zero.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT RIGHT$("ApacheBAS", 3)</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function mid$ # syntax mid$(text, start [, length]) extracts text starting at the 1-based start position. without a length, it returns through the end. example 1 copy print mid$("apachebas", 7) example 2 copy print mid$("abcdefgh", 3, 4)' id="functii-pentru-siruri-mid">
+<div class="entry-title"><div><span class="kind">Function</span><h3>MID$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-mid">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>MID$(text, start [, length])</code></pre></div>
+<p class="description">Extracts text starting at the 1-based start position. Without a length, it returns through the end.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT MID$("ApacheBAS", 7)</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT MID$("abcdefgh", 3, 4)</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function ucase$ # syntax ucase$(text) converts ascii letters a-z to uppercase. example 1 copy print ucase$("apachebas")' id="functii-pentru-siruri-ucase">
+<div class="entry-title"><div><span class="kind">Function</span><h3>UCASE$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-ucase">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>UCASE$(text)</code></pre></div>
+<p class="description">Converts ASCII letters a-z to uppercase.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT UCASE$("ApacheBas")</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function lcase$ # syntax lcase$(text) converts ascii letters a-z to lowercase. example 1 copy print lcase$("apachebas")' id="functii-pentru-siruri-lcase">
+<div class="entry-title"><div><span class="kind">Function</span><h3>LCASE$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-lcase">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>LCASE$(text)</code></pre></div>
+<p class="description">Converts ASCII letters A-Z to lowercase.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT LCASE$("ApacheBAS")</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function trim$ # syntax trim$(text) removes spaces and tabs from both ends. example 1 copy print "["; trim$(" text "); "]"' id="functii-pentru-siruri-trim">
+<div class="entry-title"><div><span class="kind">Function</span><h3>TRIM$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-trim">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>TRIM$(text)</code></pre></div>
+<p class="description">Removes spaces and tabs from both ends.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "["; TRIM$("  text  "); "]"</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function ltrim$ # syntax ltrim$(text) removes spaces and tabs from the left. example 1 copy print "["; ltrim$(" text "); "]"' id="functii-pentru-siruri-ltrim">
+<div class="entry-title"><div><span class="kind">Function</span><h3>LTRIM$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-ltrim">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>LTRIM$(text)</code></pre></div>
+<p class="description">Removes spaces and tabs from the left.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "["; LTRIM$("  text  "); "]"</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function rtrim$ # syntax rtrim$(text) removes spaces and tabs from the right. example 1 copy print "["; rtrim$(" text "); "]"' id="functii-pentru-siruri-rtrim">
+<div class="entry-title"><div><span class="kind">Function</span><h3>RTRIM$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-rtrim">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>RTRIM$(text)</code></pre></div>
+<p class="description">Removes spaces and tabs from the right.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "["; RTRIM$("  text  "); "]"</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function instr # syntax instr(text, needle) performs a case-sensitive search and returns a 1-based position, or 0 when no match is found. example 1 copy print instr("apachebas", "bas") example 2 copy if instr(query_string$, "debug=1") &gt; 0 then print "debug"' id="functii-pentru-siruri-instr">
+<div class="entry-title"><div><span class="kind">Function</span><h3>INSTR</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-instr">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>INSTR(text, needle)</code></pre></div>
+<p class="description">Performs a case-sensitive search and returns a 1-based position, or 0 when no match is found.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT INSTR("ApacheBAS", "BAS")</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>IF INSTR(QUERY_STRING$, "debug=1") &gt; 0 THEN PRINT "Debug"</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function space$ # syntax space$(count) builds a string containing count ascii spaces. example 1 copy print "a"; space$(5); "b"' id="functii-pentru-siruri-space">
+<div class="entry-title"><div><span class="kind">Function</span><h3>SPACE$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-space">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SPACE$(count)</code></pre></div>
+<p class="description">Builds a string containing count ASCII spaces.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "A"; SPACE$(5); "B"</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function string$ # syntax string$(count, text) repeats the first character of text count times. example 1 copy print string$(20, "-") example 2 copy print string$(5, "abc")' id="functii-pentru-siruri-string">
+<div class="entry-title"><div><span class="kind">Function</span><h3>STRING$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-string">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>STRING$(count, text)</code></pre></div>
+<p class="description">Repeats the first character of text count times.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT STRING$(20, "-")</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT STRING$(5, "ABC")</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function asc # syntax asc(text) returns the byte value of the first character. an empty string causes an error. example 1 copy print asc("a")' id="functii-pentru-siruri-asc">
+<div class="entry-title"><div><span class="kind">Function</span><h3>ASC</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-asc">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>ASC(text)</code></pre></div>
+<p class="description">Returns the byte value of the first character. An empty string causes an error.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT ASC("A")</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search="function chr$ # syntax chr$(cod) returns the character corresponding to the low byte of the numeric value. example 1 copy print chr$(65); chr$(66); chr$(67)" id="functii-pentru-siruri-chr">
+<div class="entry-title"><div><span class="kind">Function</span><h3>CHR$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-chr">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>CHR$(cod)</code></pre></div>
+<p class="description">Returns the character corresponding to the low byte of the numeric value.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT CHR$(65); CHR$(66); CHR$(67)</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function html$ # syntax html$(text) escapes the special html characters &amp;, &lt;, &gt;, quotation mark, and apostrophe. example 1 copy name$ = "&lt;paul &amp; ana&gt;" print "&lt;p&gt;"; html$(name$); "&lt;/p&gt;"' id="functii-pentru-siruri-html">
+<div class="entry-title"><div><span class="kind">Function</span><h3>HTML$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-html">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>HTML$(text)</code></pre></div>
+<p class="description">Escapes the special HTML characters &amp;, &lt;, &gt;, quotation mark, and apostrophe.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>NAME$ = "&lt;Paul &amp; Ana&gt;"
+PRINT "&lt;p&gt;"; HTML$(NAME$); "&lt;/p&gt;"</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function json$ # syntax json$(text) escapes a string for safe inclusion between quotation marks in a json document. example 1 copy print "@@content-type application/json; charset=utf-8" print "{""message"":"""; json$("hello ""paul"""); """}"' id="functii-pentru-siruri-json">
+<div class="entry-title"><div><span class="kind">Function</span><h3>JSON$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-json">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>JSON$(text)</code></pre></div>
+<p class="description">Escapes a string for safe inclusion between quotation marks in a JSON document.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "@@CONTENT-TYPE application/json; charset=utf-8"
+PRINT "{""message"":"""; JSON$("Hello ""Paul"""); """}"</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function str$ # syntax str$(expression) returns the canonical textual representation of the expression, without the leading space used by some basic dialects. example 1 copy a = 12.5 s$ = "value=" &amp; str$(a) print s$' id="functii-pentru-siruri-str">
+<div class="entry-title"><div><span class="kind">Function</span><h3>STR$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-str">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>STR$(expression)</code></pre></div>
+<p class="description">Returns the canonical textual representation of the expression, without the leading space used by some BASIC dialects.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>A = 12.5
+S$ = "Value=" &amp; STR$(A)
+PRINT S$</code></pre></div>
+</article><article class="entry" data-category="String functions" data-search='function val # syntax val(text) reads the signed numeric prefix of the string and preserves up to six decimal places. if no numeric prefix exists, it returns 0. example 1 copy print val("123.45xyz") example 2 copy amount = val(get_amount$) print amount + 10' id="functii-pentru-siruri-val">
+<div class="entry-title"><div><span class="kind">Function</span><h3>VAL</h3></div><a aria-label="Direct link" class="anchor" href="#functii-pentru-siruri-val">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>VAL(text)</code></pre></div>
+<p class="description">Reads the signed numeric prefix of the string and preserves up to six decimal places. If no numeric prefix exists, it returns 0.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT VAL("123.45xyz")</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>AMOUNT = VAL(GET_AMOUNT$)
+PRINT AMOUNT + 10</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Numeric and mathematical functions" id="section-functii-numerice-si-matematice">
+<div class="section-heading"><div><span>Chapter</span><h2>Numeric and mathematical functions</h2></div><strong>19 entries</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Numeric and mathematical functions" data-search="function abs # syntax abs(count) returns the absolute value of an integer or decimal. example 1 copy print abs(-12) print abs(-2.5)" id="functii-numerice-si-matematice-abs">
+<div class="entry-title"><div><span class="kind">Function</span><h3>ABS</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-abs">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>ABS(count)</code></pre></div>
+<p class="description">Returns the absolute value of an integer or decimal.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT ABS(-12)
+PRINT ABS(-2.5)</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search='function sgn # syntax sgn(count) returns -1 for negative values, 0 for zero, and 1 for positive values. example 1 copy print sgn(-8); " "; sgn(0); " "; sgn(8)' id="functii-numerice-si-matematice-sgn">
+<div class="entry-title"><div><span class="kind">Function</span><h3>SGN</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-sgn">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SGN(count)</code></pre></div>
+<p class="description">Returns -1 for negative values, 0 for zero, and 1 for positive values.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT SGN(-8); " "; SGN(0); " "; SGN(8)</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search="function int # syntax int(count) rounds down toward negative infinity. example 1 copy print int(2.9) print int(-2.9)" id="functii-numerice-si-matematice-int">
+<div class="entry-title"><div><span class="kind">Function</span><h3>INT</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-int">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>INT(count)</code></pre></div>
+<p class="description">Rounds down toward negative infinity.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT INT(2.9)
+PRINT INT(-2.9)</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search="function fix # syntax fix(count) truncates the fractional part toward zero. example 1 copy print fix(2.9) print fix(-2.9)" id="functii-numerice-si-matematice-fix">
+<div class="entry-title"><div><span class="kind">Function</span><h3>FIX</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-fix">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>FIX(count)</code></pre></div>
+<p class="description">Truncates the fractional part toward zero.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT FIX(2.9)
+PRINT FIX(-2.9)</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search="function sqr # syntax sqr(count) returns the square root. for a real result, supply a decimal argument such as 2.0; an integer argument uses the integer square root. example 1 copy print sqr(81) example 2 copy print sqr(2.0)" id="functii-numerice-si-matematice-sqr">
+<div class="entry-title"><div><span class="kind">Function</span><h3>SQR</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-sqr">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SQR(count)</code></pre></div>
+<p class="description">Returns the square root. For a real result, supply a decimal argument such as 2.0; an integer argument uses the integer square root.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT SQR(81)</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT SQR(2.0)</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search="function sin # syntax sin(radiani) returns the sine, rounded to at most six decimal places. example 1 copy print sin(pi / 2)" id="functii-numerice-si-matematice-sin">
+<div class="entry-title"><div><span class="kind">Function</span><h3>SIN</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-sin">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SIN(radiani)</code></pre></div>
+<p class="description">Returns the sine, rounded to at most six decimal places.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT SIN(PI / 2)</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search="function cos # syntax cos(radiani) returns the cosine, rounded to at most six decimal places. example 1 copy print cos(0)" id="functii-numerice-si-matematice-cos">
+<div class="entry-title"><div><span class="kind">Function</span><h3>COS</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-cos">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>COS(radiani)</code></pre></div>
+<p class="description">Returns the cosine, rounded to at most six decimal places.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT COS(0)</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search="function tan # syntax tan(radiani) returns the tangent, rounded to at most six decimal places. example 1 copy print tan(pi / 4)" id="functii-numerice-si-matematice-tan">
+<div class="entry-title"><div><span class="kind">Function</span><h3>TAN</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-tan">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>TAN(radiani)</code></pre></div>
+<p class="description">Returns the tangent, rounded to at most six decimal places.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT TAN(PI / 4)</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search="function atn # syntax atn(count) returns the arctangent in radians. example 1 copy print atn(1)" id="functii-numerice-si-matematice-atn">
+<div class="entry-title"><div><span class="kind">Function</span><h3>ATN</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-atn">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>ATN(count)</code></pre></div>
+<p class="description">Returns the arctangent in radians.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT ATN(1)</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search="function log # syntax log(count) returns the natural logarithm. the argument must be strictly positive. example 1 copy print log(exp(1))" id="functii-numerice-si-matematice-log">
+<div class="entry-title"><div><span class="kind">Function</span><h3>LOG</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-log">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>LOG(count)</code></pre></div>
+<p class="description">Returns the natural logarithm. The argument must be strictly positive.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT LOG(EXP(1))</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search="function exp # syntax exp(count) returns e raised to the argument. the current implementation supports approximately the range -20..7. example 1 copy print exp(1) example 2 copy print exp(0)" id="functii-numerice-si-matematice-exp">
+<div class="entry-title"><div><span class="kind">Function</span><h3>EXP</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-exp">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>EXP(count)</code></pre></div>
+<p class="description">Returns e raised to the argument. The current implementation supports approximately the range -20..7.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT EXP(1)</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT EXP(0)</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search="function cint # syntax cint(count) converts by rounding to the nearest 16-bit integer (-32768..32767). halfway values use x87 round-to-even behavior. example 1 copy print cint(2.6) example 2 copy print cint(2.5)" id="functii-numerice-si-matematice-cint">
+<div class="entry-title"><div><span class="kind">Function</span><h3>CINT</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-cint">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>CINT(count)</code></pre></div>
+<p class="description">Converts by rounding to the nearest 16-bit integer (-32768..32767). Halfway values use x87 round-to-even behavior.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT CINT(2.6)</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT CINT(2.5)</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search="function clng # syntax clng(count) converts by rounding to a signed 32-bit integer. example 1 copy print clng(12345.6)" id="functii-numerice-si-matematice-clng">
+<div class="entry-title"><div><span class="kind">Function</span><h3>CLNG</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-clng">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>CLNG(count)</code></pre></div>
+<p class="description">Converts by rounding to a signed 32-bit integer.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT CLNG(12345.6)</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search='function cdbl # syntax cdbl(expression) validates/evaluates a numeric value and preserves the engine’s canonical decimal representation. example 1 copy print cdbl("12.50")' id="functii-numerice-si-matematice-cdbl">
+<div class="entry-title"><div><span class="kind">Function</span><h3>CDBL</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-cdbl">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>CDBL(expression)</code></pre></div>
+<p class="description">Validates/evaluates a numeric value and preserves the engine’s canonical decimal representation.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT CDBL("12.50")</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search='function csng # syntax csng(expression) validates/evaluates a numeric value and preserves the engine’s canonical decimal representation. example 1 copy print csng("3.141593")' id="functii-numerice-si-matematice-csng">
+<div class="entry-title"><div><span class="kind">Function</span><h3>CSNG</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-csng">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>CSNG(expression)</code></pre></div>
+<p class="description">Validates/evaluates a numeric value and preserves the engine’s canonical decimal representation.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT CSNG("3.141593")</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search="function hex$ # syntax hex$(integer) converts the low 32 bits to uppercase hexadecimal. negative values use two’s-complement representation. example 1 copy print hex$(255) example 2 copy print hex$(-1)" id="functii-numerice-si-matematice-hex">
+<div class="entry-title"><div><span class="kind">Function</span><h3>HEX$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-hex">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>HEX$(integer)</code></pre></div>
+<p class="description">Converts the low 32 bits to uppercase hexadecimal. Negative values use two’s-complement representation.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT HEX$(255)</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT HEX$(-1)</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search="function oct$ # syntax oct$(integer) converts the low 32 bits to octal. negative values use a 32-bit representation. example 1 copy print oct$(8) example 2 copy print oct$(-1)" id="functii-numerice-si-matematice-oct">
+<div class="entry-title"><div><span class="kind">Function</span><h3>OCT$</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-oct">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>OCT$(integer)</code></pre></div>
+<p class="description">Converts the low 32 bits to octal. Negative values use a 32-bit representation.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT OCT$(8)</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT OCT$(-1)</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search="constant pi # syntax pi the constant 3.141593. example 1 copy print pi print 2 * pi" id="functii-numerice-si-matematice-pi">
+<div class="entry-title"><div><span class="kind">Constant</span><h3>PI</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-pi">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>PI</code></pre></div>
+<p class="description">The constant 3.141593.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT PI
+PRINT 2 * PI</code></pre></div>
+</article><article class="entry" data-category="Numeric and mathematical functions" data-search='constants true / false # syntax true false true is -1 and false is 0, following the basic convention. example 1 copy print true; " "; false example 2 copy if true then print "executat"' id="functii-numerice-si-matematice-true-false">
+<div class="entry-title"><div><span class="kind">Constants</span><h3>TRUE / FALSE</h3></div><a aria-label="Direct link" class="anchor" href="#functii-numerice-si-matematice-true-false">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>TRUE
+FALSE</code></pre></div>
+<p class="description">TRUE is -1 and FALSE is 0, following the BASIC convention.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT TRUE; " "; FALSE</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>IF TRUE THEN PRINT "Executat"</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Time and random numbers" id="section-timp-si-aleator">
+<div class="section-heading"><div><span>Chapter</span><h2>Time and random numbers</h2></div><strong>4 entries</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Time and random numbers" data-search="special value date$ # syntax date$ returns the local date in dd-mm-yyyy format. example 1 copy print date$" id="timp-si-aleator-date">
+<div class="entry-title"><div><span class="kind">Special value</span><h3>DATE$</h3></div><a aria-label="Direct link" class="anchor" href="#timp-si-aleator-date">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>DATE$</code></pre></div>
+<p class="description">Returns the local date in DD-MM-YYYY format.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT DATE$</code></pre></div>
+</article><article class="entry" data-category="Time and random numbers" data-search="special value time$ # syntax time$ returns the local time in hh:mm:ss format. example 1 copy print time$" id="timp-si-aleator-time">
+<div class="entry-title"><div><span class="kind">Special value</span><h3>TIME$</h3></div><a aria-label="Direct link" class="anchor" href="#timp-si-aleator-time">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>TIME$</code></pre></div>
+<p class="description">Returns the local time in HH:MM:SS format.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT TIME$</code></pre></div>
+</article><article class="entry" data-category="Time and random numbers" data-search="special value timer # syntax timer returns the integer number of seconds elapsed since midnight. example 1 copy print timer" id="timp-si-aleator-timer">
+<div class="entry-title"><div><span class="kind">Special value</span><h3>TIMER</h3></div><a aria-label="Direct link" class="anchor" href="#timp-si-aleator-timer">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>TIMER</code></pre></div>
+<p class="description">Returns the integer number of seconds elapsed since midnight.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT TIMER</code></pre></div>
+</article><article class="entry" data-category="Time and random numbers" data-search="special value rnd # syntax rnd generates a pseudorandom fraction from 0.000000 through 0.999999. example 1 copy randomize print rnd example 2 copy randomize 1 a = rnd randomize 1 b = rnd print a = b" id="timp-si-aleator-rnd">
+<div class="entry-title"><div><span class="kind">Special value</span><h3>RND</h3></div><a aria-label="Direct link" class="anchor" href="#timp-si-aleator-rnd">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>RND</code></pre></div>
+<p class="description">Generates a pseudorandom fraction from 0.000000 through 0.999999.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>RANDOMIZE
+PRINT RND</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>RANDOMIZE 1
+A = RND
+RANDOMIZE 1
+B = RND
+PRINT A = B</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Operators" id="section-operatori">
+<div class="section-heading"><div><span>Chapter</span><h2>Operators</h2></div><strong>19 entries</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Operators" data-search="operator — exponentiation ^ # syntax ^ right-associative; a negative exponent produces 0 in the current implementation. example 1 copy print 2 ^ 8" id="operatori">
+<div class="entry-title"><div><span class="kind">Operator — Exponentiation</span><h3>^</h3></div><a aria-label="Direct link" class="anchor" href="#operatori">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>^</code></pre></div>
+<p class="description">Right-associative; a negative exponent produces 0 in the current implementation.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT 2 ^ 8</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — multiplication * # syntax * integer or decimal. example 1 copy print 6 * 7" id="operatori-2">
+<div class="entry-title"><div><span class="kind">Operator — Multiplication</span><h3>*</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-2">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>*</code></pre></div>
+<p class="description">Integer or decimal.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT 6 * 7</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — real division / # syntax / produces a decimal result; division by zero causes an error. example 1 copy print 7 / 2" id="operatori-3">
+<div class="entry-title"><div><span class="kind">Operator — Real division</span><h3>/</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-3">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>/</code></pre></div>
+<p class="description">Produces a decimal result; division by zero causes an error.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT 7 / 2</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — integer division \ # syntax \ truncates toward zero. example 1 copy print 7 \ 2" id="operatori-4">
+<div class="entry-title"><div><span class="kind">Operator — Integer division</span><h3>\</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-4">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>\</code></pre></div>
+<p class="description">Truncates toward zero.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT 7 \ 2</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — remainder mod # syntax mod integer operator. example 1 copy print 7 mod 3" id="operatori-mod">
+<div class="entry-title"><div><span class="kind">Operator — Remainder</span><h3>MOD</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-mod">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>MOD</code></pre></div>
+<p class="description">Integer operator.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT 7 MOD 3</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search='operator — addition or concatenation + # syntax + adds when both operands are numeric; otherwise concatenates. example 1 copy print 2 + 3 print "a" + "b"' id="operatori-5">
+<div class="entry-title"><div><span class="kind">Operator — Addition or concatenation</span><h3>+</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-5">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>+</code></pre></div>
+<p class="description">Adds when both operands are numeric; otherwise concatenates.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT 2 + 3
+PRINT "A" + "B"</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — subtraction - # syntax - also available as a unary operator. example 1 copy print 10 - 4" id="operatori-6">
+<div class="entry-title"><div><span class="kind">Operator — Subtraction</span><h3>-</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-6">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>-</code></pre></div>
+<p class="description">Also available as a unary operator.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT 10 - 4</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search='operator — explicit concatenation &amp; # syntax &amp; concatenates the textual representations. example 1 copy print "a" &amp; str$(10)' id="operatori-7">
+<div class="entry-title"><div><span class="kind">Operator — Explicit concatenation</span><h3>&amp;</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-7">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>&amp;</code></pre></div>
+<p class="description">Concatenates the textual representations.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "A" &amp; STR$(10)</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — equal = # syntax = in expressions it produces true (-1) or false (0); on the left side of a statement it performs assignment. example 1 copy print a = b" id="operatori-8">
+<div class="entry-title"><div><span class="kind">Operator — Equal</span><h3>=</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-8">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>=</code></pre></div>
+<p class="description">In expressions it produces TRUE (-1) or FALSE (0); on the left side of a statement it performs assignment.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT A = B</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — not equal &lt;&gt; # syntax &lt;&gt; equality and inequality can also compare strings. example 1 copy print a &lt;&gt; b" id="operatori-9">
+<div class="entry-title"><div><span class="kind">Operator — Not equal</span><h3>&lt;&gt;</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-9">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>&lt;&gt;</code></pre></div>
+<p class="description">Equality and inequality can also compare strings.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT A &lt;&gt; B</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — less than &lt; # syntax &lt; numeric comparison. example 1 copy print a &lt; b" id="operatori-10">
+<div class="entry-title"><div><span class="kind">Operator — Less than</span><h3>&lt;</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-10">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>&lt;</code></pre></div>
+<p class="description">Numeric comparison.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT A &lt; B</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — less than or equal &lt;= # syntax &lt;= numeric comparison. example 1 copy print a &lt;= b" id="operatori-11">
+<div class="entry-title"><div><span class="kind">Operator — Less than or equal</span><h3>&lt;=</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-11">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>&lt;=</code></pre></div>
+<p class="description">Numeric comparison.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT A &lt;= B</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — greater than &gt; # syntax &gt; numeric comparison. example 1 copy print a &gt; b" id="operatori-12">
+<div class="entry-title"><div><span class="kind">Operator — Greater than</span><h3>&gt;</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-12">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>&gt;</code></pre></div>
+<p class="description">Numeric comparison.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT A &gt; B</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — greater than or equal &gt;= # syntax &gt;= numeric comparison. example 1 copy print a &gt;= b" id="operatori-13">
+<div class="entry-title"><div><span class="kind">Operator — Greater than or equal</span><h3>&gt;=</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-13">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>&gt;=</code></pre></div>
+<p class="description">Numeric comparison.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT A &gt;= B</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — bitwise and and # syntax and operation on 32-bit integers; also useful with true/false. example 1 copy print a and b" id="operatori-and">
+<div class="entry-title"><div><span class="kind">Operator — Bitwise AND</span><h3>AND</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-and">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>AND</code></pre></div>
+<p class="description">Operation on 32-bit integers; also useful with TRUE/FALSE.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT A AND B</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — bitwise xor xor # syntax xor operation on 32-bit integers. example 1 copy print a xor b" id="operatori-xor">
+<div class="entry-title"><div><span class="kind">Operator — Bitwise XOR</span><h3>XOR</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-xor">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>XOR</code></pre></div>
+<p class="description">Operation on 32-bit integers.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT A XOR B</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — bitwise or or # syntax or operation on 32-bit integers. example 1 copy print a or b" id="operatori-or">
+<div class="entry-title"><div><span class="kind">Operator — Bitwise OR</span><h3>OR</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-or">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>OR</code></pre></div>
+<p class="description">Operation on 32-bit integers.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT A OR B</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — bitwise not not # syntax not unary operator on 32-bit integers. example 1 copy print not a" id="operatori-not">
+<div class="entry-title"><div><span class="kind">Operator — Bitwise NOT</span><h3>NOT</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-not">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>NOT</code></pre></div>
+<p class="description">Unary operator on 32-bit integers.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT NOT A</code></pre></div>
+</article><article class="entry" data-category="Operators" data-search="operator — parentheses () # syntax () forces evaluation order. example 1 copy print (2 + 3) * 4" id="operatori-14">
+<div class="entry-title"><div><span class="kind">Operator — Parentheses</span><h3>()</h3></div><a aria-label="Direct link" class="anchor" href="#operatori-14">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>()</code></pre></div>
+<p class="description">Forces evaluation order.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT (2 + 3) * 4</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Web and CGI" id="section-web-si-cgi">
+<div class="section-heading"><div><span>Chapter</span><h2>Web and CGI</h2></div><strong>28 entries</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Web and CGI" data-search="variable family get_* # syntax get_name$ each query-string parameter becomes a get_...$ variable. the name is normalized to uppercase. example 1 copy ' url: /hello.bas?name=paul print &quot;hello &quot;; html$(get_name$) example 2 copy ' url: /sum.bas?a=10&amp;b=20 print val(get_a$) + val(get_b$)" id="web-si-cgi-get">
+<div class="entry-title"><div><span class="kind">Variable family</span><h3>GET_*</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-get">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>GET_NAME$</code></pre></div>
+<p class="description">Each query-string parameter becomes a GET_...$ variable. The name is normalized to uppercase.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>' URL: /hello.bas?name=Paul
+PRINT "Hello "; HTML$(GET_NAME$)</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>' URL: /sum.bas?a=10&amp;b=20
+PRINT VAL(GET_A$) + VAL(GET_B$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='variable family post_* # syntax post_name$ fields in an application/x-www-form-urlencoded body become post_...$ variables. example 1 copy print "utilizator: "; html$(post_user$)' id="web-si-cgi-post">
+<div class="entry-title"><div><span class="kind">Variable family</span><h3>POST_*</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-post">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>POST_NAME$</code></pre></div>
+<p class="description">Fields in an application/x-www-form-urlencoded body become POST_...$ variables.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "Utilizator: "; HTML$(POST_USER$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='variable family cookie_* # syntax cookie_name$ cookies in the http cookie header become cookie_...$ variables. example 1 copy if cookie_session$ = "" then print "no session" else print cookie_session$' id="web-si-cgi-cookie">
+<div class="entry-title"><div><span class="kind">Variable family</span><h3>COOKIE_*</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-cookie">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>COOKIE_NAME$</code></pre></div>
+<p class="description">Cookies in the HTTP Cookie header become COOKIE_...$ variables.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>IF COOKIE_SESSION$ = "" THEN PRINT "No session" ELSE PRINT COOKIE_SESSION$</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable request_method$ # syntax request_method$ the http method, for example get or post. example 1 copy print "request_method$="; html$(request_method$)' id="web-si-cgi-request-method">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>REQUEST_METHOD$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-request-method">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>REQUEST_METHOD$</code></pre></div>
+<p class="description">The HTTP method, for example GET or POST.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "REQUEST_METHOD$="; HTML$(REQUEST_METHOD$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable query_string$ # syntax query_string$ the raw query string, without the ? character. example 1 copy print "query_string$="; html$(query_string$)' id="web-si-cgi-query-string">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>QUERY_STRING$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-query-string">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>QUERY_STRING$</code></pre></div>
+<p class="description">The raw query string, without the ? character.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "QUERY_STRING$="; HTML$(QUERY_STRING$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable content_type$ # syntax content_type$ the request body type. example 1 copy print "content_type$="; html$(content_type$)' id="web-si-cgi-content-type">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>CONTENT_TYPE$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-content-type">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>CONTENT_TYPE$</code></pre></div>
+<p class="description">The request body type.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "CONTENT_TYPE$="; HTML$(CONTENT_TYPE$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable content_length$ # syntax content_length$ the declared body length. example 1 copy print "content_length$="; html$(content_length$)' id="web-si-cgi-content-length">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>CONTENT_LENGTH$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-content-length">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>CONTENT_LENGTH$</code></pre></div>
+<p class="description">The declared body length.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "CONTENT_LENGTH$="; HTML$(CONTENT_LENGTH$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_request_method$ # syntax server_request_method$ server alias for the http method. example 1 copy print "server_request_method$="; html$(server_request_method$)' id="web-si-cgi-server-request-method">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_REQUEST_METHOD$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-request-method">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_REQUEST_METHOD$</code></pre></div>
+<p class="description">Server alias for the HTTP method.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_REQUEST_METHOD$="; HTML$(SERVER_REQUEST_METHOD$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_query_string$ # syntax server_query_string$ server alias for the query string. example 1 copy print "server_query_string$="; html$(server_query_string$)' id="web-si-cgi-server-query-string">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_QUERY_STRING$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-query-string">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_QUERY_STRING$</code></pre></div>
+<p class="description">Server alias for the query string.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_QUERY_STRING$="; HTML$(SERVER_QUERY_STRING$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_body$ # syntax server_body$ the http body read by the engine, limited to the maximum request size. example 1 copy print "server_body$="; html$(server_body$)' id="web-si-cgi-server-body">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_BODY$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-body">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_BODY$</code></pre></div>
+<p class="description">The HTTP body read by the engine, limited to the maximum request size.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_BODY$="; HTML$(SERVER_BODY$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_content_type$ # syntax server_content_type$ the cgi content type. example 1 copy print "server_content_type$="; html$(server_content_type$)' id="web-si-cgi-server-content-type">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_CONTENT_TYPE$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-content-type">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_CONTENT_TYPE$</code></pre></div>
+<p class="description">The CGI content type.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_CONTENT_TYPE$="; HTML$(SERVER_CONTENT_TYPE$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_content_length$ # syntax server_content_length$ the declared cgi length. example 1 copy print "server_content_length$="; html$(server_content_length$)' id="web-si-cgi-server-content-length">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_CONTENT_LENGTH$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-content-length">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_CONTENT_LENGTH$</code></pre></div>
+<p class="description">The declared CGI length.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_CONTENT_LENGTH$="; HTML$(SERVER_CONTENT_LENGTH$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_cookie$ # syntax server_cookie$ the raw cookie header. example 1 copy print "server_cookie$="; html$(server_cookie$)' id="web-si-cgi-server-cookie">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_COOKIE$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-cookie">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_COOKIE$</code></pre></div>
+<p class="description">The raw Cookie header.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_COOKIE$="; HTML$(SERVER_COOKIE$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_remote_addr$ # syntax server_remote_addr$ the ip address supplied by apache. example 1 copy print "server_remote_addr$="; html$(server_remote_addr$)' id="web-si-cgi-server-remote-addr">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_REMOTE_ADDR$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-remote-addr">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_REMOTE_ADDR$</code></pre></div>
+<p class="description">The IP address supplied by Apache.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_REMOTE_ADDR$="; HTML$(SERVER_REMOTE_ADDR$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_script_name$ # syntax server_script_name$ the script url path. example 1 copy print "server_script_name$="; html$(server_script_name$)' id="web-si-cgi-server-script-name">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_SCRIPT_NAME$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-script-name">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_SCRIPT_NAME$</code></pre></div>
+<p class="description">The script URL path.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_SCRIPT_NAME$="; HTML$(SERVER_SCRIPT_NAME$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_script_filename$ # syntax server_script_filename$ the local script path, when available. example 1 copy print "server_script_filename$="; html$(server_script_filename$)' id="web-si-cgi-server-script-filename">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_SCRIPT_FILENAME$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-script-filename">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_SCRIPT_FILENAME$</code></pre></div>
+<p class="description">The local script path, when available.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_SCRIPT_FILENAME$="; HTML$(SERVER_SCRIPT_FILENAME$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_request_uri$ # syntax server_request_uri$ the request uri. example 1 copy print "server_request_uri$="; html$(server_request_uri$)' id="web-si-cgi-server-request-uri">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_REQUEST_URI$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-request-uri">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_REQUEST_URI$</code></pre></div>
+<p class="description">The request URI.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_REQUEST_URI$="; HTML$(SERVER_REQUEST_URI$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_protocol$ # syntax server_protocol$ the protocol, for example http/1.1. example 1 copy print "server_protocol$="; html$(server_protocol$)' id="web-si-cgi-server-protocol">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_PROTOCOL$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-protocol">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_PROTOCOL$</code></pre></div>
+<p class="description">The protocol, for example HTTP/1.1.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_PROTOCOL$="; HTML$(SERVER_PROTOCOL$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_name$ # syntax server_name$ the server name. example 1 copy print "server_name$="; html$(server_name$)' id="web-si-cgi-server-name">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_NAME$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-name">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_NAME$</code></pre></div>
+<p class="description">The server name.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_NAME$="; HTML$(SERVER_NAME$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_port$ # syntax server_port$ the server port. example 1 copy print "server_port$="; html$(server_port$)' id="web-si-cgi-server-port">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_PORT$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-port">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_PORT$</code></pre></div>
+<p class="description">The server port.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_PORT$="; HTML$(SERVER_PORT$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_http_host$ # syntax server_http_host$ the host header. example 1 copy print "server_http_host$="; html$(server_http_host$)' id="web-si-cgi-server-http-host">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_HTTP_HOST$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-http-host">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_HTTP_HOST$</code></pre></div>
+<p class="description">The Host header.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_HTTP_HOST$="; HTML$(SERVER_HTTP_HOST$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_user_agent$ # syntax server_user_agent$ the user-agent header. example 1 copy print "server_user_agent$="; html$(server_user_agent$)' id="web-si-cgi-server-user-agent">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_USER_AGENT$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-user-agent">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_USER_AGENT$</code></pre></div>
+<p class="description">The User-Agent header.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_USER_AGENT$="; HTML$(SERVER_USER_AGENT$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_referer$ # syntax server_referer$ the referer header. example 1 copy print "server_referer$="; html$(server_referer$)' id="web-si-cgi-server-referer">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_REFERER$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-referer">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_REFERER$</code></pre></div>
+<p class="description">The Referer header.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_REFERER$="; HTML$(SERVER_REFERER$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_accept$ # syntax server_accept$ the accept header. example 1 copy print "server_accept$="; html$(server_accept$)' id="web-si-cgi-server-accept">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_ACCEPT$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-accept">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_ACCEPT$</code></pre></div>
+<p class="description">The Accept header.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_ACCEPT$="; HTML$(SERVER_ACCEPT$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='cgi variable server_accept_language$ # syntax server_accept_language$ the accept-language header. example 1 copy print "server_accept_language$="; html$(server_accept_language$)' id="web-si-cgi-server-accept-language">
+<div class="entry-title"><div><span class="kind">CGI variable</span><h3>SERVER_ACCEPT_LANGUAGE$</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-server-accept-language">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SERVER_ACCEPT_LANGUAGE$</code></pre></div>
+<p class="description">The Accept-Language header.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "SERVER_ACCEPT_LANGUAGE$="; HTML$(SERVER_ACCEPT_LANGUAGE$)</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='response directive @@status # syntax print "@@status cod" changes the http status code. the directive must be the complete literal of the print statement. example 1 copy print "@@status 404" print "not found"' id="web-si-cgi-status">
+<div class="entry-title"><div><span class="kind">Response directive</span><h3>@@STATUS</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-status">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>PRINT "@@STATUS cod"</code></pre></div>
+<p class="description">Changes the HTTP status code. The directive must be the complete literal of the PRINT statement.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "@@STATUS 404"
+PRINT "Not found"</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='response directive @@content-type # syntax print "@@content-type tip" changes the response content-type header. example 1 copy print "@@content-type application/json; charset=utf-8" print "{""ok"":true}"' id="web-si-cgi-content-type-2">
+<div class="entry-title"><div><span class="kind">Response directive</span><h3>@@CONTENT-TYPE</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-content-type-2">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>PRINT "@@CONTENT-TYPE tip"</code></pre></div>
+<p class="description">Changes the response Content-Type header.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "@@CONTENT-TYPE application/json; charset=utf-8"
+PRINT "{""ok"":true}"</code></pre></div>
+</article><article class="entry" data-category="Web and CGI" data-search='response directive @@header # syntax print "@@header name: value" adds a custom http header. example 1 copy print "@@header cache-control: no-store" print "response without caching"' id="web-si-cgi-header">
+<div class="entry-title"><div><span class="kind">Response directive</span><h3>@@HEADER</h3></div><a aria-label="Direct link" class="anchor" href="#web-si-cgi-header">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>PRINT "@@HEADER Name: value"</code></pre></div>
+<p class="description">Adds a custom HTTP header.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "@@HEADER Cache-Control: no-store"
+PRINT "Response without caching"</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="HTML templates" id="section-sabloane-html">
+<div class="section-heading"><div><span>Chapter</span><h2>HTML templates</h2></div><strong>3 entries</strong></div>
+<div class="entry-grid"><article class="entry" data-category="HTML templates" data-search="template &lt;?bas ... ?&gt; # syntax &lt;?bas cod basic ?&gt; in a mixed file, executes the basic block and preserves the remaining html literally. example 1 copy &lt;!doctype html&gt; &lt;html&gt; &lt;body&gt; &lt;?bas name$ = get_name$ ?&gt; &lt;h1&gt;hello &lt;?= html$(name$) ?&gt;&lt;/h1&gt; &lt;/body&gt; &lt;/html&gt;" id="sabloane-html-bas">
+<div class="entry-title"><div><span class="kind">Template</span><h3>&lt;?bas ... ?&gt;</h3></div><a aria-label="Direct link" class="anchor" href="#sabloane-html-bas">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>&lt;?bas
+    cod BASIC
+?&gt;</code></pre></div>
+<p class="description">In a mixed file, executes the BASIC block and preserves the remaining HTML literally.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;?bas
+NAME$ = GET_NAME$
+?&gt;
+&lt;h1&gt;Hello &lt;?= HTML$(NAME$) ?&gt;&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+</article><article class="entry" data-category="HTML templates" data-search="template &lt;?= ... ?&gt; # syntax &lt;?= expression ?&gt; evaluates and inserts the expression directly into the response. for user-supplied text, explicitly use html$. example 1 copy &lt;p&gt;server time: &lt;?= time$ ?&gt;&lt;/p&gt; example 2 copy &lt;p&gt;name: &lt;?= html$(get_name$) ?&gt;&lt;/p&gt;" id="sabloane-html">
+<div class="entry-title"><div><span class="kind">Template</span><h3>&lt;?= ... ?&gt;</h3></div><a aria-label="Direct link" class="anchor" href="#sabloane-html">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>&lt;?= expression ?&gt;</code></pre></div>
+<p class="description">Evaluates and inserts the expression directly into the response. For user-supplied text, explicitly use HTML$.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>&lt;p&gt;Server time: &lt;?= TIME$ ?&gt;&lt;/p&gt;</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>&lt;p&gt;Name: &lt;?= HTML$(GET_NAME$) ?&gt;&lt;/p&gt;</code></pre></div>
+</article><article class="entry" data-category="HTML templates" data-search='file mode pure basic file # syntax print "..." a file without template tags is interpreted as a basic program, except for a pure html include beginning with &lt;. example 1 copy print "@@content-type text/html; charset=utf-8" print "&lt;h1&gt;apachebas&lt;/h1&gt;"' id="sabloane-html-fisier-basic-pur">
+<div class="entry-title"><div><span class="kind">File mode</span><h3>Pure BASIC file</h3></div><a aria-label="Direct link" class="anchor" href="#sabloane-html-fisier-basic-pur">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>PRINT "..."</code></pre></div>
+<p class="description">A file without template tags is interpreted as a BASIC program, except for a pure HTML include beginning with &lt;.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "@@CONTENT-TYPE text/html; charset=utf-8"
+PRINT "&lt;h1&gt;ApacheBAS&lt;/h1&gt;"</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Files, include, and upload" id="section-fisiere-include-si-upload">
+<div class="section-heading"><div><span>Chapter</span><h2>Files, include, and upload</h2></div><strong>16 entries</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Files, include, and upload" data-search='statement include # syntax include path_expression includes a .bas or .inc file relative to the application directory. included code uses the same variable scope; mixed templates are also supported. absolute paths and .. are rejected. the maximum include size is 512 kib; the maximum depth is 8. example 1 copy include "includes/header.inc" print "&lt;main&gt;content&lt;/main&gt;" include "includes/footer.inc" example 2 copy part$ = "parts/menu.bas" include part$' id="fisiere-include-si-upload-include">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>INCLUDE</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-include">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>INCLUDE path_expression</code></pre></div>
+<p class="description">Includes a .bas or .inc file relative to the application directory. Included code uses the same variable scope; mixed templates are also supported.</p>
+<div class="notes"><p>Absolute paths and .. are rejected.</p><p>The maximum include size is 512 KiB; the maximum depth is 8.</p></div>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>INCLUDE "includes/header.inc"
+PRINT "&lt;main&gt;Content&lt;/main&gt;"
+INCLUDE "includes/footer.inc"</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>PART$ = "parts/menu.bas"
+INCLUDE PART$</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='statement writefile # syntax writefile path, content creates or replaces a file under the data/ directory. the result is reported through file_*. example 1 copy writefile "data/message.txt", "hello" if file_ok then print file_path$ else print file_error$ example 2 copy writefile "data/user.json", "{""name"":""paul""}"' id="fisiere-include-si-upload-writefile">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>WRITEFILE</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-writefile">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>WRITEFILE path, content</code></pre></div>
+<p class="description">Creates or replaces a file under the data/ directory. The result is reported through FILE_*.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>WRITEFILE "data/message.txt", "Hello"
+IF FILE_OK THEN PRINT FILE_PATH$ ELSE PRINT FILE_ERROR$</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>WRITEFILE "data/user.json", "{""name"":""Paul""}"</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='statement appendfile # syntax appendfile path, content appends text to the end of a file under data/. example 1 copy appendfile "data/log.txt", date$ &amp; " " &amp; time$ &amp; chr$(13) &amp; chr$(10)' id="fisiere-include-si-upload-appendfile">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>APPENDFILE</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-appendfile">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>APPENDFILE path, content</code></pre></div>
+<p class="description">Appends text to the end of a file under data/.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>APPENDFILE "data/log.txt", DATE$ &amp; " " &amp; TIME$ &amp; CHR$(13) &amp; CHR$(10)</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='function readfile$ # syntax readfile$(path) reads a relative text file. files containing nul bytes must be read with readhex$. example 1 copy text$ = readfile$("data/message.txt") print html$(text$)' id="fisiere-include-si-upload-readfile">
+<div class="entry-title"><div><span class="kind">Function</span><h3>READFILE$</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-readfile">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>READFILE$(path)</code></pre></div>
+<p class="description">Reads a relative text file. Files containing NUL bytes must be read with READHEX$.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>TEXT$ = READFILE$("data/message.txt")
+PRINT HTML$(TEXT$)</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='function readhex$ # syntax readhex$(path) reads a relative binary file and returns uppercase hexadecimal text. example 1 copy signature$ = left$(readhex$("uploads/photo.png"), 16) print signature$' id="fisiere-include-si-upload-readhex">
+<div class="entry-title"><div><span class="kind">Function</span><h3>READHEX$</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-readhex">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>READHEX$(path)</code></pre></div>
+<p class="description">Reads a relative binary file and returns uppercase hexadecimal text.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>SIGNATURE$ = LEFT$(READHEX$("uploads/photo.png"), 16)
+PRINT SIGNATURE$</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='result variable file_ok # syntax file_ok 1 after a successful writefile/appendfile operation; otherwise 0. example 1 copy print "file_ok="; file_ok' id="fisiere-include-si-upload-file-ok">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>FILE_OK</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-file-ok">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>FILE_OK</code></pre></div>
+<p class="description">1 after a successful WRITEFILE/APPENDFILE operation; otherwise 0.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "FILE_OK="; FILE_OK</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='result variable file_size # syntax file_size the number of bytes written by the last operation. example 1 copy print "file_size="; file_size' id="fisiere-include-si-upload-file-size">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>FILE_SIZE</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-file-size">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>FILE_SIZE</code></pre></div>
+<p class="description">The number of bytes written by the last operation.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "FILE_SIZE="; FILE_SIZE</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='result variable file_path$ # syntax file_path$ the complete local path of the written file. example 1 copy print "file_path$="; file_path$' id="fisiere-include-si-upload-file-path">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>FILE_PATH$</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-file-path">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>FILE_PATH$</code></pre></div>
+<p class="description">The complete local path of the written file.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "FILE_PATH$="; FILE_PATH$</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='result variable file_error$ # syntax file_error$ the most recent write-error message. example 1 copy print "file_error$="; file_error$' id="fisiere-include-si-upload-file-error">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>FILE_ERROR$</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-file-error">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>FILE_ERROR$</code></pre></div>
+<p class="description">The most recent write-error message.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "FILE_ERROR$="; FILE_ERROR$</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='statement saveupload # syntax saveupload file_name saves the raw binary request body in uploads/. it accepts png, jpg/jpeg, gif, and webp, and verifies both the extension and signature. the body must be sent as application/octet-stream or image/*. the current body limit is 1 mib. example 1 copy saveupload "photo.png" if upload_ok then print upload_url$ else print upload_error$' id="fisiere-include-si-upload-saveupload">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>SAVEUPLOAD</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-saveupload">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>SAVEUPLOAD file_name</code></pre></div>
+<p class="description">Saves the raw binary request body in uploads/. It accepts PNG, JPG/JPEG, GIF, and WEBP, and verifies both the extension and signature.</p>
+<div class="notes"><p>The body must be sent as application/octet-stream or image/*.</p><p>The current body limit is 1 MiB.</p></div>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>SAVEUPLOAD "photo.png"
+IF UPLOAD_OK THEN PRINT UPLOAD_URL$ ELSE PRINT UPLOAD_ERROR$</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='result variable upload_ok # syntax upload_ok 1 if the upload was saved; otherwise 0. example 1 copy print "upload_ok="; upload_ok' id="fisiere-include-si-upload-upload-ok">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>UPLOAD_OK</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-upload-ok">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>UPLOAD_OK</code></pre></div>
+<p class="description">1 if the upload was saved; otherwise 0.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "UPLOAD_OK="; UPLOAD_OK</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='result variable upload_size # syntax upload_size the size in bytes. example 1 copy print "upload_size="; upload_size' id="fisiere-include-si-upload-upload-size">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>UPLOAD_SIZE</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-upload-size">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>UPLOAD_SIZE</code></pre></div>
+<p class="description">The size in bytes.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "UPLOAD_SIZE="; UPLOAD_SIZE</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='result variable upload_name$ # syntax upload_name$ the validated file name. example 1 copy print "upload_name$="; html$(upload_name$)' id="fisiere-include-si-upload-upload-name">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>UPLOAD_NAME$</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-upload-name">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>UPLOAD_NAME$</code></pre></div>
+<p class="description">The validated file name.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "UPLOAD_NAME$="; HTML$(UPLOAD_NAME$)</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='result variable upload_file$ # syntax upload_file$ the complete local path. example 1 copy print "upload_file$="; html$(upload_file$)' id="fisiere-include-si-upload-upload-file">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>UPLOAD_FILE$</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-upload-file">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>UPLOAD_FILE$</code></pre></div>
+<p class="description">The complete local path.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "UPLOAD_FILE$="; HTML$(UPLOAD_FILE$)</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='result variable upload_url$ # syntax upload_url$ the relative url path uploads/... example 1 copy print "upload_url$="; html$(upload_url$)' id="fisiere-include-si-upload-upload-url">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>UPLOAD_URL$</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-upload-url">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>UPLOAD_URL$</code></pre></div>
+<p class="description">The relative URL path uploads/...</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "UPLOAD_URL$="; HTML$(UPLOAD_URL$)</code></pre></div>
+</article><article class="entry" data-category="Files, include, and upload" data-search='result variable upload_error$ # syntax upload_error$ the most recent upload-error message. example 1 copy print "upload_error$="; html$(upload_error$)' id="fisiere-include-si-upload-upload-error">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>UPLOAD_ERROR$</h3></div><a aria-label="Direct link" class="anchor" href="#fisiere-include-si-upload-upload-error">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>UPLOAD_ERROR$</code></pre></div>
+<p class="description">The most recent upload-error message.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "UPLOAD_ERROR$="; HTML$(UPLOAD_ERROR$)</code></pre></div>
+</article></div>
+</section><section class="reference-section" data-section="Native processes" id="section-procese-native">
+<div class="section-heading"><div><span>Chapter</span><h2>Native processes</h2></div><strong>8 entries</strong></div>
+<div class="entry-grid"><article class="entry" data-category="Native processes" data-search='statement exec # syntax exec executable [, argument] launches an .exe without a shell, captures stdout and stderr, waits for at most 5 seconds, and publishes the result through exec_*. a simple name is searched first beside the .bas file and then through windows search, including system32/path. a single optional text argument is supported. exec_output$ can contain up to 1,048,575 bytes in v0.1.34.3. example 1 copy exec "netstat.exe", "-ano" if exec_ok then print "&lt;pre&gt;"; html$(exec_output$); "&lt;/pre&gt;" else print exec_error$ example 2 copy exec "tool.exe" print exec_code' id="procese-native-exec">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>EXEC</h3></div><a aria-label="Direct link" class="anchor" href="#procese-native-exec">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>EXEC executable [, argument]</code></pre></div>
+<p class="description">Launches an .exe without a shell, captures stdout and stderr, waits for at most 5 seconds, and publishes the result through EXEC_*.</p>
+<div class="notes"><p>A simple name is searched first beside the .bas file and then through Windows search, including System32/PATH.</p><p>A single optional text argument is supported.</p><p>EXEC_OUTPUT$ can contain up to 1,048,575 bytes in v0.1.34.3.</p></div>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>EXEC "netstat.exe", "-ano"
+IF EXEC_OK THEN PRINT "&lt;pre&gt;"; HTML$(EXEC_OUTPUT$); "&lt;/pre&gt;" ELSE PRINT EXEC_ERROR$</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>EXEC "tool.exe"
+PRINT EXEC_CODE</code></pre></div>
+</article><article class="entry" data-category="Native processes" data-search='result variable exec_ok # syntax exec_ok 1 if the process was launched and captured without an infrastructure error. example 1 copy print "exec_ok="; exec_ok' id="procese-native-exec-ok">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>EXEC_OK</h3></div><a aria-label="Direct link" class="anchor" href="#procese-native-exec-ok">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>EXEC_OK</code></pre></div>
+<p class="description">1 if the process was launched and captured without an infrastructure error.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "EXEC_OK="; EXEC_OK</code></pre></div>
+</article><article class="entry" data-category="Native processes" data-search='result variable exec_code # syntax exec_code the exit code; a timeout uses 124. example 1 copy print "exec_code="; exec_code' id="procese-native-exec-code">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>EXEC_CODE</h3></div><a aria-label="Direct link" class="anchor" href="#procese-native-exec-code">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>EXEC_CODE</code></pre></div>
+<p class="description">The exit code; a timeout uses 124.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "EXEC_CODE="; EXEC_CODE</code></pre></div>
+</article><article class="entry" data-category="Native processes" data-search='result variable exec_output$ # syntax exec_output$ captured stdout and stderr, up to the 1 mib limit minus the terminator. example 1 copy print "exec_output$="; html$(exec_output$)' id="procese-native-exec-output">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>EXEC_OUTPUT$</h3></div><a aria-label="Direct link" class="anchor" href="#procese-native-exec-output">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>EXEC_OUTPUT$</code></pre></div>
+<p class="description">Captured stdout and stderr, up to the 1 MiB limit minus the terminator.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "EXEC_OUTPUT$="; HTML$(EXEC_OUTPUT$)</code></pre></div>
+</article><article class="entry" data-category="Native processes" data-search='result variable exec_error$ # syntax exec_error$ the error or timeout message. example 1 copy print "exec_error$="; html$(exec_error$)' id="procese-native-exec-error">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>EXEC_ERROR$</h3></div><a aria-label="Direct link" class="anchor" href="#procese-native-exec-error">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>EXEC_ERROR$</code></pre></div>
+<p class="description">The error or timeout message.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "EXEC_ERROR$="; HTML$(EXEC_ERROR$)</code></pre></div>
+</article><article class="entry" data-category="Native processes" data-search='statement start # syntax start executable [, argument] starts a windows application normally and returns immediately. it does not capture output, wait, or terminate the process. a single optional text argument is supported. for a visible window, apache must run in an interactive windows session. example 1 copy start "viewer.exe" example 2 copy start "apps\g2.exe", "document.txt" if start_ok = 0 then print start_error$' id="procese-native-start">
+<div class="entry-title"><div><span class="kind">Statement</span><h3>START</h3></div><a aria-label="Direct link" class="anchor" href="#procese-native-start">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>START executable [, argument]</code></pre></div>
+<p class="description">Starts a Windows application normally and returns immediately. It does not capture output, wait, or terminate the process.</p>
+<div class="notes"><p>A single optional text argument is supported.</p><p>For a visible window, Apache must run in an interactive Windows session.</p></div>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>START "viewer.exe"</code></pre></div><div class="example"><div class="example-head"><span>Example 2</span><button class="copy" type="button">Copy</button></div><pre><code>START "apps\g2.exe", "document.txt"
+IF START_OK = 0 THEN PRINT START_ERROR$</code></pre></div>
+</article><article class="entry" data-category="Native processes" data-search='result variable start_ok # syntax start_ok 1 if createprocess succeeded. example 1 copy print "start_ok="; start_ok' id="procese-native-start-ok">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>START_OK</h3></div><a aria-label="Direct link" class="anchor" href="#procese-native-start-ok">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>START_OK</code></pre></div>
+<p class="description">1 if CreateProcess succeeded.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "START_OK="; START_OK</code></pre></div>
+</article><article class="entry" data-category="Native processes" data-search='result variable start_error$ # syntax start_error$ the most recent start error message. example 1 copy print "start_error$="; html$(start_error$)' id="procese-native-start-error">
+<div class="entry-title"><div><span class="kind">Result variable</span><h3>START_ERROR$</h3></div><a aria-label="Direct link" class="anchor" href="#procese-native-start-error">#</a></div>
+<div class="syntax"><div>Syntax</div><pre><code>START_ERROR$</code></pre></div>
+<p class="description">The most recent START error message.</p>
+<div class="example"><div class="example-head"><span>Example 1</span><button class="copy" type="button">Copy</button></div><pre><code>PRINT "START_ERROR$="; HTML$(START_ERROR$)</code></pre></div>
+</article></div>
+</section>
+<section class="appendix" id="precedenta-operatorilor"><h2>Operator precedence</h2><p>From lowest to highest precedence:</p><table><thead><tr><th>Level</th><th>Operators</th><th>Associativity</th></tr></thead><tbody><tr><td>1 — lowest</td><td><code>OR</code></td><td>left</td></tr><tr><td>2</td><td><code>XOR</code></td><td>left</td></tr><tr><td>3</td><td><code>AND</code></td><td>left</td></tr><tr><td>4</td><td><code>=, &lt;&gt;, &lt;, &lt;=, &gt;, &gt;=</code></td><td>left</td></tr><tr><td>5</td><td><code>&amp;</code></td><td>left</td></tr><tr><td>6</td><td><code>+, -</code></td><td>left</td></tr><tr><td>7</td><td><code>*, /, \, MOD</code></td><td>left</td></tr><tr><td>8</td><td><code>^</code></td><td>right</td></tr><tr><td>9 — highest</td><td><code>NOT, unary +, unary -, parentheses and functions</code></td><td>unary</td></tr></tbody></table></section>
+<section class="appendix" id="limite-implementare"><h2>v0.1.34.3 implementation limits</h2><table><thead><tr><th>Resource</th><th>Limit</th></tr></thead><tbody><tr><td>Main script</td><td>4 MiB</td></tr><tr><td>HTTP body</td><td>1 MiB</td></tr><tr><td>Response body</td><td>4 MiB</td></tr><tr><td>Scalar variables</td><td>maximum 1024</td></tr><tr><td>Regular scalar value</td><td>2047 bytes + NUL</td></tr><tr><td>EXEC_OUTPUT$</td><td>1,048,575 bytes + NUL</td></tr><tr><td>Arrays</td><td>maximum 32</td></tr><tr><td>Elements per array</td><td>maximum 4096; bounds within -4095..4095</td></tr><tr><td>DATA items</td><td>maximum 512</td></tr><tr><td>Include</td><td>512 KiB, depth 8</td></tr><tr><td>FOR/WHILE/DO</td><td>depth 16, maximum 1,000,000 iterations</td></tr><tr><td>GOSUB</td><td>depth 32</td></tr><tr><td>EXEC/START command</td><td>2048 bytes</td></tr><tr><td>EXEC timeout</td><td>5 seconds</td></tr><tr><td>Custom HTTP headers</td><td>8 KiB</td></tr></tbody></table></section>
+<footer>ApacheBAS Language Reference v0.1.34.3. Static page with no external libraries.</footer>
+</main>
+</div>
+<script>
+const search = document.getElementById('search');
+const cards = [...document.querySelectorAll('.entry')];
+const sections = [...document.querySelectorAll('.reference-section')];
+const noResults = document.getElementById('noResults');
+function applySearch() {
+  const q = search.value.trim().toLocaleLowerCase('en');
+  let visible = 0;
+  cards.forEach(card => { const ok = !q || card.dataset.search.includes(q); card.classList.toggle('hidden', !ok); if(ok) visible++; });
+  sections.forEach(section => { const any = [...section.querySelectorAll('.entry')].some(x => !x.classList.contains('hidden')); section.classList.toggle('hidden', !any); });
+  noResults.style.display = visible ? 'none' : 'block';
+}
+search.addEventListener('input', applySearch);
+document.addEventListener('keydown', e => { if(e.key === '/' && document.activeElement !== search) { e.preventDefault(); search.focus(); } if(e.key === 'Escape') { search.value=''; applySearch(); search.blur(); } });
+document.querySelectorAll('.copy').forEach(btn => btn.addEventListener('click', async () => { const text = btn.closest('.example').querySelector('code').innerText; try { await navigator.clipboard.writeText(text); btn.textContent='Copied'; setTimeout(()=>btn.textContent='Copy',1000); } catch { btn.textContent='Select manually'; } }));
+const sidebar = document.getElementById('sidebar');
+document.getElementById('menuBtn').addEventListener('click', () => sidebar.classList.toggle('open'));
+sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', () => sidebar.classList.remove('open')));
+const navLinks = [...document.querySelectorAll('nav a')];
+const observer = new IntersectionObserver(items => { items.forEach(item => { if(item.isIntersecting) { navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#' + item.target.id)); } }); }, {rootMargin:'-15% 0px -75% 0px'});
+sections.forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>
