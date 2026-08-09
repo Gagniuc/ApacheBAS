@@ -44,15 +44,15 @@ Alongside the ApacheBAS interpreter source, this repository includes a set of sm
 
 <div align="center">
 	<kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/task%20manager.png" width="250" alt="ApacheBAS"></kbd>
-	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/explorer.png" width="250" alt="ApacheBAS"></kbd></a>
-	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/remote.png" width="250" alt="ApacheBAS"></kbd></a>
+	<kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/explorer.png" width="250" alt="ApacheBAS"></kbd>
+	<kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/remote.png" width="250" alt="ApacheBAS"></kbd>
 </div>
 
 
 <div align="center">
-	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gallery.png" width="250" alt="ApacheBAS"></kbd></a>
-	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/netstat%20(II).png" width="250" alt="ApacheBAS"></kbd></a>
-	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/programs.png" width="250" alt="ApacheBAS"></kbd></a>
+	<kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gallery.png" width="250" alt="ApacheBAS"></kbd>
+	<kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/netstat%20(II).png" width="250" alt="ApacheBAS"></kbd>
+	<kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/programs.png" width="250" alt="ApacheBAS"></kbd>
 </div>
 
 <br>
@@ -62,15 +62,15 @@ Alongside the ApacheBAS interpreter source, this repository includes a set of sm
 <summary>More ApacheBAS projects [+]</summary>
 	
 <div align="center">
-	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/desktop.png" width="250" alt="ApacheBAS"></kbd></a>
-	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/facebasic%20(II).png" width="250" alt="ApacheBAS"></kbd></a>
-	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gitbasic%20(III).png" width="250" alt="ApacheBAS"></kbd></a>
+	<kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/desktop.png" width="250" alt="ApacheBAS"></kbd>
+	<kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/facebasic%20(II).png" width="250" alt="ApacheBAS"></kbd>
+	<kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gitbasic%20(III).png" width="250" alt="ApacheBAS"></kbd>
 </div>
 	
 <div align="center">
-	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(II).png" width="250" alt="ApacheBAS"></kbd></a>
-	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(I).png" width="250" alt="ApacheBAS"></kbd></a>
-	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(II).png" width="250" alt="ApacheBAS"></kbd></a>
+	<kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(II).png" width="250" alt="ApacheBAS"></kbd>
+	<kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(I).png" width="250" alt="ApacheBAS"></kbd>
+	<kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(II).png" width="250" alt="ApacheBAS"></kbd>
 </div>
 	
 </details>
