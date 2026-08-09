@@ -47,20 +47,14 @@ ApacheBAS/
 <div align="center">
 <a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/task%20manager.png" width="250" alt="ApacheBAS"></kbd></a>
 <a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/explorer.png" width="250" alt="ApacheBAS"></kbd></a>
-<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(II).png" width="250" alt="ApacheBAS"></kbd></a>
+<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/remote.png" width="250" alt="ApacheBAS"></kbd></a>
 </div>
 
 
 <div align="center">
 <a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gallery.png" width="250" alt="ApacheBAS"></kbd></a>
-<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(I).png" width="250" alt="ApacheBAS"></kbd></a>
-<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(II).png" width="250" alt="ApacheBAS"></kbd></a>
-</div>
-
-<div align="center">
 <a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/netstat%20(II).png" width="250" alt="ApacheBAS"></kbd></a>
 <a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/programs.png" width="250" alt="ApacheBAS"></kbd></a>
-<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/remote.png" width="250" alt="ApacheBAS"></kbd></a>
 </div>
 
 <div align="center">
@@ -68,6 +62,13 @@ ApacheBAS/
 <a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/facebasic%20(II).png" width="250" alt="ApacheBAS"></kbd></a>
 <a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/gitbasic%20(III).png" width="250" alt="ApacheBAS"></kbd></a>
 </div>
+
+<div align="center">
+<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(II).png" width="250" alt="ApacheBAS"></kbd></a>
+<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/virusbasic%20(I).png" width="250" alt="ApacheBAS"></kbd></a>
+<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/math%20(II).png" width="250" alt="ApacheBAS"></kbd></a>
+</div>
+
 
 ---
 
