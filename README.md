@@ -7,7 +7,7 @@ The repository contains both the **ApacheBAS interpreter source code** and a col
 <div align="center">
 	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/bin">
 	  <kbd>
-	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/ban/gpt%20(I).png" alt="ApacheBAS">
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/ban/gpt%20(III).png" alt="ApacheBAS">
 	  </kbd>
 	</a>
 </div>
