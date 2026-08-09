@@ -4,6 +4,14 @@
 
 The repository contains both the **ApacheBAS interpreter source code** and a collection of **fully functional ApacheBAS applications and experiments** that demonstrate how the language can be used for web applications, local administration tools, file management, mathematical visualization, image repositories, social-network prototypes, source-code repositories, and security utilities.
 
+<div align="center">
+	<a href="https://github.com/Gagniuc/ApacheBAS/tree/main/bin">
+	  <kbd>
+	    <img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/ban/gpt%20(I).png" alt="ApacheBAS">
+	  </kbd>
+	</a>
+</div>
+
 ApacheBAS is intentionally small and self-contained. The compiled runtime is a Win32 Portable Executable that requires no C runtime, no external language runtime, no linker at build time, and imports operating-system functions only from `KERNEL32.DLL`.
 
 ---
