@@ -43,7 +43,7 @@ Alongside the ApacheBAS interpreter source, this repository includes a set of sm
 
 
 <div align="center">
-	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/task%20manager.png" width="250" alt="ApacheBAS"></kbd></a>
+	<kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/task%20manager.png" width="250" alt="ApacheBAS"></kbd>
 	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/explorer.png" width="250" alt="ApacheBAS"></kbd></a>
 	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/remote.png" width="250" alt="ApacheBAS"></kbd></a>
 </div>
