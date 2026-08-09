@@ -37,6 +37,8 @@ ApacheBAS/
 
 The repository is organized around the ApacheBAS interpreter and a collection of practical examples built with it. The interpreter source is located in `src/ApacheBAS/`, while `src/BAS experiments/` contains complete, functional applications and experiments that demonstrate ApacheBAS in real use rather than as isolated syntax examples.
 
+<hr>
+
 Alongside the ApacheBAS interpreter source, this repository includes a set of small but functional projects that show the language in use. Some are practical tools, such as file browsing, remote administration, and security-oriented utilities; others are more application-oriented, including a gallery, a social-style interface, a repository-style interface, and mathematical visualization experiments. A selection of these projects is shown below, while additional examples can be revealed with “More ApacheBAS projects [+]”. Together, they give a quick view of the range of applications already built with ApacheBAS, from system-oriented utilities to interactive web interfaces.
 
 
