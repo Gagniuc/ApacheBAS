@@ -20,7 +20,13 @@ C:\xampp\cgi-bin\ApacheBAS.exe
 
 ### 2. Configure Apache
 
-Open the Apache configuration file (C:\xampp\apache\conf\httpd.conf) and add at the end of the file:
+Open the Apache configuration file found in:
+
+```text
+C:\xampp\apache\conf\httpd.conf
+```
+
+Add at the end of the file these two lines:
 
 ```apache
 AddHandler apachebas-script .bas
