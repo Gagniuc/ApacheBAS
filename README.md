@@ -61,7 +61,7 @@ ApacheBAS/
 
 <div align="center">
 <details>
-<summary>More projects [+]</summary>
+<summary>More ApacheBAS projects [+]</summary>
 	
 <div align="center">
 	<a href=""><kbd><img src="https://github.com/Gagniuc/ApacheBAS/blob/main/htm/img/desktop.png" width="250" alt="ApacheBAS"></kbd></a>
